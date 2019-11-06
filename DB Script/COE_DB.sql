@@ -54,6 +54,13 @@ create table HazardCategory
 	HazardCategoryName varchar(100) not null
 )
 
+create table Community
+(
+	CommunityID integer identity(1,1) not null constraint pk_Community primary key clustered,
+	CommunityName varchar(20) not null
+)
+
+
 ---------------------FIRST CHILDREN------------------------------------
 create table Yard
 (
@@ -97,7 +104,8 @@ create table Employee
 	Notes varchar(1000) null,
 	Grass bit constraint df_GrassOnSite default null,
 	SiteTypeID int not null constraint fk_Site_To_SiteType references SiteType(SiteTypeID),
-	YardID int not null constraint fk_Site_To_yard references Yard(YardID)
+	YardID int not null constraint fk_Site_To_yard references Yard(YardID),
+	CommunityID int not null constraint fk_Site_To_Community references Community(CommunityID)
  )
 
  create table Unit
