@@ -27,6 +27,8 @@ Drop Table Hazard
 
 Drop Table Yard
 
+Drop Table Community
+
 Drop Table HazardCategory
 
 Drop Table SiteType
@@ -89,6 +91,7 @@ create table Employee
 	EmployeeID integer identity(1,1) not null constraint pk_Employee primary key clustered,
 	FirstName varchar(20) not null,
 	LastName varchar(20) not null,
+	Phone varchar(12) null constraint ck_phone check (Phone like '[1-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9]'),
 	YardID int not null constraint fk_Employee_To_Yard references Yard(YardID),
 	CrewLeader bit constraint df_NotCrewLeader default null,
 	Gardener bit constraint df_NotGardener default null 
