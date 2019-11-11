@@ -232,7 +232,6 @@ Values(2018)
 Insert into Season
 Values(2019)
 
-select*from Site
 
 /*YARD*/
 Insert Into Yard (YardName, DistrictID)
