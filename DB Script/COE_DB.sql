@@ -5779,6 +5779,7 @@ insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, SBM, Mul
 insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, SBM, Mulch, Prune, ActionRequired, AdditionalComments, CrewID) values (826, 'Pruning', '7:07 AM', '12:09 PM', 0, null, null, null, null, 246);
 insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, SBM, Mulch, Prune, ActionRequired, AdditionalComments, CrewID) values (738, 'Pruning', '10:40 AM', '11:34 AM', 0, null, null, null, null, 15);
 
+select count(CrewSiteID) from CrewSite
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 						/*SITEHAZARD*/
 insert into SiteHazard (HazardID, CrewSiteID, ReviewedDate) values (33, 727, '02/09/2013');
