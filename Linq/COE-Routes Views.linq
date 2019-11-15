@@ -31,7 +31,18 @@ void Main()
 												Prune = crewSite.Prune == true ? crewSite.Crew.TodayDate : (DateTime?) null,
 											}).ToList()
 					};
-					RouteList.Dump();
+					//RouteList.Dump();
+	var SiteGrass = from site in Sites
+					where site.Grass == true
+					select new
+					{
+						Pin = site.Pin,
+						Community = site.Community.Name,
+						Address = site.StreetAddress,
+						Area = site.Area,
+						Notes = site.Notes,
+						//Grass = 
+					}
 }
 
 // Define other methods and classes here
