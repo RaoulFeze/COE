@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace DMIT2018Common.UserControls
+namespace COECommonBusinessRuleException.UserControls
 {
     public delegate void ProcessRequest();
 

@@ -7,7 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DMIT2018Common.UserControls {
+namespace COECommonBusinessRuleException.UserControls
+{
     
     
     public partial class MessageUserControl {
