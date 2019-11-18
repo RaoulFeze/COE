@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace COECommonBusinessRuleException.UserControls
+namespace COECommon.UserControls
 {
     public delegate void ProcessRequest();
 

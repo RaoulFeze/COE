@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace COECommonBusinessRuleException.UserControls
+namespace COECommon.UserControls
 {
     
     

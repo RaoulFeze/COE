@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace COECommonBusinessRuleException.UserControls
+namespace COECommon.UserControls
 {
     [Serializable]
     public class BusinessRuleException : Exception
