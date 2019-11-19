@@ -8,9 +8,11 @@
     </div>
     
     <div class="routesHeader">
-        <asp:Label ID="Yard" runat="server" Text="Label"></asp:Label>
-        <asp:Label ID="RouteType" runat="server" Text="Label"></asp:Label>
-        <asp:Label ID="Label1" runat="server" Text="Routes Inventory"></asp:Label>
+        <h1>
+            <asp:Label ID="Yard" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="RouteType" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="Routes Inventory"></asp:Label>
+        </h1>
     </div>
     <div>
         <div class="col-md-2">
