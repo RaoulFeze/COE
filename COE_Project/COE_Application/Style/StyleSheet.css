@@ -1,2 +1,14 @@
 ﻿body {
+
+}
+.searchBox{
+	width:9.67em;
+	min-width:9.2em;
+	margin:0px;
+	border:0.0625em solid black;
+	padding:0px;
+}
+.SearchButtom span {
+	padding: 0.2em 0.344em 0.2em 0.344em;
+	border: 0.0625em solid black;
 }
