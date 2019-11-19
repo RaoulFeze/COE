@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\RouteStatus.cs" />
     <Compile Include="Entities\Community.cs" />
     <Compile Include="Entities\CorrectiveAction.cs" />
     <Compile Include="Entities\Crew.cs" />
@@ -68,12 +69,10 @@
     <Compile Include="Entities\ToolsChecklist.cs" />
     <Compile Include="Entities\Unit.cs" />
     <Compile Include="Entities\Yard.cs" />
+    <Compile Include="POCOs\SiteStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTOs\" />
-    <Folder Include="POCOs\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
