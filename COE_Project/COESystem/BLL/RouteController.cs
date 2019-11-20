@@ -9,6 +9,7 @@ using System.ComponentModel;
 using COESystem.Data.DTOs;
 using COESystem.Data.Entities;
 using COESystem.Data.POCOs;
+using COESystem.DAL;
 #endregion
 
 namespace COESystem.BLL

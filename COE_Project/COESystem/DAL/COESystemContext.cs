@@ -1,10 +1,14 @@
-namespace COESystem.Data.Entities
-{
-    using System;
-    using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
 
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+
+#region Additional Namespaces
+using System.Data.Entity;
+using COESystem.Data.Entities;
+#endregion
+namespace COESystem.DAL
+{
     public partial class COESystemContext : DbContext
     {
         public COESystemContext()
