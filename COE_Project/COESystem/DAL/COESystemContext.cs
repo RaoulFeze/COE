@@ -66,7 +66,7 @@ namespace COESystem.Data.Entities
                 .IsUnicode(false);
 
             modelBuilder.Entity<CrewSite>()
-                .Property(e => e.Actionrequired)
+                .Property(e => e.ActionRequired)
                 .IsUnicode(false);
 
             modelBuilder.Entity<CrewSite>()

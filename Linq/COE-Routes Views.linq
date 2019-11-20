@@ -1,10 +1,9 @@
 <Query Kind="Program">
   <Connection>
-    <ID>e6f370bf-cf26-4e84-86eb-95c1e0bf1e12</ID>
+    <ID>ce4cd064-7610-426e-a517-cad4564954d2</ID>
     <Persist>true</Persist>
-    <Server>LAPTOP-JJ3E4IVO\MSSQLSERVER1</Server>
+    <Server>.</Server>
     <Database>COE_BD</Database>
-    <ShowServer>true</ShowServer>
   </Connection>
 </Query>
 
@@ -19,6 +18,7 @@ void Main()
 					{
 						Pin = site.Pin,
 						Community = site.Community.Name,
+						Description = site.Neighbourhood,
 						Address = site.StreetAddress,
 						Area = site.Area,
 						Notes = site.Notes,
@@ -58,6 +58,7 @@ void Main()
 	{
 		public int Pin {get; set;}
 		public string Community {get; set;}
+		public string Description{get;set;}
 		public string Address {get; set;}
 		public int Area {get; set;}
 		public string Notes {get; set;}

@@ -27,12 +27,14 @@ namespace COESystem.Data.Entities
 
         public TimeSpan? TimeOffSite { get; set; }
 
-        public DateTime? Mulch { get; set; }
+        public bool? SBM { get; set; }
 
-        public DateTime? Prune { get; set; }
+        public bool? Mulch { get; set; }
+
+        public bool? Prune { get; set; }
 
         [StringLength(100)]
-        public string Actionrequired { get; set; }
+        public string ActionRequired { get; set; }
 
         [StringLength(100)]
         public string AdditionalComments { get; set; }

@@ -15,6 +15,7 @@ namespace COESystem.Data.DTOs
     {
         public int Pin { get; set; }
         public string Community { get; set; }
+        public string Description { get; set; }
         public string Address { get; set; }
         public int Area { get; set; }
         public string Notes { get; set; }

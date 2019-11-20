@@ -31,8 +31,28 @@
             
         </div>
         <div class="col-md-10">
-
+            <asp:Repeater ID="Repeater1" runat="server" 
+                          DataSourceID="RouteListODS"
+                          ItemType="COESystem.Data.DTOs.RouteStatus">
+                <ItemTemplate>
+                    <%# Item.Pin %>
+                    <%# Item.Community %>
+                    <%# Item.Description %>
+                    <%# Item.Address %>
+                    <%# Item.Area %>
+                    <%# Item.Notes %>
+                    <asp:ListView ID="ListView1" runat="server"
+                        ItemType="COESystem.Data.POCOs.SiteStatus"
+                        DataSource='<%# Item.JobDone %>'>
+                    </asp:ListView>
+                </ItemTemplate>
+            </asp:Repeater>
         </div>
     </div>
-
+    <asp:ObjectDataSource ID="RouteListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="RouteStatus_List" TypeName="COESystem.BLL.RouteController">
+        <SelectParameters>
+            <asp:Parameter Name="season" Type="Int32"></asp:Parameter>
+            <asp:Parameter Name="yardId" Type="Int32"></asp:Parameter>
+        </SelectParameters>
+    </asp:ObjectDataSource>
 </asp:Content>

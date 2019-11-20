@@ -17,8 +17,7 @@ namespace COESystem.Data.Entities
 
         public int SeasonID { get; set; }
 
-        [Column("Season")]
-        public int Season1 { get; set; }
+        public int SeasonYear { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Site> Sites { get; set; }
