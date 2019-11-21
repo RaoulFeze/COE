@@ -18,9 +18,11 @@
    
     <div>
         <div class="col-md-2">
-            <div class="searchBar">
+            <div class="input-group">
+                <div class="input-group-prepend searchBar">
                 <asp:TextBox ID="SearchBox" runat="server" CssClass="searchBox"></asp:TextBox>
-                <asp:LinkButton ID="SearchButton" runat="server" CssClass="SearchButtom"><span class="glyphicon glyphicon-search "></span></asp:LinkButton><br /><br />
+                    <asp:LinkButton ID="SearchButton" runat="server" CssClass=""><span class="glyphicon glyphicon-search "></span></asp:LinkButton><br /><br />
+                </div>
             </div>
             <div class="routeControls">
                 <asp:Button ID="RoutesA" runat="server" Text="Routes A" CssClass="button"/><br /><br />
@@ -30,7 +32,7 @@
             </div>
             
         </div>
-        <div class="col-md-10">
+        <%--<div class="col-md-10">
             <asp:Repeater ID="Repeater1" runat="server" 
                           DataSourceID="RouteListODS"
                           ItemType="COESystem.Data.DTOs.RouteStatus">
@@ -47,12 +49,12 @@
                     </asp:ListView>
                 </ItemTemplate>
             </asp:Repeater>
-        </div>
+        </div>--%>
     </div>
-    <asp:ObjectDataSource ID="RouteListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="RouteStatus_List" TypeName="COESystem.BLL.RouteController">
+    <%--<asp:ObjectDataSource ID="RouteListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="RouteStatus_List" TypeName="COESystem.BLL.RouteController">
         <SelectParameters>
             <asp:Parameter Name="season" Type="Int32"></asp:Parameter>
             <asp:Parameter Name="yardId" Type="Int32"></asp:Parameter>
         </SelectParameters>
-    </asp:ObjectDataSource>
+    </asp:ObjectDataSource>--%>
 </asp:Content>
