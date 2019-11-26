@@ -18,12 +18,13 @@
    
     <div>
         <div class="col-md-2">
-            <div class="input-group">
-                <div class="input-group-prepend searchBar">
-                <asp:TextBox ID="SearchBox" runat="server" CssClass="searchBox"></asp:TextBox>
-                    <asp:LinkButton ID="SearchButton" runat="server" CssClass=""><span class="glyphicon glyphicon-search "></span></asp:LinkButton><br /><br />
-                </div>
-            </div>
+           <div class="input-group ">
+               <asp:TextBox ID="SearchBox" runat="server" CssClass="SearchBox"></asp:TextBox>
+               <div class="input-group-append input-group-addon  ">
+                   <asp:LinkButton ID="LinkButton1" runat="server" ><span class="glyphicon glyphicon-search "></span></asp:LinkButton>
+               </div>
+           </div>
+               <br />
             <div class="routeControls">
                 <asp:Button ID="RoutesA" runat="server" Text="Routes A" CssClass="button"/><br /><br />
                 <asp:Button ID="RoutesB" runat="server" Text="Routes B"  CssClass="button"/><br /><br />
