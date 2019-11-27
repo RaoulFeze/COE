@@ -18,12 +18,12 @@
    
     <div>
         <div class="col-md-2">
-           <div class="input-group ">
-               <asp:TextBox ID="SearchBox" runat="server" CssClass="SearchBox"></asp:TextBox>
-               <div class="input-group-append input-group-addon  ">
-                   <asp:LinkButton ID="LinkButton1" runat="server" ><span class="glyphicon glyphicon-search "></span></asp:LinkButton>
-               </div>
-           </div>
+           <div class="input-group">
+               <asp:TextBox ID="SearchBox" runat="server" CssClass="SearchBox" PlaceHolder="Enter Pin/Community"></asp:TextBox>
+               <asp:LinkButton ID="LinkButton1" runat="server" CssClass="input-group-append input-group-addon">
+                   <span class="glyphicon glyphicon-search "></span>
+               </asp:LinkButton>
+            </div>
                <br />
             <div class="routeControls">
                 <asp:Button ID="RoutesA" runat="server" Text="Routes A" CssClass="button"/><br /><br />
@@ -32,8 +32,9 @@
                 <asp:Button ID="Reset" runat="server" Text="Reset"  CssClass="button"/>
             </div>
             
-        </div>
-        <%--<div class="col-md-10">
+           </div>
+        
+        <div class="col-md-10">
             <asp:Repeater ID="Repeater1" runat="server" 
                           DataSourceID="RouteListODS"
                           ItemType="COESystem.Data.DTOs.RouteStatus">
@@ -50,12 +51,12 @@
                     </asp:ListView>
                 </ItemTemplate>
             </asp:Repeater>
-        </div>--%>
+        </div>
     </div>
-    <%--<asp:ObjectDataSource ID="RouteListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="RouteStatus_List" TypeName="COESystem.BLL.RouteController">
+    <asp:ObjectDataSource ID="RouteListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="RouteStatus_List" TypeName="COESystem.BLL.RouteController">
         <SelectParameters>
             <asp:Parameter Name="season" Type="Int32"></asp:Parameter>
             <asp:Parameter Name="yardId" Type="Int32"></asp:Parameter>
         </SelectParameters>
-    </asp:ObjectDataSource>--%>
+    </asp:ObjectDataSource>
 </asp:Content>
