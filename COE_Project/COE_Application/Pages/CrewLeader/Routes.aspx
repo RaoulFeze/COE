@@ -35,7 +35,7 @@
            </div>
         
         <div class="col-md-10">
-            <asp:Repeater ID="Repeater1" runat="server" 
+            <%--<asp:Repeater ID="Repeater1" runat="server" 
                           DataSourceID="RouteListODS"
                           ItemType="COESystem.Data.DTOs.RouteStatus">
                 <ItemTemplate>
@@ -50,7 +50,7 @@
                         DataSource='<%# Item.JobDone %>'>
                     </asp:ListView>
                 </ItemTemplate>
-            </asp:Repeater>
+            </asp:Repeater>--%>
         </div>
     </div>
     <asp:ObjectDataSource ID="RouteListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="RouteStatus_List" TypeName="COESystem.BLL.RouteController">

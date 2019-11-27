@@ -1,5 +1,10 @@
 ﻿
-
+.logo {
+    position: absolute;
+}
+/*.nav {
+    position: absolute;
+}*/
 .routesHeader {
 	text-align: center;
 }
