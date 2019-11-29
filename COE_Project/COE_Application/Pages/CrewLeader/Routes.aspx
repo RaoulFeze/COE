@@ -51,7 +51,10 @@
                                <td>
                                    <asp:Label Text='<%# Eval("Notes") %>' runat="server" ID="NotesLabel" /></td>
                                <td>
-                                   <asp:Label Text='<%# Eval("JobDone") %>' runat="server" ID="JobDoneLabel" /></td>
+                                   <asp:Label Text='<%# Eval("JobDone") %>' runat="server" ID="JobDoneLabel" />
+                                   <asp:GridView ID="GridView1" runat="server"
+                                       DataSource='<%# Eval("JobDone") %>'></asp:GridView>
+                               </td>
                            </tr>
                        </AlternatingItemTemplate>
                        <EditItemTemplate>
