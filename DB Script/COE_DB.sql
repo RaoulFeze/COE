@@ -1,41 +1,41 @@
 ﻿
-/*CREATE DATABASE COE_BD*/
+/*CREATE DATABASE COE_DB*/
 
-Drop Table SiteHazard
+--Drop Table SiteHazard
 
-Drop Table ToolsCheckList
+--Drop Table ToolsCheckList
 
-Drop Table CrewSite
+--Drop Table CrewSite
 
-Drop Table CrewMember
+--Drop Table CrewMember
 
-Drop Table Crew
+--Drop Table Crew
 
---Drop Table SiteStatus
+----Drop Table SiteStatus
 
-Drop Table Tool
+--Drop Table Tool
 
-Drop Table Unit
+--Drop Table Unit
 
-Drop Table Site 
+--Drop Table Site 
 
-Drop Table Employee
+--Drop Table Employee
 
-Drop Table CorrectiveAction
+--Drop Table CorrectiveAction
 
-Drop Table Hazard
+--Drop Table Hazard
 
-Drop Table Yard
+--Drop Table Yard
 
-Drop Table Community
+--Drop Table Community
 
-Drop Table HazardCategory
+--Drop Table HazardCategory
 
-Drop Table SiteType
+--Drop Table SiteType
 
-Drop Table District
+--Drop Table District
 
-Drop Table Season
+--Drop Table Season
 
 
 ---------------PARENTS------------------------------------------------------------------

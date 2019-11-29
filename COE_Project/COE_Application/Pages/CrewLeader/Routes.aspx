@@ -51,7 +51,7 @@
                                <td>
                                    <asp:Label Text='<%# Eval("Notes") %>' runat="server" ID="NotesLabel" /></td>
                                <td>
-                                   <asp:Label Text='<%# Eval("JobDone") %>' runat="server" ID="JobDoneLabel" />
+                                  <%-- <asp:Label Text='<%# Eval("JobDone") %>' runat="server" ID="JobDoneLabel" />--%>
                                    <asp:GridView ID="GridView1" runat="server"
                                        DataSource='<%# Eval("JobDone") %>'></asp:GridView>
                                </td>
@@ -76,7 +76,9 @@
                                <td>
                                    <asp:TextBox Text='<%# Bind("Notes") %>' runat="server" ID="NotesTextBox" /></td>
                                <td>
-                                   <asp:TextBox Text='<%# Bind("JobDone") %>' runat="server" ID="JobDoneTextBox" /></td>
+                                   <%--<asp:TextBox Text='<%# Bind("JobDone") %>' runat="server" ID="JobDoneTextBox" /></td>--%>
+                                   <asp:GridView ID="GridView1" runat="server"
+                                       DataSource='<%# Eval("JobDone") %>'></asp:GridView></td>
                            </tr>
                        </EditItemTemplate>
                        <EmptyDataTemplate>
@@ -105,7 +107,9 @@
                                <td>
                                    <asp:TextBox Text='<%# Bind("Notes") %>' runat="server" ID="NotesTextBox" /></td>
                                <td>
-                                   <asp:TextBox Text='<%# Bind("JobDone") %>' runat="server" ID="JobDoneTextBox" /></td>
+                                  <%-- <asp:TextBox Text='<%# Bind("JobDone") %>' runat="server" ID="JobDoneTextBox" /></td>--%>
+                                   <asp:GridView ID="GridView1" runat="server"
+                                       DataSource='<%# Eval("JobDone") %>'></asp:GridView></td>
                            </tr>
                        </InsertItemTemplate>
                        <ItemTemplate>
@@ -123,7 +127,10 @@
                                <td>
                                    <asp:Label Text='<%# Eval("Notes") %>' runat="server" ID="NotesLabel" /></td>
                                <td>
-                                   <asp:Label Text='<%# Eval("JobDone") %>' runat="server" ID="JobDoneLabel" /></td>
+                                   <%--<asp:Label Text='<%# Eval("JobDone") %>' runat="server" ID="JobDoneLabel" />--%>
+                                   <asp:GridView ID="GridView1" runat="server"
+                                       DataSource='<%# Eval("JobDone") %>'></asp:GridView>
+                               </td>
                            </tr>
                        </ItemTemplate>
                        <LayoutTemplate>
@@ -172,7 +179,10 @@
                                <td>
                                    <asp:Label Text='<%# Eval("Notes") %>' runat="server" ID="NotesLabel" /></td>
                                <td>
-                                   <asp:Label Text='<%# Eval("JobDone") %>' runat="server" ID="JobDoneLabel" /></td>
+                                   <%--<asp:Label Text='<%# Eval("JobDone") %>' runat="server" ID="JobDoneLabel" />--%>
+                                   <asp:GridView ID="GridView1" runat="server"
+                                       DataSource='<%# Eval("JobDone") %>'></asp:GridView>
+                               </td>
                            </tr>
                        </SelectedItemTemplate>
                    </asp:ListView>
