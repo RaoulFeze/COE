@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Routes.aspx.cs" Inherits="COE_Application.Pages.CrewLeader.Routes" %>
+﻿<%@ Page Title="Routes" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Routes.aspx.cs" Inherits="COE_Application.Pages.CrewLeader.Routes" %>
 
 <%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
 
@@ -35,7 +35,7 @@
            </div>
         
         <div class="col-md-10">
-                   <asp:ListView ID="ListView1" runat="server" DataSourceID="RouteListODS">
+           <asp:ListView ID="ListView1" runat="server" DataSourceID="RouteListODS">
                        <AlternatingItemTemplate>
                            <tr style="background-color: #FFFFFF; color: #284775;">
                                <td>
@@ -54,7 +54,9 @@
                                   <%-- <asp:Label Text='<%# Eval("JobDone") %>' runat="server" ID="JobDoneLabel" />--%>
                                    <asp:GridView ID="GridView1" runat="server"
                                        DataSource='<%# Eval("JobDone") %>'></asp:GridView>
+                                   
                                </td>
+                               
                            </tr>
                        </AlternatingItemTemplate>
                        <EditItemTemplate>
@@ -186,32 +188,6 @@
                            </tr>
                        </SelectedItemTemplate>
                    </asp:ListView>
-            <%--<asp:Repeater ID="Repeater1" runat="server" 
-                          DataSourceID="RouteListODS"
-                          ItemType="COESystem.Data.DTOs.RouteStatus">
-                <ItemTemplate>
-                    <%# Item.Pin %>
-                    <%# Item.Community %>
-                    <%# Item.Description %>
-                    <%# Item.Address %>
-                    <%# Item.Area %>
-                    <%# Item.Notes %>
-                    <asp:GridView ID="GridView1" runat="server"
-                        DataSource=<%# Item.JobDone %>></asp:GridView>
-                    <asp:listview id="listview1" runat="server"
-                        itemtype="coesystem.data.pocos.sitestatus"
-                        datasource='<%# item.jobdone %>'>
-                        <itemtemplate>
-                            <tr>
-                                <td>
-
-                                </td>
-                            </tr>
-                        </itemtemplate>
-                    </asp:listview>
-             
-                </ItemTemplate>
-            </asp:Repeater>--%>
         </div>
     </div>
     <asp:ObjectDataSource ID="RouteListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="RouteStatus_List" TypeName="COESystem.BLL.RouteController">

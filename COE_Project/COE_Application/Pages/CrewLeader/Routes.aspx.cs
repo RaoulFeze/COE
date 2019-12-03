@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,7 +12,18 @@ namespace COE_Application.Pages.CrewLeader
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string crewLeaderRole = ConfigurationManager.AppSettings["crewLeaderRole"];
+            if (Request.IsAuthenticated)
+            {
+                if(!User.IsInRole(crewLeaderRole))
+                {
+                    Response.Redirect("~/Account/Login.aspx");
+                }
+            }
+            else
+            {
+                Response.Redirect("~/Account/Login.aspx");
+            }
         }
     }
 }
