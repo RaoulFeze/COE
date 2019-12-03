@@ -35,7 +35,7 @@
            </div>
         
         <div class="col-md-10">
-         <%--  <asp:ListView ID="ListView1" runat="server" DataSourceID="RouteListODS">
+           <asp:ListView ID="ListView1" runat="server" DataSourceID="RouteListODS">
                        <AlternatingItemTemplate>
                            <tr style="background-color: #FFFFFF; color: #284775;">
                                <td>
@@ -187,9 +187,10 @@
                                </td>
                            </tr>
                        </SelectedItemTemplate>
-                   </asp:ListView>--%>
-            <asp:ListView ID="ListView1" runat="server"></asp:ListView>
+                   </asp:ListView>
+            <%--<asp:ListView ID="ListView1" runat="server"></asp:ListView>
             <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+            <asp:GridView ID="GridView2" runat="server"></asp:GridView>--%>
         </div>
     </div>
     <asp:ObjectDataSource ID="RouteListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="RouteStatus_List" TypeName="COESystem.BLL.RouteController">

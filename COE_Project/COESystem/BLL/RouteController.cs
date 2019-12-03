@@ -24,7 +24,7 @@ namespace COESystem.BLL
             {
                 var RouteList = from site in context.Sites
                                 orderby site.Community.Name ascending
-                                where site.Season.SeasonYear == season && site.Yard.YardID == yardId
+                                where site.Season.SeasonYear == 2018 && site.Yard.YardID == 1
                                 select new RouteStatus
                                 {
                                     Pin = site.Pin,

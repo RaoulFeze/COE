@@ -31,16 +31,22 @@ namespace COE_Application.Pages.CrewLeader
             //    Response.Redirect("~/Account/Login.aspx");
             //}
 
-            int yardId = 589;
+            int yardId = 4;
             int season = (int)DateTime.Now.Year;
 
             //Load the Gridview
             MessageUserControl.TryRun(() =>
             {
                 RouteController routeManager = new RouteController();
-                List<RouteStatus> routes = routeManager.RouteStatus_List(2020, yardId);
-                GridView1.DataSource = routes;
-                GridView1.DataBind();
+                List<RouteStatus> routes = routeManager.RouteStatus_List(season, yardId);
+                //GridView1.DataSource = routes;
+                //GridView1.DataBind();
+
+                //foreach(RouteStatus status in routes)
+                //{
+                //    GridView2.DataSource = status.JobDone;
+                //    GridView2.DataBind();
+                //}
             });
         }
     }
