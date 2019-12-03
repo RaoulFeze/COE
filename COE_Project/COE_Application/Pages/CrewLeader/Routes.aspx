@@ -35,7 +35,7 @@
            </div>
         
         <div class="col-md-10">
-           <asp:ListView ID="ListView1" runat="server" DataSourceID="RouteListODS">
+         <%--  <asp:ListView ID="ListView1" runat="server" DataSourceID="RouteListODS">
                        <AlternatingItemTemplate>
                            <tr style="background-color: #FFFFFF; color: #284775;">
                                <td>
@@ -51,7 +51,7 @@
                                <td>
                                    <asp:Label Text='<%# Eval("Notes") %>' runat="server" ID="NotesLabel" /></td>
                                <td>
-                                  <%-- <asp:Label Text='<%# Eval("JobDone") %>' runat="server" ID="JobDoneLabel" />--%>
+                                  
                                    <asp:GridView ID="GridView1" runat="server"
                                        DataSource='<%# Eval("JobDone") %>'></asp:GridView>
                                    
@@ -78,7 +78,7 @@
                                <td>
                                    <asp:TextBox Text='<%# Bind("Notes") %>' runat="server" ID="NotesTextBox" /></td>
                                <td>
-                                   <%--<asp:TextBox Text='<%# Bind("JobDone") %>' runat="server" ID="JobDoneTextBox" /></td>--%>
+                                  
                                    <asp:GridView ID="GridView1" runat="server"
                                        DataSource='<%# Eval("JobDone") %>'></asp:GridView></td>
                            </tr>
@@ -109,7 +109,7 @@
                                <td>
                                    <asp:TextBox Text='<%# Bind("Notes") %>' runat="server" ID="NotesTextBox" /></td>
                                <td>
-                                  <%-- <asp:TextBox Text='<%# Bind("JobDone") %>' runat="server" ID="JobDoneTextBox" /></td>--%>
+                              
                                    <asp:GridView ID="GridView1" runat="server"
                                        DataSource='<%# Eval("JobDone") %>'></asp:GridView></td>
                            </tr>
@@ -129,7 +129,7 @@
                                <td>
                                    <asp:Label Text='<%# Eval("Notes") %>' runat="server" ID="NotesLabel" /></td>
                                <td>
-                                   <%--<asp:Label Text='<%# Eval("JobDone") %>' runat="server" ID="JobDoneLabel" />--%>
+                                
                                    <asp:GridView ID="GridView1" runat="server"
                                        DataSource='<%# Eval("JobDone") %>'></asp:GridView>
                                </td>
@@ -181,13 +181,15 @@
                                <td>
                                    <asp:Label Text='<%# Eval("Notes") %>' runat="server" ID="NotesLabel" /></td>
                                <td>
-                                   <%--<asp:Label Text='<%# Eval("JobDone") %>' runat="server" ID="JobDoneLabel" />--%>
+                                 
                                    <asp:GridView ID="GridView1" runat="server"
                                        DataSource='<%# Eval("JobDone") %>'></asp:GridView>
                                </td>
                            </tr>
                        </SelectedItemTemplate>
-                   </asp:ListView>
+                   </asp:ListView>--%>
+            <asp:ListView ID="ListView1" runat="server"></asp:ListView>
+            <asp:GridView ID="GridView1" runat="server"></asp:GridView>
         </div>
     </div>
     <asp:ObjectDataSource ID="RouteListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="RouteStatus_List" TypeName="COESystem.BLL.RouteController">

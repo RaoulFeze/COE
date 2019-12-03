@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using COE_Application.Models;
+using System.Configuration;
 #endregion
 
 namespace COE_Application.Security
@@ -33,11 +34,26 @@ namespace COE_Application.Security
         #endregion
 
         #region ApplicationUser CRUD
-        //[DataObjectMethod(DataObjectMethodType.Select)]
-        //public List<ApplicationUser> ListUsers()
-        //{
-        //    return UserManager.Users.Where(x => x);
-        //}
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<ApplicationUser> ListUsers()
+        {
+            return UserManager.Users.Where(x => x.EmployeeId.HasValue).OrderBy(x => x.UserName).ToList();
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Insert)]
+        public void AddUser(ApplicationUser user)
+        {
+            if (user.EmployeeId == 0)
+            {
+                throw new Exception("Select an Employee");
+            }
+            if (user.EmployeeId == 0)
+            {
+                user.EmployeeId = null;
+            }
+
+            IdentityResult result = UserManager.Create(user, ConfigurationManager.AppSettings["newUserPassword"]);
+        }
         #endregion
     }
 }

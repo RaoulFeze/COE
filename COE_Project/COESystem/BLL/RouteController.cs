@@ -24,7 +24,7 @@ namespace COESystem.BLL
             {
                 var RouteList = from site in context.Sites
                                 orderby site.Community.Name ascending
-                                where site.Season.SeasonYear == 2018 && site.Yard.YardID == 1
+                                where site.Season.SeasonYear == season && site.Yard.YardID == yardId
                                 select new RouteStatus
                                 {
                                     Pin = site.Pin,
@@ -47,13 +47,13 @@ namespace COESystem.BLL
         }
 
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<RouteStatus> RouteStatus_List(int season, int yardId, string type)
+        public List<RouteStatus> RouteStatus_List(int season, int yardId, string routeType)
         {
             using (var context = new COESystemContext())
             {
                 var RouteList = from site in context.Sites
                                 orderby site.Community.Name ascending
-                                where site.Season.SeasonYear == 2018 && site.Yard.YardID == 1 && site.SiteType.SiteTypeDescription == "B"
+                                where site.Season.SeasonYear == season && site.Yard.YardID == yardId && site.SiteType.SiteTypeDescription == routeType
                                 select new RouteStatus
                                 {
                                     Pin = site.Pin,
