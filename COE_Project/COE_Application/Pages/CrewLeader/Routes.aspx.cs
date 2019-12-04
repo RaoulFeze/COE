@@ -31,14 +31,19 @@ namespace COE_Application.Pages.CrewLeader
             //    Response.Redirect("~/Account/Login.aspx");
             //}
 
-            int yardId = 4;
+            int yardId = 1;
             int season = (int)DateTime.Now.Year;
+            AllRoutes(yardId, season);
+        }
 
+        protected void AllRoutes(int yardId, int season)
+        {
             //Load the Gridview
             MessageUserControl.TryRun(() =>
             {
                 RouteController routeManager = new RouteController();
                 List<RouteStatus> routes = routeManager.RouteStatus_List(season, yardId);
+                Yard.Text = routeManager.YardName(yardId);
                 //GridView1.DataSource = routes;
                 //GridView1.DataBind();
 
@@ -48,6 +53,39 @@ namespace COE_Application.Pages.CrewLeader
                 //    GridView2.DataBind();
                 //}
             });
+        }
+
+        protected void SearchRoutes_Click(object sender, EventArgs e)
+        {
+            MessageUserControl.TryRun(() =>
+            {
+                int pin = int.Parse(SearchBox.Text);
+                RouteController routeManager = new RouteController();
+                List<RouteStatus> route = routeManager.GetRouteStatus(pin);
+
+                Routes_ListView.DataSource = route;
+                Routes_ListView.DataBind();
+            });
+        }
+
+        protected void RoutesA_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void RoutesB_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Grass_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Reset_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

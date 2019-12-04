@@ -10,16 +10,10 @@
 }
 
 .SearchBox {
-    padding-left: 0;
-    padding-right: 0;
-    border: 1px solid grey;
+    padding: 4px 0;
     margin-left: 0;
     margin-right: 0;
     min-width: 138px;
-    width: 138px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-
 }
 
 .input-group-addon {

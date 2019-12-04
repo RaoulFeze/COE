@@ -60,13 +60,13 @@ namespace COE_Application.Pages.CrewLeader
         protected global::System.Web.UI.WebControls.TextBox SearchBox;
 
         /// <summary>
-        /// LinkButton1 control.
+        /// SearchRoutes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.LinkButton SearchRoutes;
 
         /// <summary>
         /// RoutesA control.
@@ -105,13 +105,22 @@ namespace COE_Application.Pages.CrewLeader
         protected global::System.Web.UI.WebControls.Button Reset;
 
         /// <summary>
-        /// ListView1 control.
+        /// Routes_ListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ListView1;
+        protected global::System.Web.UI.WebControls.ListView Routes_ListView;
+
+        /// <summary>
+        /// GridView2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView2;
 
         /// <summary>
         /// RouteListODS control.
