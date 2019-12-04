@@ -20,22 +20,22 @@
         <div class="col-md-2">
            <div class="input-group">
                <asp:TextBox ID="SearchBox" runat="server" CssClass="SearchBox" PlaceHolder="Enter Pin/Community"></asp:TextBox>
-               <asp:LinkButton ID="LinkButton1" runat="server" CssClass="input-group-append input-group-addon">
+               <asp:LinkButton ID="SearchRoutes" runat="server" CssClass="input-group-append input-group-addon" OnClick="SearchRoutes_Click">
                    <span class="glyphicon glyphicon-search "></span>
                </asp:LinkButton>
             </div>
                <br />
             <div class="routeControls">
-                <asp:Button ID="RoutesA" runat="server" Text="Routes A" CssClass="button"/><br /><br />
-                <asp:Button ID="RoutesB" runat="server" Text="Routes B"  CssClass="button"/><br /><br />
-                <asp:Button ID="Grass" runat="server" Text="Grass"  CssClass="button"/><br /><br />
-                <asp:Button ID="Reset" runat="server" Text="Reset"  CssClass="button"/>
+                <asp:Button ID="RoutesA" runat="server" Text="Routes A" CssClass="button" OnClick="RoutesA_Click"/><br /><br />
+                <asp:Button ID="RoutesB" runat="server" Text="Routes B"  CssClass="button" OnClick="RoutesB_Click"/><br /><br />
+                <asp:Button ID="Grass" runat="server" Text="Grass"  CssClass="button" OnClick="Grass_Click"/><br /><br />
+                <asp:Button ID="Reset" runat="server" Text="Reset"  CssClass="button" OnClick="Reset_Click"/>
             </div>
             
            </div>
         
         <div class="col-md-10">
-           <asp:ListView ID="ListView1" runat="server" DataSourceID="RouteListODS">
+           <asp:ListView ID="Routes_ListView" runat="server" DataSourceID="">
                        <AlternatingItemTemplate>
                            <tr style="background-color: #FFFFFF; color: #284775;">
                                <td>
@@ -188,9 +188,8 @@
                            </tr>
                        </SelectedItemTemplate>
                    </asp:ListView>
-            <%--<asp:ListView ID="ListView1" runat="server"></asp:ListView>
-            <asp:GridView ID="GridView1" runat="server"></asp:GridView>
-            <asp:GridView ID="GridView2" runat="server"></asp:GridView>--%>
+           
+            <asp:GridView ID="GridView2" runat="server"></asp:GridView>
         </div>
     </div>
     <asp:ObjectDataSource ID="RouteListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="RouteStatus_List" TypeName="COESystem.BLL.RouteController">
