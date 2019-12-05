@@ -10,10 +10,11 @@
 }
 
 .SearchBox {
-    padding: 4px 0;
+    padding: 4px 1px;
     margin-left: 0;
     margin-right: 0;
     min-width: 138px;
+	width:138px;
 }
 
 .input-group-addon {

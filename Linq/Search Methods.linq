@@ -1,8 +1,10 @@
 <Query Kind="Program">
   <Connection>
-    <ID>ce4cd064-7610-426e-a517-cad4564954d2</ID>
+    <ID>31702c39-067f-4f10-adee-28efe15fdcab</ID>
+    <Persist>true</Persist>
     <Server>.</Server>
-    <Database>COE_BD</Database>
+    <Database>COE_DB</Database>
+    <ShowServer>true</ShowServer>
   </Connection>
 </Query>
 
@@ -10,7 +12,7 @@ void Main()
 {
 	/*Search based on Pin number*/
 	
-	var RouteList =	from site in Sites
+	/*var RouteList =	from site in Sites
 					orderby site.Community.Name ascending
 					where site.Season.SeasonYear == 2018 && site.Pin == 362439
 					select new RouteStatus
@@ -34,6 +36,28 @@ void Main()
 					
 	
 	/*Search Based on Community*/
+	
+		var RouteList =	from site in Sites
+					orderby site.Community.Name ascending
+					where  site.Community.Name.Contains("fres")
+					select new RouteStatus
+					{
+						Pin = site.Pin,
+						Community = site.Community.Name,
+						Description = site.Neighbourhood,
+						Address = site.StreetAddress,
+						Area = site.Area,
+						Notes = site.Notes,
+						JobDone = (from crewSite in CrewSites 
+											where crewSite.SiteID == site.SiteID
+											select new SiteStatus
+											{
+												SBM = crewSite.SBM == true ? crewSite.Crew.TodayDate : (DateTime?) null,
+												Mulch = crewSite.Mulch == true ? crewSite.Crew.TodayDate : (DateTime?) null,
+												Prune = crewSite.Prune == true ? crewSite.Crew.TodayDate : (DateTime?) null,
+											}).ToList()
+					};
+					RouteList.Dump();
 }
 
 // Define other methods and classes here

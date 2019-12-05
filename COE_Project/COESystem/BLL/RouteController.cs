@@ -124,5 +124,11 @@ namespace COESystem.BLL
             }
         }
 
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<RouteStatus> GetRouteStatus(string community)
+        {
+
+        }
+
     }
 }

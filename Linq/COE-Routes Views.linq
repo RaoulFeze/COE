@@ -1,9 +1,10 @@
 <Query Kind="Program">
   <Connection>
-    <ID>ce4cd064-7610-426e-a517-cad4564954d2</ID>
+    <ID>31702c39-067f-4f10-adee-28efe15fdcab</ID>
     <Persist>true</Persist>
     <Server>.</Server>
-    <Database>COE_BD</Database>
+    <Database>COE_DB</Database>
+    <ShowServer>true</ShowServer>
   </Connection>
 </Query>
 
