@@ -78,6 +78,7 @@ namespace COE_Application.Pages.CrewLeader
         protected void RoutesA_Click(object sender, EventArgs e)
         {
             RouteType.Text = "A";
+            SearchBox.Text = "";
             MessageUserControl.TryRun(() =>
             {
                 int yardId = 1; //TODO: Retrieve the YardID from the parameters of the CrewLeader (User) that logged in
@@ -93,6 +94,7 @@ namespace COE_Application.Pages.CrewLeader
         protected void RoutesB_Click(object sender, EventArgs e)
         {
             RouteType.Text = "B";
+            SearchBox.Text = "";
             MessageUserControl.TryRun(() =>
             {
                 int yardId = 1; //TODO: Retrieve the YardID from the parameters of the CrewLeader (User) that logged in
@@ -113,6 +115,7 @@ namespace COE_Application.Pages.CrewLeader
         protected void Reset_Click(object sender, EventArgs e)
         {
             RouteType.Text = "";
+            SearchBox.Text = "";
             int yardId = 1;//TODO: Retrieve the YardID from the parameters of the CrewLeader (User) that logged in
                            // Set the Yard ID as in invisible label on the web page.
             AllRoutes(yardId);
