@@ -31,27 +31,21 @@ namespace COE_Application.Pages.CrewLeader
             //    Response.Redirect("~/Account/Login.aspx");
             //}
 
-            int yardId = 1;
-            int season = (int)DateTime.Now.Year;
-            AllRoutes(yardId, season);
+            int yardId = 1;//TODO: Retrieve the YardID from the parameters of the CrewLeader (User) that logged in
+                           // Set the Yard ID as in invisible label on the web page.
+            AllRoutes(yardId);
         }
 
-        protected void AllRoutes(int yardId, int season)
+        protected void AllRoutes(int yardId)
         {
             //Load the Gridview
             MessageUserControl.TryRun(() =>
             {
                 RouteController routeManager = new RouteController();
-                List<RouteStatus> routes = routeManager.RouteStatus_List(season, yardId);
+                List<RouteStatus> routes = routeManager.RouteStatus_List(yardId);
                 Yard.Text = routeManager.YardName(yardId);
-                //GridView1.DataSource = routes;
-                //GridView1.DataBind();
-
-                //foreach(RouteStatus status in routes)
-                //{
-                //    GridView2.DataSource = status.JobDone;
-                //    GridView2.DataBind();
-                //}
+                Routes_ListView.DataSource = routes;
+                Routes_ListView.DataBind();
             });
         }
 
@@ -59,23 +53,56 @@ namespace COE_Application.Pages.CrewLeader
         {
             MessageUserControl.TryRun(() =>
             {
-                int pin = int.Parse(SearchBox.Text);
+                int pin;
+                if(int.TryParse(SearchBox.Text, out pin))
+                {
+                    RouteController routeManager = new RouteController();
+                    List<RouteStatus> route = routeManager.RouteStatus_Search(pin);
+
+                    Routes_ListView.DataSource = route;
+                    Routes_ListView.DataBind();
+                }
+                else
+                {
+                    RouteController routeManager = new RouteController();
+                    List<RouteStatus> route = routeManager.RouteStatus_Search(SearchBox.Text);
+
+                    Routes_ListView.DataSource = route;
+                    Routes_ListView.DataBind();
+                }
+               
+               
+            });
+        }
+
+        protected void RoutesA_Click(object sender, EventArgs e)
+        {
+            RouteType.Text = "A";
+            MessageUserControl.TryRun(() =>
+            {
+                int yardId = 1; //TODO: Retrieve the YardID from the parameters of the CrewLeader (User) that logged in
+                                // Set the Yard ID as in invisible label on the web page.
                 RouteController routeManager = new RouteController();
-                List<RouteStatus> route = routeManager.GetRouteStatus(pin);
+                List<RouteStatus> route = routeManager.RouteStatus_List(yardId, "A");
 
                 Routes_ListView.DataSource = route;
                 Routes_ListView.DataBind();
             });
         }
 
-        protected void RoutesA_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void RoutesB_Click(object sender, EventArgs e)
         {
+            RouteType.Text = "B";
+            MessageUserControl.TryRun(() =>
+            {
+                int yardId = 1; //TODO: Retrieve the YardID from the parameters of the CrewLeader (User) that logged in
+                                // Set the Yard ID as in invisible label on the web page.
+                RouteController routeManager = new RouteController();
+                List<RouteStatus> route = routeManager.RouteStatus_List(yardId, "B");
 
+                Routes_ListView.DataSource = route;
+                Routes_ListView.DataBind();
+            });
         }
 
         protected void Grass_Click(object sender, EventArgs e)
@@ -85,7 +112,10 @@ namespace COE_Application.Pages.CrewLeader
 
         protected void Reset_Click(object sender, EventArgs e)
         {
-
+            RouteType.Text = "";
+            int yardId = 1;//TODO: Retrieve the YardID from the parameters of the CrewLeader (User) that logged in
+                           // Set the Yard ID as in invisible label on the web page.
+            AllRoutes(yardId);
         }
     }
 }
