@@ -54,6 +54,7 @@ namespace COE_Application.Pages.CrewLeader
             MessageUserControl.TryRun(() =>
             {
                 int pin;
+
                 if(int.TryParse(SearchBox.Text, out pin))
                 {
                     RouteController routeManager = new RouteController();
