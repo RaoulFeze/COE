@@ -1,52 +1,60 @@
-﻿
+﻿/**********Site Master Adjustments**********/
+/*Navbar*/
+.navbar-fixed-top {
+    margin-bottom: 50px;
+    border-bottom: 1px;
+    background-color: rgba(255,255,255,1);
+}
 .logo {
     position: absolute;
     left:20%;
     top:0px;
     z-index: 10;
 }
-/*.nav {
-    position: absolute;
-}*/
-.routesHeader {
-	text-align: center;
+.navbar-inverse {
+    top: 55px;
+    width: 75%;
+    padding:6px 0;
+}
+.navbarContent {
+    margin-left: 23%;
+    margin-right:10%;
+}
+.navbar-nav {
+    font-size: medium;
 }
 
-.SearchBox {
-    padding: 4px 1px;
-    margin-left: 0;
-    margin-right: 0;
-    min-width: 138px;
-	width:138px;
+/*Body Content*/
+.body-content{
+    margin-top:75px;
 }
+/*********Crew Leader Routes Page***********/
 
+/*Side Controls*/
+.sideControls{
+    position:fixed;
+}
 .input-group-addon {
     padding-left: 6px;
     padding-right: 6px;
     border: 1px solid grey;
 }
-
-.button {
-    width: 100%;
-}
 .input-group {
     width: 165px;
 }
-
-.navbar-inverse {
-    top: 60px;
-    width: 75%;
+.SearchBox {
+    padding: 4px 1px;
+    margin-left: 0;
+    margin-right: 0;
+    min-width: 138px;
+    width: 138px;
 }
-.navbarContent {
-    margin-left: 25%;
-    margin-right:10%;
-}
-.navbar-fixed-top{
-    margin-bottom:50px;
-    border-bottom:1px;
-    background-color:rgba(255,255,255,1);
+.button {
+    width: 100%;
 }
 
-.body-content{
-    margin-top:75px;
+/*Header*/
+.routesHeader {
+    text-align: center;
+    margin-bottom: 25px;
 }
