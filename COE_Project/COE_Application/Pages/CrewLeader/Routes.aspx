@@ -9,8 +9,8 @@
     <div class="row">
          <div class="routesHeader">
         <h1>
-            <asp:Label ID="Yard" runat="server" Text="Label"></asp:Label>
-            <asp:Label ID="RouteType" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="Yard" runat="server" Text=""></asp:Label>
+            <asp:Label ID="RouteType" runat="server" Text=""></asp:Label>
             <asp:Label ID="Label1" runat="server" Text="Routes Inventory"></asp:Label>
         </h1>
     </div>

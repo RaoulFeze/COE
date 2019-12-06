@@ -1,6 +1,9 @@
 ﻿
 .logo {
     position: absolute;
+    left:20%;
+    top:0px;
+    z-index: 10;
 }
 /*.nav {
     position: absolute;
@@ -28,4 +31,22 @@
 }
 .input-group {
     width: 165px;
+}
+
+.navbar-inverse {
+    top: 60px;
+    width: 75%;
+}
+.navbarContent {
+    margin-left: 25%;
+    margin-right:10%;
+}
+.navbar-fixed-top{
+    margin-bottom:50px;
+    border-bottom:1px;
+    background-color:rgba(255,255,255,1);
+}
+
+.body-content{
+    margin-top:75px;
 }
