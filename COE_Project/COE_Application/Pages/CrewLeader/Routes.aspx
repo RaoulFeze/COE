@@ -18,7 +18,8 @@
    
     <div>
         <div class="col-md-2">
-           <div class="input-group">
+            <div class="sideControls">
+                <div class="input-group">
                <asp:TextBox ID="SearchBox" runat="server" CssClass="SearchBox" PlaceHolder="Enter Pin/Community"></asp:TextBox>
                <asp:LinkButton ID="SearchRoutes" runat="server" CssClass="input-group-append input-group-addon" OnClick="SearchRoutes_Click">
                    <span class="glyphicon glyphicon-search "></span>
@@ -31,6 +32,8 @@
                 <asp:Button ID="Grass" runat="server" Text="Grass"  CssClass="button" OnClick="Grass_Click"/><br /><br />
                 <asp:Button ID="Reset" runat="server" Text="Reset"  CssClass="button" OnClick="Reset_Click"/>
             </div>
+            </div>
+           
             
            </div>
         
