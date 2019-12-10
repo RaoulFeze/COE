@@ -18,18 +18,18 @@ namespace COE_Application.Pages.CrewLeader
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //string crewLeaderRole = ConfigurationManager.AppSettings["crewLeaderRole"];
-            //if (Request.IsAuthenticated)
-            //{
-            //    if(!User.IsInRole(crewLeaderRole))
-            //    {
-            //        Response.Redirect("~/Account/Login.aspx");
-            //    }
-            //}
-            //else
-            //{
-            //    Response.Redirect("~/Account/Login.aspx");
-            //}
+            string crewLeaderRole = ConfigurationManager.AppSettings["crewLeaderRole"];
+            if (Request.IsAuthenticated)
+            {
+                if (!User.IsInRole(crewLeaderRole))
+                {
+                    Response.Redirect("~/Account/Login.aspx");
+                }
+            }
+            else
+            {
+                Response.Redirect("~/Account/Login.aspx");
+            }
 
             int yardId = 1;//TODO: Retrieve the YardID from the parameters of the CrewLeader (User) that logged in
                            // Set the Yard ID as in invisible label on the web page.

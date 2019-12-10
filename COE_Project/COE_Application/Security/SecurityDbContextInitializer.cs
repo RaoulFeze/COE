@@ -49,14 +49,14 @@ namespace COE_Application.Security
             //CrewLeaders
             string crewLeaderUserName = ConfigurationManager.AppSettings["crewLeaderUserName"];
             string crewLeaderRole = ConfigurationManager.AppSettings["crewLeaderRole"];
-            string crewLeaaderEmail = ConfigurationManager.AppSettings["crewLeaderEmail"];
+            string crewLeaderEmail = ConfigurationManager.AppSettings["crewLeaderEmail"];
             string crewLeaderPassword = ConfigurationManager.AppSettings["crewLeaderPassword"];
 
             result = userManager.Create(new ApplicationUser
             {
                 UserName = crewLeaderUserName,
-                Email = crewLeaaderEmail,
-                EmployeeId = 145
+                Email = crewLeaderEmail,
+                CrewLeaderId = 145
             }, crewLeaderPassword); ;
 
             if (result.Succeeded)

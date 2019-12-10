@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using COE_Application.Models;
+using COE_Application.Security;
+using System.Data.Entity;
 
 namespace COE_Application.Models
 {
@@ -14,6 +16,8 @@ namespace COE_Application.Models
     public class ApplicationUser : IdentityUser
     {
         public int? EmployeeId { get; set; }
+        public int? CrewLeaderId { get; internal set; }
+
         public ClaimsIdentity GenerateUserIdentity(ApplicationUserManager manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -33,6 +37,7 @@ namespace COE_Application.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Database.SetInitializer<ApplicationDbContext>(new SecurityDbContextInitializer());
         }
 
         public static ApplicationDbContext Create()
