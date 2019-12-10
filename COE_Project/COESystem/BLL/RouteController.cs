@@ -134,9 +134,6 @@ namespace COESystem.BLL
                 return RouteList.ToList();
             }
         }
- 
-
-
 
         //Returns the Yard Name based on the YardID
         [DataObjectMethod(DataObjectMethodType.Select, false)]
