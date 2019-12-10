@@ -1,6 +1,7 @@
 ﻿
 /*CREATE DATABASE COE_DB*/
 
+
 --Drop Table SiteHazard
 
 --Drop Table ToolsCheckList

@@ -55,9 +55,8 @@ namespace COE_Application.Security
             result = userManager.Create(new ApplicationUser
             {
                 UserName = crewLeaderUserName,
-                Email = crewLeaderEmail,
-                CrewLeaderId = 145
-            }, crewLeaderPassword); ;
+                Email = crewLeaderEmail
+            }, crewLeaderPassword); 
 
             if (result.Succeeded)
             {
@@ -71,6 +70,21 @@ namespace COE_Application.Security
             //Gardener
 
             //TeamLeader
+            string teamLeaderUserName = ConfigurationManager.AppSettings["teamLeaderUserName"];
+            string teamLeaderPassword = ConfigurationManager.AppSettings["teamLeaderPassword"];
+            string teamLeaderRole = ConfigurationManager.AppSettings["teamLeaderRole"];
+            string teamLeaderEmail = ConfigurationManager.AppSettings["teamLeaderEmail"];
+
+            result = userManager.Create(new ApplicationUser
+            {
+                UserName = teamLeaderUserName,
+                Email = teamLeaderEmail
+            }, teamLeaderPassword);
+
+            if (result.Succeeded)
+            {
+                userManager.AddToRole(userManager.FindByName(teamLeaderUserName).Id, teamLeaderRole);
+            }
             #endregion
         }
     }
