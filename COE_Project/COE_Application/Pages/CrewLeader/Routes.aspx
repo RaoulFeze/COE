@@ -12,6 +12,7 @@
             <asp:Label ID="Yard" runat="server" Text=""></asp:Label>
             <asp:Label ID="RouteType" runat="server" Text=""></asp:Label>
             <asp:Label ID="Label1" runat="server" Text="Routes Inventory"></asp:Label>
+            <asp:Label ID="YardID" runat="server" Text="" Visible="false"></asp:Label>
         </h1>
     </div>
     </div>

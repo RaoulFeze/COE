@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using COE_Application.Security;
 
 #region Additonal Namespaces
 using COESystem.BLL;
@@ -31,9 +32,14 @@ namespace COE_Application.Pages.CrewLeader
                 Response.Redirect("~/Account/Login.aspx");
             }
 
-            int yardId = 1;//TODO: Retrieve the YardID from the parameters of the CrewLeader (User) that logged in
-                           // Set the Yard ID as in invisible label on the web page.
-            AllRoutes(yardId);
+            // Retrieve the YardID based on the current userId 
+            // Set the Yard ID as in invisible label on the web page.
+            SecurityController securityManager = new SecurityController();
+            int? employeeId = securityManager.GetCurrentUserId(User.Identity.Name);
+            RouteController routeManager = new RouteController();
+            YardID.Text = (routeManager.GetYardId(employeeId)).ToString();
+            
+            AllRoutes(int.Parse(YardID.Text));
         }
 
         protected void AllRoutes(int yardId)
@@ -43,7 +49,7 @@ namespace COE_Application.Pages.CrewLeader
             {
                 RouteController routeManager = new RouteController();
                 List<RouteStatus> routes = routeManager.RouteStatus_List(yardId);
-                Yard.Text = routeManager.YardName(yardId);
+                Yard.Text = routeManager.GetYardName(yardId);
                 Routes_ListView.DataSource = routes;
                 Routes_ListView.DataBind();
             });
@@ -58,7 +64,7 @@ namespace COE_Application.Pages.CrewLeader
                 if(int.TryParse(SearchBox.Text, out pin))
                 {
                     RouteController routeManager = new RouteController();
-                    List<RouteStatus> route = routeManager.RouteStatus_Search(pin);
+                    List<RouteStatus> route = routeManager.RouteStatus_Search(pin, int.Parse(YardID.Text));
 
                     Routes_ListView.DataSource = route;
                     Routes_ListView.DataBind();
@@ -66,7 +72,7 @@ namespace COE_Application.Pages.CrewLeader
                 else
                 {
                     RouteController routeManager = new RouteController();
-                    List<RouteStatus> route = routeManager.RouteStatus_Search(SearchBox.Text);
+                    List<RouteStatus> route = routeManager.RouteStatus_Search(SearchBox.Text, int.Parse(YardID.Text));
 
                     Routes_ListView.DataSource = route;
                     Routes_ListView.DataBind();
@@ -82,10 +88,9 @@ namespace COE_Application.Pages.CrewLeader
             SearchBox.Text = "";
             MessageUserControl.TryRun(() =>
             {
-                int yardId = 1; //TODO: Retrieve the YardID from the parameters of the CrewLeader (User) that logged in
-                                // Set the Yard ID as in invisible label on the web page.
+               
                 RouteController routeManager = new RouteController();
-                List<RouteStatus> route = routeManager.RouteStatus_List(yardId, "A");
+                List<RouteStatus> route = routeManager.RouteStatus_List(int.Parse(YardID.Text), "A");
 
                 Routes_ListView.DataSource = route;
                 Routes_ListView.DataBind();
@@ -98,10 +103,8 @@ namespace COE_Application.Pages.CrewLeader
             SearchBox.Text = "";
             MessageUserControl.TryRun(() =>
             {
-                int yardId = 1; //TODO: Retrieve the YardID from the parameters of the CrewLeader (User) that logged in
-                                // Set the Yard ID as in invisible label on the web page.
                 RouteController routeManager = new RouteController();
-                List<RouteStatus> route = routeManager.RouteStatus_List(yardId, "B");
+                List<RouteStatus> route = routeManager.RouteStatus_List(int.Parse(YardID.Text), "B");
 
                 Routes_ListView.DataSource = route;
                 Routes_ListView.DataBind();
@@ -117,9 +120,8 @@ namespace COE_Application.Pages.CrewLeader
         {
             RouteType.Text = "";
             SearchBox.Text = "";
-            int yardId = 1;//TODO: Retrieve the YardID from the parameters of the CrewLeader (User) that logged in
-                           // Set the Yard ID as in invisible label on the web page.
-            AllRoutes(yardId);
+           
+            AllRoutes(int.Parse(YardID.Text));
         }
     }
 }

@@ -55,5 +55,19 @@ namespace COE_Application.Security
             IdentityResult result = UserManager.Create(user, ConfigurationManager.AppSettings["newUserPassword"]);
         }
         #endregion
+
+        public int? GetCurrentUserId(string userName)
+        {
+            int? id = null;
+            var request = HttpContext.Current.Request;
+            if (request.IsAuthenticated)
+            {
+                var manager = request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var appUser = manager.Users.SingleOrDefault(x => x.UserName == userName);
+                if (appUser != null)
+                    id = appUser.EmployeeId;
+            }
+            return id;
+        }
     }
 }
