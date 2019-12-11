@@ -55,7 +55,8 @@ namespace COE_Application.Security
             result = userManager.Create(new ApplicationUser
             {
                 UserName = crewLeaderUserName,
-                Email = crewLeaderEmail
+                Email = crewLeaderEmail, 
+                EmployeeId = 145
             }, crewLeaderPassword); 
 
             if (result.Succeeded)
