@@ -150,7 +150,7 @@ create table Crew
 	KM_Start int null,
 	KM_End int null,
 	AdditionalComments varchar(100) null,
-	constraint ck_KM_End_GreaterThan_KM_Start check (KM_End > KM_Start)
+	constraint ck_KM_End_GreaterThan_KM_Start check (KM_End >= KM_Start)
 )
 
 create table CrewMember
@@ -314,6 +314,171 @@ insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, Ya
 insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (3332545, 'Buleya', '11011 29A Ave', 25, null, 1, 1, 5, 4);
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+										/*UNIT*/
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('WA1CGAFP8EA122491', '2-Ton Truck', 1);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('1G4GC5GR4CF868507', '2-Ton Truck', 1);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('WAUJC68E32A759623', '1-Ton truck', 1);
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+											/*Crew*/
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/4/2019', 5, 197, 715, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/1/2019', 4, 138, 673, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/27/2019', 4, 320, 855, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/9/2019', 4, 179, 861, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/16/2019', 6, 127, 724, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/16/2019', 6, 216, 723, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/17/2019', 6, 365, 580, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/21/2019', 4, 212, 674, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/18/2019', 4, 149, 684, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/5/2019', 5, 132, 870, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/23/2019', 4, 257, 767, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/8/2019', 5, 207, 865, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/30/2019', 5, 388, 755, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/18/2019', 6, 125, 500, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/18/2019', 4, 345, 755, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/21/2019', 5, 348, 542, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/5/2019', 5, 447, 760, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/30/2019', 6, 474, 710, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/20/2019', 6, 307, 840, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/7/2019', 4, 435, 801, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/18/2019', 5, 335, 873, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/12/2019', 5, 237, 848, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/23/2019', 6, 354, 821, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/6/2019', 4, 145, 746, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/30/2019', 5, 208, 599, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/12/2019', 6, 439, 852, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/4/2019', 4, 261, 563, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/2/2019', 4, 309, 808, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/18/2019', 4, 164, 615, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/5/2019', 5, 322, 744, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/23/2019', 5, 274, 610, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/22/2019', 4, 349, 838, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/18/2019', 4, 255, 516, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/17/2019', 5, 219, 562, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/22/2019', 6, 203, 849, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/30/2019', 4, 290, 638, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/21/2019', 6, 400, 779, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/21/2019', 6, 243, 843, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/27/2019', 5, 237, 584, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/27/2019', 4, 158, 613, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/9/2019', 5, 263, 625, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/2/2019', 5, 235, 879, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/7/2019', 4, 151, 542, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/15/2019', 4, 218, 770, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/13/2019', 4, 428, 632, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/8/2019', 4, 103, 588, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/28/2019', 5, 248, 716, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/2/2019', 5, 418, 766, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/20/2019', 4, 322, 721, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/28/2019', 6, 120, 765, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/26/2019', 4, 125, 835, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/24/2019', 6, 387, 588, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/27/2019', 5, 421, 891, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/18/2019', 5, 483, 678, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/19/2019', 5, 291, 762, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/23/2019', 4, 299, 672, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/2/2019', 4, 149, 806, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/23/2019', 4, 419, 774, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/9/2019', 4, 290, 790, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/25/2019', 5, 243, 856, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/6/2019', 5, 231, 508, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/14/2019', 4, 421, 896, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/19/2019', 5, 441, 790, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/12/2019', 4, 372, 581, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/27/2019', 4, 313, 859, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/5/2019', 4, 301, 748, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/3/2019', 4, 200, 772, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/26/2019', 5, 462, 661, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/17/2019', 4, 315, 814, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/11/2019', 4, 399, 704, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/17/2019', 6, 312, 605, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/1/2019', 5, 227, 846, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/8/2019', 6, 481, 521, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/24/2019', 6, 423, 832, null);
+insert into Crew (TodayDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/6/2019', 4, 454, 898, null);
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+									/*CrewSite*/
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (11, 'Pruning', '2:07', '14:08', null, 4);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (12, 'Grass Pulling', '3:19', '9:44', 'non mauris morbi non', 4);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (2, 'Pruning', '4:41', '12:07', null, 1);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (1, 'Mulching', '1:09', '13:52', null, 2);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (19, 'Grass Pulling', '3:30', '9:48', null, 4);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (4, 'Spray', '5:25', '9:44', null, 2);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (20, 'Pruning', '6:56', '8:42', null, 1);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (18, 'Fertilizing', '3:09', '14:33', null, 2);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (6, 'Spray', '2:44', '10:06', null, 1);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (5, 'Fertilizing', '6:34', '9:08', null, 3);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (15, 'Weeding', '2:55', '12:38', null, 3);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (10, 'Spray', '1:24', '9:19', null, 4);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (13, 'Weeding', '2:31', '10:32', null, 1);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (19, 'Grass Pulling', '2:50', '14:09', null, 2);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (16, 'Weeding', '5:20', '8:08', null, 2);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (10, 'Mulching', '2:32', '9:26', 'lacinia nisi venenatis tristique', 4);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (8, 'Mulching', '6:38', '9:15', null, 3);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (14, 'Grass Pulling', '5:49', '9:42', null, 3);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (14, 'Spray', '4:25', '12:50', null, 1);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (14, 'Mulching', '1:07', '13:31', null, 2);
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+								/*SBM*/
+
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (2, 'Grass Pulling', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (4, 'Fertilizing', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (17, 'Grass Pulling', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (14, 'Mulching', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (15, 'Fertilizing', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (13, 'Spray', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (12, 'Spray', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (20, 'Weeding', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (16, 'Mulching', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (1, 'Grass Pulling', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (8, 'Grass Pulling', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (18, 'Weeding', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (13, 'Pruning', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (9, 'Grass Pulling', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (8, 'Spray', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (17, 'Fertilizing', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (9, 'Grass Pulling', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (20, 'Grass Pulling', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (8, 'Mulching', 1);
+insert into SBM (CrewSiteID, TaskDescription, Completed) values (15, 'Pruning', 1);
+----------------------------------------------------------------------------------------------------------------------------------------------------
+					/*Grass*/
+insert into Grass (CrewSiteID, GrassCount, Completed) values (8, 15, 1);
+insert into Grass (CrewSiteID, GrassCount, Completed) values (13, 18, 1);
+insert into Grass (CrewSiteID, GrassCount, Completed) values (7, 95, 1);
+insert into Grass (CrewSiteID, GrassCount, Completed) values (16, 8, 1);
+insert into Grass (CrewSiteID, GrassCount, Completed) values (11, 82, 1);
+insert into Grass (CrewSiteID, GrassCount, Completed) values (12, 15, 1);
+insert into Grass (CrewSiteID, GrassCount, Completed) values (2, 50, 1);
+insert into Grass (CrewSiteID, GrassCount, Completed) values (6, 37, 1);
+insert into Grass (CrewSiteID, GrassCount, Completed) values (4, 58, 1);
+insert into Grass (CrewSiteID, GrassCount, Completed) values (20, 38, 1);
+------------------------------------------------------------------------------------------------------------------------------
+
+				/* Mulching*/
+insert into Mulching (CrewSiteID, Completed) values (14, 1);
+insert into Mulching (CrewSiteID, Completed) values (11, 1);
+insert into Mulching (CrewSiteID, Completed) values (15, 1);
+insert into Mulching (CrewSiteID, Completed) values (5, 1);
+insert into Mulching (CrewSiteID, Completed) values (6, 1);
+insert into Mulching (CrewSiteID, Completed) values (20, 1);
+insert into Mulching (CrewSiteID, Completed) values (11, 1);
+insert into Mulching (CrewSiteID, Completed) values (18, 1);
+insert into Mulching (CrewSiteID, Completed) values (6, 1);
+insert into Mulching (CrewSiteID, Completed) values (17, 1);
+
+
+
 select*from YARD	
 select*from Community
 select*from Season
+select*from site
+select*from Unit
+Select*from Crew
+select*from CrewSite
+select*from SBM order by CrewSIteID
+select*from Grass order by CrewSIteID
+select*from Mulching order by CrewSIteID
