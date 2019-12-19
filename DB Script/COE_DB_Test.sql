@@ -1,46 +1,46 @@
 --Create DATABASE COE_DB_TEST
---Drop Table SBM
+Drop Table SBM
 
---Drop Table Pruning
+Drop Table Pruning
 
---Drop Table Mulching
+Drop Table Mulching
 
---Drop Table Grass
+Drop Table Grass
 
 
---Drop Table SiteHazard
+Drop Table SiteHazard
 
---Drop Table ToolsCheckList
+Drop Table ToolsCheckList
 
---Drop Table CrewSite
+Drop Table CrewSite
 
---Drop Table CrewMember
+Drop Table CrewMember
 
---Drop Table Crew
+Drop Table Crew
 
---Drop Table Tool
+Drop Table Tool
 
---Drop Table Unit
+Drop Table Unit
 
---Drop Table Site 
+Drop Table Site 
 
---Drop Table Employee
+Drop Table Employee
 
---Drop Table CorrectiveAction
+Drop Table CorrectiveAction
 
---Drop Table Hazard
+Drop Table Hazard
 
---Drop Table Yard
+Drop Table Yard
 
---Drop Table Community
+Drop Table Community
 
---Drop Table HazardCategory
+Drop Table HazardCategory
 
---Drop Table SiteType
+Drop Table SiteType
 
---Drop Table District
+Drop Table District
 
---Drop Table Season
+Drop Table Season
 
 
 create table District
@@ -420,26 +420,26 @@ insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRe
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 								/*SBM*/
 
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (2, 'Grass Pulling', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (4, 'Fertilizing', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (17, 'Grass Pulling', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (14, 'Mulching', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (15, 'Fertilizing', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (13, 'Spray', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (12, 'Spray', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (20, 'Weeding', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (16, 'Mulching', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (1, 'Grass Pulling', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (8, 'Grass Pulling', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (18, 'Weeding', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (13, 'Pruning', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (9, 'Grass Pulling', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (8, 'Spray', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (17, 'Fertilizing', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (9, 'Grass Pulling', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (20, 'Grass Pulling', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (8, 'Mulching', 1);
-insert into SBM (CrewSiteID, TaskDescription, Completed) values (15, 'Pruning', 1);
+insert into SBM (CrewSiteID, TaskDescription) values (2, 'Grass Pulling');
+insert into SBM (CrewSiteID, TaskDescription) values (4, 'Fertilizing');
+insert into SBM (CrewSiteID, TaskDescription) values (17, 'Grass Pulling');
+insert into SBM (CrewSiteID, TaskDescription) values (14, 'Mulching');
+insert into SBM (CrewSiteID, TaskDescription) values (15, 'Fertilizing');
+insert into SBM (CrewSiteID, TaskDescription) values (13, 'Spray');
+insert into SBM (CrewSiteID, TaskDescription) values (12, 'Spray');
+insert into SBM (CrewSiteID, TaskDescription) values (20, 'Weeding');
+insert into SBM (CrewSiteID, TaskDescription) values (16, 'Mulching');
+insert into SBM (CrewSiteID, TaskDescription) values (1, 'Grass Pulling');
+insert into SBM (CrewSiteID, TaskDescription) values (8, 'Grass Pulling');
+insert into SBM (CrewSiteID, TaskDescription) values (18, 'Weeding');
+insert into SBM (CrewSiteID, TaskDescription) values (13, 'Pruning');
+insert into SBM (CrewSiteID, TaskDescription) values (9, 'Grass Pulling');
+insert into SBM (CrewSiteID, TaskDescription) values (8, 'Spray');
+insert into SBM (CrewSiteID, TaskDescription) values (17, 'Fertilizing');
+insert into SBM (CrewSiteID, TaskDescription) values (9, 'Grass Pulling');
+insert into SBM (CrewSiteID, TaskDescription) values (20, 'Grass Pulling');
+insert into SBM (CrewSiteID, TaskDescription) values (8, 'Mulching');
+insert into SBM (CrewSiteID, TaskDescription) values (15, 'Pruning');
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 					/*Grass*/
 insert into Grass (CrewSiteID, GrassCount) values (8, 15);
