@@ -56,7 +56,7 @@ namespace COE_Application.Security
             {
                 UserName = crewLeaderUserName,
                 Email = crewLeaderEmail, 
-                EmployeeId = 145
+                EmployeeId = 47
             }, crewLeaderPassword); 
 
             if (result.Succeeded)

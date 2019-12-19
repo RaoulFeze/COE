@@ -465,6 +465,20 @@ insert into Mulching (CrewSiteID) values (11);
 insert into Mulching (CrewSiteID) values (18);
 insert into Mulching (CrewSiteID) values (6);
 insert into Mulching (CrewSiteID) values (17);
+------------------------------------------------------------------------------------------------------------------------------
+
+						/*Pruning*/
+insert into Pruning (CrewSiteID) values (5);
+insert into Pruning (CrewSiteID) values (14);
+insert into Pruning (CrewSiteID) values (4);
+insert into Pruning (CrewSiteID) values (5);
+insert into Pruning (CrewSiteID) values (6);
+insert into Pruning (CrewSiteID) values (6);
+insert into Pruning (CrewSiteID) values (11);
+insert into Pruning (CrewSiteID) values (11);
+insert into Pruning (CrewSiteID) values (8);
+insert into Pruning (CrewSiteID) values (16);
+
 
 
 
