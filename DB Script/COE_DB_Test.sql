@@ -195,30 +195,26 @@ Create table SBM
 (
 	SBM_StatusID integer identity(1,1) not null  constraint pk_SBM primary key clustered,
 	CrewSIteID int not null constraint fk_SBM_To_CrewSiteID references CrewSite(CrewSiteID),
-	TaskDescription varchar(50) not null,
-	Completed bit null
+	TaskDescription varchar(50) not null
 )
 
 create table Pruning
 (
 	PruningStatusID integer identity(1,1) not null constraint pk_Pruning primary key clustered,
-	CrewSiteID int not null constraint fk_Pruning_To_CrewSite references CrewSite(CrewSiteID),
-	Completed bit null
+	CrewSiteID int not null constraint fk_Pruning_To_CrewSite references CrewSite(CrewSiteID)
 )
 
 create table Mulching
 (
 	MulchingStatusID integer identity(1,1) not null constraint pk_Mulching primary key clustered,
-	CrewSiteID int not null constraint fk_Mulching_To_CrewSite references CrewSite(CrewSiteID),
-	Completed bit null
+	CrewSiteID int not null constraint fk_Mulching_To_CrewSite references CrewSite(CrewSiteID)
 )
 
 create table Grass
 (
 	GrassStatusID integer identity(1,1) not null constraint pk_Grass primary key clustered,
 	CrewSiteID int not null constraint fk_Grass_To_CrewSite references CrewSite(CrewSiteID),
-	GrassCount int not null,
-	Completed bit null
+	GrassCount int not null
 )
 
 /*DISTRICT*/
@@ -446,29 +442,29 @@ insert into SBM (CrewSiteID, TaskDescription, Completed) values (8, 'Mulching', 
 insert into SBM (CrewSiteID, TaskDescription, Completed) values (15, 'Pruning', 1);
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 					/*Grass*/
-insert into Grass (CrewSiteID, GrassCount, Completed) values (8, 15, 1);
-insert into Grass (CrewSiteID, GrassCount, Completed) values (13, 18, 1);
-insert into Grass (CrewSiteID, GrassCount, Completed) values (7, 95, 1);
-insert into Grass (CrewSiteID, GrassCount, Completed) values (16, 8, 1);
-insert into Grass (CrewSiteID, GrassCount, Completed) values (11, 82, 1);
-insert into Grass (CrewSiteID, GrassCount, Completed) values (12, 15, 1);
-insert into Grass (CrewSiteID, GrassCount, Completed) values (2, 50, 1);
-insert into Grass (CrewSiteID, GrassCount, Completed) values (6, 37, 1);
-insert into Grass (CrewSiteID, GrassCount, Completed) values (4, 58, 1);
-insert into Grass (CrewSiteID, GrassCount, Completed) values (20, 38, 1);
+insert into Grass (CrewSiteID, GrassCount) values (8, 15);
+insert into Grass (CrewSiteID, GrassCount) values (13, 18);
+insert into Grass (CrewSiteID, GrassCount) values (7, 95);
+insert into Grass (CrewSiteID, GrassCount) values (16, 8);
+insert into Grass (CrewSiteID, GrassCount) values (11, 82);
+insert into Grass (CrewSiteID, GrassCount) values (12, 15);
+insert into Grass (CrewSiteID, GrassCount) values (2, 50);
+insert into Grass (CrewSiteID, GrassCount) values (6, 37);
+insert into Grass (CrewSiteID, GrassCount) values (4, 58);
+insert into Grass (CrewSiteID, GrassCount) values (20, 38);
 ------------------------------------------------------------------------------------------------------------------------------
 
 				/* Mulching*/
-insert into Mulching (CrewSiteID, Completed) values (14, 1);
-insert into Mulching (CrewSiteID, Completed) values (11, 1);
-insert into Mulching (CrewSiteID, Completed) values (15, 1);
-insert into Mulching (CrewSiteID, Completed) values (5, 1);
-insert into Mulching (CrewSiteID, Completed) values (6, 1);
-insert into Mulching (CrewSiteID, Completed) values (20, 1);
-insert into Mulching (CrewSiteID, Completed) values (11, 1);
-insert into Mulching (CrewSiteID, Completed) values (18, 1);
-insert into Mulching (CrewSiteID, Completed) values (6, 1);
-insert into Mulching (CrewSiteID, Completed) values (17, 1);
+insert into Mulching (CrewSiteID) values (14);
+insert into Mulching (CrewSiteID) values (11);
+insert into Mulching (CrewSiteID) values (15);
+insert into Mulching (CrewSiteID) values (5);
+insert into Mulching (CrewSiteID) values (6);
+insert into Mulching (CrewSiteID) values (20);
+insert into Mulching (CrewSiteID) values (11);
+insert into Mulching (CrewSiteID) values (18);
+insert into Mulching (CrewSiteID) values (6);
+insert into Mulching (CrewSiteID) values (17);
 
 
 
