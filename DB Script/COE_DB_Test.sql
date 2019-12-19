@@ -458,23 +458,21 @@ insert into Grass (CrewSiteID, GrassCount) values (20, 38);
 insert into Mulching (CrewSiteID) values (14);
 insert into Mulching (CrewSiteID) values (11);
 insert into Mulching (CrewSiteID) values (15);
-insert into Mulching (CrewSiteID) values (5);
 insert into Mulching (CrewSiteID) values (6);
 insert into Mulching (CrewSiteID) values (20);
-insert into Mulching (CrewSiteID) values (11);
-insert into Mulching (CrewSiteID) values (18);
-insert into Mulching (CrewSiteID) values (6);
+insert into Mulching (CrewSiteID) values (13);
+insert into Mulching (CrewSiteID) values (16);
 insert into Mulching (CrewSiteID) values (17);
 ------------------------------------------------------------------------------------------------------------------------------
 
 						/*Pruning*/
-insert into Pruning (CrewSiteID) values (5);
+insert into Pruning (CrewSiteID) values (7);
 insert into Pruning (CrewSiteID) values (14);
 insert into Pruning (CrewSiteID) values (4);
-insert into Pruning (CrewSiteID) values (5);
+insert into Pruning (CrewSiteID) values (2);
+insert into Pruning (CrewSiteID) values (17);
 insert into Pruning (CrewSiteID) values (6);
-insert into Pruning (CrewSiteID) values (6);
-insert into Pruning (CrewSiteID) values (11);
+insert into Pruning (CrewSiteID) values (13);
 insert into Pruning (CrewSiteID) values (11);
 insert into Pruning (CrewSiteID) values (8);
 insert into Pruning (CrewSiteID) values (16);
