@@ -18,7 +18,7 @@ void Main()
 									  orderby sbm.CrewSite.Crew.TodayDate ascending
 									  select new
 									  {
-									  	sbm.CrewSite.Crew.TodayDate
+									  	Date = sbm.CrewSite.Crew.TodayDate
 										
 									  }).ToList()
 						select new 
@@ -38,14 +38,14 @@ void Main()
 									   where prune.CrewSite.SiteID == site.SiteID
 									   select new
 									   {
-									   	prune.CrewSite.Crew.TodayDate
-									   }).ToList(),
+									   		Date = prune.CrewSite.Crew.TodayDate
+									   }).ToList().First(),
 							Mulching = (from mulch in Mulchings
 										where mulch.CrewSite.SiteID == site.SiteID
 										select new
 										{
-											mulch.CrewSite.Crew.TodayDate
-										}).ToList()
+											Date = mulch.CrewSite.Crew.TodayDate
+										}).ToList().First()
 							
 						};
 						RouteList.Dump();
