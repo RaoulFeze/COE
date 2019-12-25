@@ -10,6 +10,7 @@ using COESystem.Data.DTOs;
 using COESystem.Data.Entities;
 using COESystem.Data.POCOs;
 using COESystem.DAL;
+using COESystem.Data.Entities2;
 #endregion
 
 namespace COESystem.BLL
@@ -17,6 +18,84 @@ namespace COESystem.BLL
     [DataObject]
     public class RouteController
     {
+        #region COE_db
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
+        public List<Status> RouteTest()
+        {
+            using (var context = new COE_DBSystemContext())
+            {
+                var RouteList = from site in context.Sites
+                                orderby site.Community.Name ascending
+                                where site.Season.SeasonYear == 2019 && site.Yard.YardID == 1 && site.SiteType.SiteTypeDescription.Equals("A")
+                                //let Cycles = (from sbm in context.SBMs
+                                //              where sbm.CrewSite.SiteID == site.SiteID
+                                //              select new Cycle
+                                //              {
+                                //                  Date = sbm.CrewSite.Crew.TodayDate
+
+                                //              })
+                                select new Status
+                                {
+                                    Pin = site.Pin,
+                                    Community = site.Community.Name,
+                                    Neighbourhood = site.Neighbourhood,
+                                    Address = site.StreetAddress,
+                                    Area = site.Area,
+                                    Notes = site.Notes,
+                                    Cycle1 = (from sbm in context.SBMs
+                                              where sbm.CrewSite.SiteID == site.SiteID
+                                              select new Cycle
+                                              {
+                                                  Date = sbm.CrewSite.Crew.TodayDate
+
+                                              }).OrderBy(x => x.Date).FirstOrDefault(),
+                                    Cycle2 = (from sbm in context.SBMs
+                                              where sbm.CrewSite.SiteID == site.SiteID
+                                              select new Cycle
+                                              {
+                                                  Date = sbm.CrewSite.Crew.TodayDate
+
+                                              }).OrderBy(x => x.Date).Skip(1).FirstOrDefault(),
+                                    Cycle3 = (from sbm in context.SBMs
+                                              where sbm.CrewSite.SiteID == site.SiteID
+                                              select new Cycle
+                                              {
+                                                  Date = sbm.CrewSite.Crew.TodayDate
+
+                                              }).OrderBy(x => x.Date).Skip(2).FirstOrDefault(),
+                                    Cycle4 = (from sbm in context.SBMs
+                                              where sbm.CrewSite.SiteID == site.SiteID
+                                              select new Cycle
+                                              {
+                                                  Date = sbm.CrewSite.Crew.TodayDate
+
+                                              }).OrderBy(x => x.Date).Skip(3).FirstOrDefault(),
+                                    Cycle5 = (from sbm in context.SBMs
+                                              where sbm.CrewSite.SiteID == site.SiteID
+                                              select new Cycle
+                                              {
+                                                  Date = sbm.CrewSite.Crew.TodayDate
+
+                                              }).OrderBy(x => x.Date).Skip(4).FirstOrDefault(),
+                                    Pruning = (from prune in context.Prunings
+                                               where prune.CrewSite.SiteID == site.SiteID
+                                               select new Cycle
+                                               {
+                                                   Date = prune.CrewSite.Crew.TodayDate
+                                               }).ToList().FirstOrDefault(),
+                                    Mulching = (from mulch in context.Mulchings
+                                                where mulch.CrewSite.SiteID == site.SiteID
+                                                select new Cycle
+                                                {
+                                                    Date = mulch.CrewSite.Crew.TodayDate
+                                                }).ToList().FirstOrDefault()
+
+                                };
+                return RouteList.ToList();
+            }
+        }
+
+        #endregion
         //Returs a specific route based on the exact Pin and the current season (Year)
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<RouteStatus> RouteStatus_Search(int pin, int yardId)

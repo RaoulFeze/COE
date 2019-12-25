@@ -58,6 +58,7 @@
     <Compile Include="BLL\BusinessRuleException.cs" />
     <Compile Include="BLL\RouteController.cs" />
     <Compile Include="DAL\COESystemContext.cs" />
+    <Compile Include="DAL\COE_DBSystemContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

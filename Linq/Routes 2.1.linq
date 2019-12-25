@@ -29,23 +29,23 @@ void Main()
 							Address = site.StreetAddress,
 							Area = site.Area,
 							Notes = site.Notes,
-							Cycle1 = Cycles.First(),
-							Cycle2 = Cycles.Skip(1).First(),
-							Cycle3 = Cycles.Skip(2).First(),
-							Cycle4 = Cycles.Skip(3).First(),
-							Cycle5 = Cycles.Skip(4).First(),
+							Cycle1 = Cycles.OrderBy(x => x.Date).First(),
+							Cycle2 = Cycles.OrderBy(x => x.Date).Skip(1).FirstOrDefault(),
+							Cycle3 = Cycles.OrderBy(x => x.Date).Skip(2).FirstOrDefault(),
+							Cycle4 = Cycles.OrderBy(x => x.Date).Skip(3).FirstOrDefault(),
+							Cycle5 = Cycles.OrderBy(x => x.Date).Skip(4).FirstOrDefault(),
 							Pruning = (from prune in Prunings
 									   where prune.CrewSite.SiteID == site.SiteID
 									   select new
 									   {
 									   		Date = prune.CrewSite.Crew.TodayDate
-									   }).ToList().First(),
+									   }).ToList().FirstOrDefault(),
 							Mulching = (from mulch in Mulchings
 										where mulch.CrewSite.SiteID == site.SiteID
 										select new
 										{
 											Date = mulch.CrewSite.Crew.TodayDate
-										}).ToList().First()
+										}).ToList().FirstOrDefault()
 							
 						};
 						RouteList.Dump();
