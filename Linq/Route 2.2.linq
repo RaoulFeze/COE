@@ -11,8 +11,6 @@
 void Main()
 {
 	var RouteList = from site in Sites
-					join cs in CrewSites on site.SiteID equals cs.SiteID 
-					join sbm in SBMs on cs.CrewSiteID equals sbm.CrewSIteID
 					orderby site.Community.Name ascending
 					where site.Season.SeasonYear == 2019 && site.Yard.YardID == 1 && site.SiteType.SiteTypeDescription == 'A'
 					let Cycles = (from sbm in SBMs
@@ -31,7 +29,6 @@ void Main()
 						Address = site.StreetAddress,
 						Area = site.Area,
 						Notes = site.Notes,
-						test = sbm.CrewSite.Crew.TodayDate,
 						Cycle1 = Cycles.OrderBy(x => x.Date).FirstOrDefault(),
 						Cycle2 = Cycles.OrderBy(x => x.Date).Skip(1).FirstOrDefault(),
 						Cycle3 = Cycles.OrderBy(x => x.Date).Skip(2).FirstOrDefault(),
