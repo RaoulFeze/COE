@@ -28,54 +28,13 @@ void Main()
 						Address = site.StreetAddress,
 						Area = site.Area,
 						Notes = site.Notes,
-						Cycle1 = (from sbm in SBMs
-								  where sbm.CrewSite.SiteID == site.SiteID
-								  select new Cycle
-								  {
-									  Date = sbm.CrewSite.Crew.TodayDate
-
-								  }).OrderBy(x => x.Date).FirstOrDefault(),
-						Cycle2 = (from sbm in SBMs
-								  where sbm.CrewSite.SiteID == site.SiteID
-								  select new Cycle
-								  {
-									  Date = sbm.CrewSite.Crew.TodayDate
-
-								  }).OrderBy(x => x.Date).Skip(1).FirstOrDefault(),
-						Cycle3 = (from sbm in SBMs
-								  where sbm.CrewSite.SiteID == site.SiteID
-								  select new Cycle
-								  {
-									  Date = sbm.CrewSite.Crew.TodayDate
-
-								  }).OrderBy(x => x.Date).Skip(2).FirstOrDefault(),
-						Cycle4 = (from sbm in SBMs
-								  where sbm.CrewSite.SiteID == site.SiteID
-								  select new Cycle
-								  {
-									  Date = sbm.CrewSite.Crew.TodayDate
-
-								  }).OrderBy(x => x.Date).Skip(3).FirstOrDefault(),
-						Cycle5 = (from sbm in SBMs
-								  where sbm.CrewSite.SiteID == site.SiteID
-								  select new Cycle
-								  {
-									  Date = sbm.CrewSite.Crew.TodayDate
-
-								  }).OrderBy(x => x.Date).Skip(4).FirstOrDefault(),
-						Pruning = (from prune in Prunings
-								   where prune.CrewSite.SiteID == site.SiteID
-								   select new Cycle
-								   {
-									   Date = prune.CrewSite.Crew.TodayDate
-								   }).ToList().FirstOrDefault(),
-						Mulching = (from mulch in Mulchings
-									where mulch.CrewSite.SiteID == site.SiteID
-									select new Cycle
-									{
-										Date = mulch.CrewSite.Crew.TodayDate
-									}).ToList().FirstOrDefault()
-
+						Cycle1 = (from sbm in SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = sbm.CrewSite.Crew.TodayDate }).OrderBy(x => x.Date).FirstOrDefault(),
+						Cycle2 = (from sbm in SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = sbm.CrewSite.Crew.TodayDate }).OrderBy(x => x.Date).Skip(1).FirstOrDefault(),
+						Cycle3 = (from sbm in SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = sbm.CrewSite.Crew.TodayDate }).OrderBy(x => x.Date).Skip(2).FirstOrDefault(),
+						Cycle4 = (from sbm in SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = sbm.CrewSite.Crew.TodayDate }).OrderBy(x => x.Date).Skip(3).FirstOrDefault(),
+						Cycle5 = (from sbm in SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = sbm.CrewSite.Crew.TodayDate }).OrderBy(x => x.Date).Skip(4).FirstOrDefault(),
+						Pruning = (from prune in Prunings where prune.CrewSite.SiteID == site.SiteID select new Cycle { Date = prune.CrewSite.Crew.TodayDate }).ToList().FirstOrDefault(),
+						Mulching = (from mulch in Mulchings where mulch.CrewSite.SiteID == site.SiteID select new Cycle { Date = mulch.CrewSite.Crew.TodayDate }).ToList().FirstOrDefault()
 					};
 	RouteList.Dump();
 }
