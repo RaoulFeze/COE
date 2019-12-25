@@ -13,13 +13,6 @@ void Main()
 	var RouteList = from site in Sites
 					orderby site.Community.Name ascending
 					where site.Season.SeasonYear == 2019 && site.Yard.YardID == 1 && site.SiteType.SiteTypeDescription.Equals("A")
-					//let Cycles = (from sbm in context.SBMs
-					//              where sbm.CrewSite.SiteID == site.SiteID
-					//              select new Cycle
-					//              {
-					//                  Date = sbm.CrewSite.Crew.TodayDate
-
-					//              })
 					select new Status
 					{
 						Pin = site.Pin,
