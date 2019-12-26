@@ -8,6 +8,18 @@ namespace COESystem.Data.POCOs
 {
     public class Cycle
     {
-        public DateTime Date { get; set; }
-    }
+		private DateTime _Date;
+
+		public DateTime Date
+		{
+			get => _Date;
+
+			set => _Date = value;
+		}
+
+		public DateTime GetDate()
+		{
+			return _Date;
+		}
+	}
 }

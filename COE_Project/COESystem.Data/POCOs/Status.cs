@@ -20,18 +20,18 @@ namespace COESystem.Data.POCOs
 
 		public string Notes { get; set; }
 
-		public Cycle Cycle1 { get; set; }
+		public DateTime? Cycle1 { get; set; }
 
-		public Cycle Cycle2 { get; set; }
+		public DateTime? Cycle2 { get; set; }
 
-		public Cycle Cycle3 { get; set; }
+		public DateTime? Cycle3 { get; set; }
 
-		public Cycle Cycle4 { get; set; }
+		public DateTime? Cycle4 { get; set; }
 
-		public Cycle Cycle5 { get; set; }
+		public DateTime? Cycle5 { get; set; }
 
-		public Cycle Pruning { get; set; }
+		public DateTime? Pruning { get; set; }
 
-		public Cycle Mulching { get; set; }
+		public DateTime? Mulching { get; set; }
 	}
 }

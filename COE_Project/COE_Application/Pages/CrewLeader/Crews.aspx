@@ -16,8 +16,7 @@
                 <td>
                     <asp:Label Text='<%# Eval("Notes") %>' runat="server" ID="NotesLabel" /></td>
                 <td>
-                    <%--<asp:Label Text='<%# Eval("Cycle1") %>' runat="server" ID="Cycle1Label" />--%>
-                    <asp:GridView ID="GridView1" runat="server" DataSource='<%# Eval("Cycle1") %>'></asp:GridView>
+                    <asp:Label Text='<%# Eval("Cycle1") %>' runat="server" ID="Cycle1Label" />
                 </td>
                 <td>
                     <asp:Label Text='<%# Eval("Cycle2") %>' runat="server" ID="Cycle2Label" /></td>
