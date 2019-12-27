@@ -66,9 +66,9 @@ public class Status
 
 	public DateTime? Cycle5 { get; set; }
 
-	public  DateTime? Pruning { get; set; } 
+	public DateTime? Pruning { get; set; } 
 
-	public  DateTime? Mulching { get; set; }
+	public DateTime? Mulching { get; set; }
 }
 
 public class Cycle
@@ -87,4 +87,3 @@ public class Cycle
 		return _Date;
 	}
 }
-
