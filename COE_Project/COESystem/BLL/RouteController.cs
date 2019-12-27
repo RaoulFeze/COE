@@ -18,7 +18,7 @@ namespace COESystem.BLL
     [DataObject]
     public class RouteController
     {
-        #region COE_db
+        #region COE_db_Test
         [DataObjectMethod(DataObjectMethodType.Select,false)]
         public List<Status> RouteTest()
         {
