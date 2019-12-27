@@ -62,6 +62,8 @@ namespace COESystem.BLL
         }
 
         #endregion
+
+        #region this code uses COE_DB 
         //Returs a specific route based on the exact Pin and the current season (Year)
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<RouteStatus> RouteStatus_Search(int pin, int yardId)
@@ -207,6 +209,7 @@ namespace COESystem.BLL
                 return yardId.ToList()[0];
             }
         }
+        #endregion
 
     }
 }
