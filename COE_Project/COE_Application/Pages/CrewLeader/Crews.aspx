@@ -16,8 +16,7 @@
                 <td>
                     <asp:Label Text='<%# Eval("Notes") %>' runat="server" ID="NotesLabel" /></td>
                 <td>
-                    <asp:Label Text='<%# Eval("Cycle1") %>' runat="server" ID="Cycle1Label" />
-                </td>
+                    <asp:Label Text='<%# Eval("Cycle1") %>' runat="server" ID="Cycle1Label" /></td>
                 <td>
                     <asp:Label Text='<%# Eval("Cycle2") %>' runat="server" ID="Cycle2Label" /></td>
                 <td>

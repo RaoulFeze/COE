@@ -11,6 +11,7 @@ using COESystem.Data.Entities;
 using COESystem.Data.POCOs;
 using COESystem.DAL;
 using COESystem.Data.Entities2;
+using System.Data.Entity;
 #endregion
 
 namespace COESystem.BLL
@@ -35,29 +36,55 @@ namespace COESystem.BLL
                                     Address = site.StreetAddress,
                                     Area = site.Area,
                                     Notes = site.Notes,
-                                    Cycle1 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = sbm.CrewSite.Crew.TodayDate }).OrderBy(x => x.Date).FirstOrDefault()).Equals(null)
-                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = sbm.CrewSite.Crew.TodayDate }).OrderBy(x => x.Date).FirstOrDefault()).GetDate(),
+                                    Cycle1 = DbFunctions.TruncateTime(((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).FirstOrDefault()).Equals(null)
+                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).FirstOrDefault()).Date),
 
-                                    Cycle2 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = sbm.CrewSite.Crew.TodayDate }).OrderBy(x => x.Date).Skip(1).FirstOrDefault()).Equals(null)
-                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = sbm.CrewSite.Crew.TodayDate }).OrderBy(x => x.Date).Skip(1).FirstOrDefault()).GetDate(),
+                                    Cycle2 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).Skip(1).FirstOrDefault()).Equals(null)
+                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).Skip(1).FirstOrDefault()).Date,
 
-                                    Cycle3 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = sbm.CrewSite.Crew.TodayDate }).OrderBy(x => x.Date).Skip(2).FirstOrDefault()).Equals(null)
-                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = sbm.CrewSite.Crew.TodayDate }).OrderBy(x => x.Date).Skip(2).FirstOrDefault()).GetDate(),
+                                    Cycle3 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).Skip(2).FirstOrDefault()).Equals(null)
+                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).Skip(2).FirstOrDefault()).Date,
 
-                                    Cycle4 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = sbm.CrewSite.Crew.TodayDate }).OrderBy(x => x.Date).Skip(3).FirstOrDefault()).Equals(null)
-                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = sbm.CrewSite.Crew.TodayDate }).OrderBy(x => x.Date).Skip(3).FirstOrDefault()).GetDate(),
+                                    Cycle4 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).Skip(3).FirstOrDefault()).Equals(null)
+                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).Skip(3).FirstOrDefault()).Date,
 
-                                    Cycle5 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = sbm.CrewSite.Crew.TodayDate }).OrderBy(x => x.Date).Skip(4).FirstOrDefault()).Equals(null)
-                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = sbm.CrewSite.Crew.TodayDate }).OrderBy(x => x.Date).Skip(4).FirstOrDefault()).GetDate(),
+                                    Cycle5 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).Skip(4).FirstOrDefault()).Equals(null)
+                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).Skip(4).FirstOrDefault()).Date,
 
-                                    Pruning = ((from prune in context.Prunings where prune.CrewSite.SiteID == site.SiteID select new Cycle { Date = prune.CrewSite.Crew.TodayDate }).FirstOrDefault()).Equals(null)
-                                              ? (DateTime?)null : ((from prune in context.Prunings where prune.CrewSite.SiteID == site.SiteID select new Cycle { Date = prune.CrewSite.Crew.TodayDate }).FirstOrDefault()).GetDate(),
+                                    Pruning = ((from prune in context.Prunings where prune.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(prune.CrewSite.Crew.TodayDate) }).FirstOrDefault()).Equals(null)
+                                              ? (DateTime?)null : ((from prune in context.Prunings where prune.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(prune.CrewSite.Crew.TodayDate) }).FirstOrDefault()).Date,
 
-                                    Mulching = ((from mulch in context.Mulchings where mulch.CrewSite.SiteID == site.SiteID select new Cycle { Date = mulch.CrewSite.Crew.TodayDate }).FirstOrDefault()).Equals(null)
-                                              ? (DateTime?)null : ((from mulch in context.Mulchings where mulch.CrewSite.SiteID == site.SiteID select new Cycle { Date = mulch.CrewSite.Crew.TodayDate }).FirstOrDefault()).GetDate()
+                                    Mulching = ((from mulch in context.Mulchings where mulch.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(mulch.CrewSite.Crew.TodayDate) }).FirstOrDefault()).Equals(null)
+                                              ? (DateTime?)null : ((from mulch in context.Mulchings where mulch.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(mulch.CrewSite.Crew.TodayDate) }).FirstOrDefault()).Date
 
                                 };
                 return RouteList.ToList();
+                //var RouteList = from site in context.Sites
+                //                orderby site.Community.Name ascending
+                //                where site.Season.SeasonYear == 2019 && site.Yard.YardID == 1 && site.SiteType.SiteTypeDescription == "A"
+                //                let Cycles = (from sbm in context.SBMs
+                //                              where sbm.CrewSite.SiteID == site.SiteID
+                //                              orderby sbm.CrewSite.Crew.TodayDate ascending
+                //                              select new Cycle
+                //                              {
+                //                                  Date = sbm.CrewSite.Crew.TodayDate
+
+                //                              }).ToList()
+                //                select new Status
+                //                {
+                //                    Pin = site.Pin,
+                //                    Community = site.Community.Name,
+                //                    Neighbourhood = site.Neighbourhood,
+                //                    Address = site.StreetAddress,
+                //                    Area = site.Area,
+                //                    Notes = site.Notes,
+                //                    Cycle1 = Cycles.OrderBy(x => x.Date).FirstOrDefault().Date,
+                //                    Cycle2 = Cycles.OrderBy(x => x.Date).Skip(1).FirstOrDefault().Equals(null) ? (DateTime?)null : Cycles.OrderBy(x => x.Date).Skip(1).FirstOrDefault().Date,
+                //                    Cycle3 = Cycles.OrderBy(x => x.Date).Skip(2).FirstOrDefault().Equals(null) ? (DateTime?)null : Cycles.OrderBy(x => x.Date).Skip(2).FirstOrDefault().Date,
+                //                    Cycle4 = Cycles.OrderBy(x => x.Date).Skip(3).FirstOrDefault().Equals(null) ? (DateTime?)null : Cycles.OrderBy(x => x.Date).Skip(3).FirstOrDefault().Date,
+                //                    Cycle5 = Cycles.OrderBy(x => x.Date).Skip(4).FirstOrDefault().Equals(null) ? (DateTime?)null : Cycles.OrderBy(x => x.Date).Skip(4).FirstOrDefault().Date,
+                //                };
+                //return RouteList.ToList();
             }
         }
 

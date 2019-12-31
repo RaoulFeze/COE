@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,18 +9,13 @@ namespace COESystem.Data.POCOs
 {
     public class Cycle
     {
-		private DateTime _Date;
+		private DateTime? _Date;
 
-		public DateTime Date
+		public DateTime? Date
 		{
-			get => _Date;
+			get => DbFunctions.TruncateTime(_Date);
 
-			set => _Date = value;
-		}
-
-		public DateTime GetDate()
-		{
-			return _Date;
+			set => _Date = DbFunctions.TruncateTime(value);
 		}
 	}
 }

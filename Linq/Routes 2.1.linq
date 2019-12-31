@@ -9,7 +9,7 @@
 </Query>
 
 void Main()
-{	
+{
 		var RouteList =	from site in Sites
 						orderby site.Community.Name ascending
 						where site.Season.SeasonYear == 2019 && site.Yard.YardID == 1 && site.SiteType.SiteTypeDescription == 'A'
@@ -29,11 +29,11 @@ void Main()
 							Address = site.StreetAddress,
 							Area = site.Area,
 							Notes = site.Notes,
-							Cycle1 = Cycles.OrderBy(x => x.Date).First().GetDate(),
-							Cycle2 = Cycles.OrderBy(x => x.Date).Skip(1).FirstOrDefault().Equals(null) ? (DateTime?) null: Cycles.OrderBy(x => x.Date).Skip(1).FirstOrDefault().GetDate(),
-							Cycle3 = Cycles.OrderBy(x => x.Date).Skip(2).FirstOrDefault().Equals(null) ? (DateTime?) null: Cycles.OrderBy(x => x.Date).Skip(2).FirstOrDefault().GetDate(),
-							Cycle4 = Cycles.OrderBy(x => x.Date).Skip(3).FirstOrDefault().Equals(null) ? (DateTime?) null: Cycles.OrderBy(x => x.Date).Skip(3).FirstOrDefault().GetDate(),
-							Cycle5 = Cycles.OrderBy(x => x.Date).Skip(4).FirstOrDefault().Equals(null) ? (DateTime?) null: Cycles.OrderBy(x => x.Date).Skip(4).FirstOrDefault().GetDate(),
+							Cycle1 = Cycles.OrderBy(x => x.Date).FirstOrDefault().Date,
+							Cycle2 = Cycles.OrderBy(x => x.Date).Skip(1).FirstOrDefault().Equals(null) ? (DateTime?) null: Cycles.OrderBy(x => x.Date).Skip(1).FirstOrDefault().Date,
+							Cycle3 = Cycles.OrderBy(x => x.Date).Skip(2).FirstOrDefault().Equals(null) ? (DateTime?) null: Cycles.OrderBy(x => x.Date).Skip(2).FirstOrDefault().Date,
+							Cycle4 = Cycles.OrderBy(x => x.Date).Skip(3).FirstOrDefault().Equals(null) ? (DateTime?) null: Cycles.OrderBy(x => x.Date).Skip(3).FirstOrDefault().Date,
+							Cycle5 = Cycles.OrderBy(x => x.Date).Skip(4).FirstOrDefault().Equals(null) ? (DateTime?) null: Cycles.OrderBy(x => x.Date).Skip(4).FirstOrDefault().Date,
 							Pruning = (from prune in Prunings
 									   where prune.CrewSite.SiteID == site.SiteID
 									   select new

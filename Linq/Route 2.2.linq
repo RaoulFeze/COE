@@ -9,6 +9,7 @@
   <Namespace>LINQPad.User</Namespace>
 </Query>
 
+
 void Main()
 {
 	var RouteList = from site in Sites
@@ -84,6 +85,6 @@ public class Cycle
 	
 	public DateTime GetDate ()
 	{
-		return _Date;
+		return this._Date;
 	}
 }
