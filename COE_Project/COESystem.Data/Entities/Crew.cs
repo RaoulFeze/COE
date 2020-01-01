@@ -23,9 +23,12 @@ namespace COESystem.Data.Entities
 
         public int UnitID { get; set; }
 
-        public int KM_Start { get; set; }
+        public int? KM_Start { get; set; }
 
-        public int KM_End { get; set; }
+        public int? KM_End { get; set; }
+
+        [StringLength(100)]
+        public string AdditionalComments { get; set; }
 
         public virtual Unit Unit { get; set; }
 

@@ -1,4 +1,4 @@
-namespace COESystem.Data.Entities2
+namespace COESystem.Data.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -6,13 +6,17 @@ namespace COESystem.Data.Entities2
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Pruning")]
-    public partial class Pruning
+    [Table("SBM")]
+    public partial class SBM
     {
         [Key]
-        public int PruningStatusID { get; set; }
+        public int SBM_StatusID { get; set; }
 
-        public int CrewSiteID { get; set; }
+        public int CrewSIteID { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string TaskDescription { get; set; }
 
         public virtual CrewSite CrewSite { get; set; }
     }

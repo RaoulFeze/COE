@@ -1,14 +1,11 @@
-
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-
-#region Additional Namespaces
-using System.Data.Entity;
-using COESystem.Data.Entities;
-#endregion
 namespace COESystem.DAL
 {
+    using System;
+    using System.Data.Entity;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
+    using COESystem.Data.Entities;
+
     public partial class COESystemContext : DbContext
     {
         public COESystemContext()
@@ -23,13 +20,16 @@ namespace COESystem.DAL
         public virtual DbSet<CrewSite> CrewSites { get; set; }
         public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Grass> Grasses { get; set; }
         public virtual DbSet<Hazard> Hazards { get; set; }
         public virtual DbSet<HazardCategory> HazardCategories { get; set; }
+        public virtual DbSet<Mulching> Mulchings { get; set; }
+        public virtual DbSet<Pruning> Prunings { get; set; }
+        public virtual DbSet<SBM> SBMs { get; set; }
         public virtual DbSet<Season> Seasons { get; set; }
         public virtual DbSet<Site> Sites { get; set; }
         public virtual DbSet<SiteHazard> SiteHazards { get; set; }
         public virtual DbSet<SiteType> SiteTypes { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Tool> Tools { get; set; }
         public virtual DbSet<ToolsChecklist> ToolsChecklists { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
@@ -48,6 +48,10 @@ namespace COESystem.DAL
 
             modelBuilder.Entity<CorrectiveAction>()
                 .Property(e => e.CorrectiveActionDescription)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Crew>()
+                .Property(e => e.AdditionalComments)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Crew>()
@@ -74,8 +78,24 @@ namespace COESystem.DAL
                 .IsUnicode(false);
 
             modelBuilder.Entity<CrewSite>()
-                .Property(e => e.AdditionalComments)
-                .IsUnicode(false);
+                .HasMany(e => e.Grasses)
+                .WithRequired(e => e.CrewSite)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CrewSite>()
+                .HasMany(e => e.Mulchings)
+                .WithRequired(e => e.CrewSite)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CrewSite>()
+                .HasMany(e => e.Prunings)
+                .WithRequired(e => e.CrewSite)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CrewSite>()
+                .HasMany(e => e.SBMs)
+                .WithRequired(e => e.CrewSite)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CrewSite>()
                 .HasMany(e => e.SiteHazards)
@@ -124,6 +144,10 @@ namespace COESystem.DAL
 
             modelBuilder.Entity<HazardCategory>()
                 .Property(e => e.HazardCategoryName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<SBM>()
+                .Property(e => e.TaskDescription)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Season>()

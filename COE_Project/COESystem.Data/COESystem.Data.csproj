@@ -51,28 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTOs\RouteStatus.cs" />
-    <Compile Include="Entities2\Community.cs" />
-    <Compile Include="Entities2\CorrectiveAction.cs" />
-    <Compile Include="Entities2\Crew.cs" />
-    <Compile Include="Entities2\CrewMember.cs" />
-    <Compile Include="Entities2\CrewSite.cs" />
-    <Compile Include="Entities2\District.cs" />
-    <Compile Include="Entities2\Employee.cs" />
-    <Compile Include="Entities2\Grass.cs" />
-    <Compile Include="Entities2\Hazard.cs" />
-    <Compile Include="Entities2\HazardCategory.cs" />
-    <Compile Include="Entities2\Mulching.cs" />
-    <Compile Include="Entities2\Pruning.cs" />
-    <Compile Include="Entities2\SBM.cs" />
-    <Compile Include="Entities2\Season.cs" />
-    <Compile Include="Entities2\Site.cs" />
-    <Compile Include="Entities2\SiteHazard.cs" />
-    <Compile Include="Entities2\SiteType.cs" />
-    <Compile Include="Entities2\sysdiagram.cs" />
-    <Compile Include="Entities2\Tool.cs" />
-    <Compile Include="Entities2\ToolsChecklist.cs" />
-    <Compile Include="Entities2\Unit.cs" />
-    <Compile Include="Entities2\Yard.cs" />
     <Compile Include="Entities\Community.cs" />
     <Compile Include="Entities\CorrectiveAction.cs" />
     <Compile Include="Entities\Crew.cs" />
@@ -80,13 +58,16 @@
     <Compile Include="Entities\CrewSite.cs" />
     <Compile Include="Entities\District.cs" />
     <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Entities\Grass.cs" />
     <Compile Include="Entities\Hazard.cs" />
     <Compile Include="Entities\HazardCategory.cs" />
+    <Compile Include="Entities\Mulching.cs" />
+    <Compile Include="Entities\Pruning.cs" />
+    <Compile Include="Entities\SBM.cs" />
     <Compile Include="Entities\Season.cs" />
     <Compile Include="Entities\Site.cs" />
     <Compile Include="Entities\SiteHazard.cs" />
     <Compile Include="Entities\SiteType.cs" />
-    <Compile Include="Entities\sysdiagram.cs" />
     <Compile Include="Entities\Tool.cs" />
     <Compile Include="Entities\ToolsChecklist.cs" />
     <Compile Include="Entities\Unit.cs" />

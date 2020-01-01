@@ -1,4 +1,4 @@
-namespace COESystem.Data.Entities2
+namespace COESystem.Data.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -6,11 +6,11 @@ namespace COESystem.Data.Entities2
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Mulching")]
-    public partial class Mulching
+    [Table("Pruning")]
+    public partial class Pruning
     {
         [Key]
-        public int MulchingStatusID { get; set; }
+        public int PruningStatusID { get; set; }
 
         public int CrewSiteID { get; set; }
 

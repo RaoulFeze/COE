@@ -36,10 +36,10 @@ namespace COE_Application.Pages.CrewLeader
             // Set the Yard ID as in invisible label on the web page.
             SecurityController securityManager = new SecurityController();
             int? employeeId = securityManager.GetCurrentUserId(User.Identity.Name);
-            RouteController routeManager = new RouteController();
-            YardID.Text = (routeManager.GetYardId(employeeId)).ToString();
+            //RouteController routeManager = new RouteController();
+            //YardID.Text = (routeManager.GetYardId(employeeId)).ToString();
             
-            AllRoutes(int.Parse(YardID.Text));
+            //AllRoutes(int.Parse(YardID.Text));
         }
 
         protected void AllRoutes(int yardId)
@@ -48,10 +48,10 @@ namespace COE_Application.Pages.CrewLeader
             MessageUserControl.TryRun(() =>
             {
                 RouteController routeManager = new RouteController();
-                List<RouteStatus> routes = routeManager.RouteStatus_List(yardId);
-                Yard.Text = routeManager.GetYardName(yardId);
-                Routes_ListView.DataSource = routes;
-                Routes_ListView.DataBind();
+                //List<RouteStatus> routes = routeManager.RouteStatus_List(yardId);
+                //Yard.Text = routeManager.GetYardName(yardId);
+                //Routes_ListView.DataSource = routes;
+                //Routes_ListView.DataBind();
             });
         }
 
@@ -63,19 +63,19 @@ namespace COE_Application.Pages.CrewLeader
 
                 if(int.TryParse(SearchBox.Text, out pin))
                 {
-                    RouteController routeManager = new RouteController();
-                    List<RouteStatus> route = routeManager.RouteStatus_Search(pin, int.Parse(YardID.Text));
+                    //RouteController routeManager = new RouteController();
+                    //List<RouteStatus> route = routeManager.RouteStatus_Search(pin, int.Parse(YardID.Text));
 
-                    Routes_ListView.DataSource = route;
-                    Routes_ListView.DataBind();
+                    //Routes_ListView.DataSource = route;
+                    //Routes_ListView.DataBind();
                 }
                 else
                 {
-                    RouteController routeManager = new RouteController();
-                    List<RouteStatus> route = routeManager.RouteStatus_Search(SearchBox.Text, int.Parse(YardID.Text));
+                    //RouteController routeManager = new RouteController();
+                    //List<RouteStatus> route = routeManager.RouteStatus_Search(SearchBox.Text, int.Parse(YardID.Text));
 
-                    Routes_ListView.DataSource = route;
-                    Routes_ListView.DataBind();
+                    //Routes_ListView.DataSource = route;
+                    //Routes_ListView.DataBind();
                 }
                
                
@@ -89,11 +89,11 @@ namespace COE_Application.Pages.CrewLeader
             MessageUserControl.TryRun(() =>
             {
                
-                RouteController routeManager = new RouteController();
-                List<RouteStatus> route = routeManager.RouteStatus_List(int.Parse(YardID.Text), "A");
+                //RouteController routeManager = new RouteController();
+                //List<RouteStatus> route = routeManager.RouteStatus_List(int.Parse(YardID.Text), "A");
 
-                Routes_ListView.DataSource = route;
-                Routes_ListView.DataBind();
+                //Routes_ListView.DataSource = route;
+                //Routes_ListView.DataBind();
             });
         }
 
@@ -103,11 +103,11 @@ namespace COE_Application.Pages.CrewLeader
             SearchBox.Text = "";
             MessageUserControl.TryRun(() =>
             {
-                RouteController routeManager = new RouteController();
-                List<RouteStatus> route = routeManager.RouteStatus_List(int.Parse(YardID.Text), "B");
+                //RouteController routeManager = new RouteController();
+                //List<RouteStatus> route = routeManager.RouteStatus_List(int.Parse(YardID.Text), "B");
 
-                Routes_ListView.DataSource = route;
-                Routes_ListView.DataBind();
+                //Routes_ListView.DataSource = route;
+                //Routes_ListView.DataBind();
             });
         }
 

@@ -30,9 +30,13 @@ namespace COESystem.Data.Entities
 
         public int YardID { get; set; }
 
+        public bool? TeamLeader { get; set; }
+
         public bool? CrewLeader { get; set; }
 
         public bool? Gardener { get; set; }
+
+        public bool? Labourer { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CrewMember> CrewMembers { get; set; }
