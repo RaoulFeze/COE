@@ -38,7 +38,7 @@ namespace COE_Application.Pages.CrewLeader
             int? employeeId = securityManager.GetCurrentUserId(User.Identity.Name);
             //RouteController routeManager = new RouteController();
             //YardID.Text = (routeManager.GetYardId(employeeId)).ToString();
-            
+            Season.Text = DateTime.Now.Year.ToString();
             //AllRoutes(int.Parse(YardID.Text));
         }
 
