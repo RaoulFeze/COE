@@ -69,58 +69,31 @@ namespace COE_Application.Pages.CrewLeader
         protected global::System.Web.UI.WebControls.Label Season;
 
         /// <summary>
-        /// SearchBox control.
+        /// RouteMenu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox SearchBox;
+        protected global::System.Web.UI.WebControls.Menu RouteMenu;
 
         /// <summary>
-        /// SearchRoutes control.
+        /// RoutesMultiView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton SearchRoutes;
+        protected global::System.Web.UI.WebControls.MultiView RoutesMultiView;
 
         /// <summary>
-        /// RoutesA control.
+        /// RouteA_View control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button RoutesA;
-
-        /// <summary>
-        /// RoutesB control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button RoutesB;
-
-        /// <summary>
-        /// Grass control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Grass;
-
-        /// <summary>
-        /// Reset control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Reset;
+        protected global::System.Web.UI.WebControls.View RouteA_View;
 
         /// <summary>
         /// RouteAListView control.
@@ -130,6 +103,24 @@ namespace COE_Application.Pages.CrewLeader
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView RouteAListView;
+
+        /// <summary>
+        /// RouteB_View control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View RouteB_View;
+
+        /// <summary>
+        /// GridView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
         /// ObjectDataSource1 control.

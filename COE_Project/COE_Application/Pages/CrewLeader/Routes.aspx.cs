@@ -42,6 +42,13 @@ namespace COE_Application.Pages.CrewLeader
             //AllRoutes(int.Parse(YardID.Text));
         }
 
+        //This method switches views on the MultiView
+        protected void RouteMenu_MenuItemClick(object sender, MenuEventArgs e)
+        {
+            int index = Int32.Parse(e.Item.Value);
+            RoutesMultiView.ActiveViewIndex = index;
+        }
+
         protected void AllRoutes(int yardId)
         {
             //Load the Gridview
@@ -55,73 +62,73 @@ namespace COE_Application.Pages.CrewLeader
             });
         }
 
-        protected void SearchRoutes_Click(object sender, EventArgs e)
-        {
-            MessageUserControl.TryRun(() =>
-            {
-                int pin;
+        //protected void SearchRoutes_Click(object sender, EventArgs e)
+        //{
+        //    MessageUserControl.TryRun(() =>
+        //    {
+        //        int pin;
 
-                if(int.TryParse(SearchBox.Text, out pin))
-                {
-                    //RouteController routeManager = new RouteController();
-                    //List<RouteStatus> route = routeManager.RouteStatus_Search(pin, int.Parse(YardID.Text));
+        //        if(int.TryParse(SearchBox.Text, out pin))
+        //        {
+        //            RouteController routeManager = new RouteController();
+        //            List<RouteStatus> route = routeManager.RouteStatus_Search(pin, int.Parse(YardID.Text));
 
-                    //Routes_ListView.DataSource = route;
-                    //Routes_ListView.DataBind();
-                }
-                else
-                {
-                    //RouteController routeManager = new RouteController();
-                    //List<RouteStatus> route = routeManager.RouteStatus_Search(SearchBox.Text, int.Parse(YardID.Text));
+        //            Routes_ListView.DataSource = route;
+        //            Routes_ListView.DataBind();
+        //        }
+        //        else
+        //        {
+        //            RouteController routeManager = new RouteController();
+        //            List<RouteStatus> route = routeManager.RouteStatus_Search(SearchBox.Text, int.Parse(YardID.Text));
 
-                    //Routes_ListView.DataSource = route;
-                    //Routes_ListView.DataBind();
-                }
+        //            Routes_ListView.DataSource = route;
+        //            Routes_ListView.DataBind();
+        //        }
                
                
-            });
-        }
+        //    });
+        //}
 
-        protected void RoutesA_Click(object sender, EventArgs e)
-        {
-            RouteType.Text = "A";
-            SearchBox.Text = "";
-            MessageUserControl.TryRun(() =>
-            {
-               
-                //RouteController routeManager = new RouteController();
-                //List<RouteStatus> route = routeManager.RouteStatus_List(int.Parse(YardID.Text), "A");
+        //protected void RoutesA_Click(object sender, EventArgs e)
+        //{
+        //    RouteType.Text = "A";
+        //    SearchBox.Text = "";
+        //    MessageUserControl.TryRun(() =>
+        //    {
 
-                //Routes_ListView.DataSource = route;
-                //Routes_ListView.DataBind();
-            });
-        }
+        //        RouteController routeManager = new RouteController();
+        //        List<RouteStatus> route = routeManager.RouteStatus_List(int.Parse(YardID.Text), "A");
 
-        protected void RoutesB_Click(object sender, EventArgs e)
-        {
-            RouteType.Text = "B";
-            SearchBox.Text = "";
-            MessageUserControl.TryRun(() =>
-            {
-                //RouteController routeManager = new RouteController();
-                //List<RouteStatus> route = routeManager.RouteStatus_List(int.Parse(YardID.Text), "B");
+        //        Routes_ListView.DataSource = route;
+        //        Routes_ListView.DataBind();
+        //    });
+        //}
 
-                //Routes_ListView.DataSource = route;
-                //Routes_ListView.DataBind();
-            });
-        }
+        //protected void RoutesB_Click(object sender, EventArgs e)
+        //{
+        //    RouteType.Text = "B";
+        //    SearchBox.Text = "";
+        //    MessageUserControl.TryRun(() =>
+        //    {
+        //        RouteController routeManager = new RouteController();
+        //        List<RouteStatus> route = routeManager.RouteStatus_List(int.Parse(YardID.Text), "B");
+
+        //        Routes_ListView.DataSource = route;
+        //        Routes_ListView.DataBind();
+        //    });
+        //}
 
         protected void Grass_Click(object sender, EventArgs e)
         {
 
         }
 
-        protected void Reset_Click(object sender, EventArgs e)
-        {
-            RouteType.Text = "";
-            SearchBox.Text = "";
+        //protected void Reset_Click(object sender, EventArgs e)
+        //{
+        //    RouteType.Text = "";
+        //    SearchBox.Text = "";
            
-            AllRoutes(int.Parse(YardID.Text));
-        }
+        //    AllRoutes(int.Parse(YardID.Text));
+        //}
     }
 }
