@@ -1,6 +1,6 @@
 ﻿/**********Site Master Adjustments**********/
 body{
-    margin:75px 150px 0 150px;
+    margin:75px 5% 0 5%;
 }
 /*Navbar*/
 .navbar-fixed-top {
@@ -109,4 +109,7 @@ body{
     border: solid 1px black;
     padding: 15px;
     background-color: white
+}
+.RouteAStyle table{
+    width:100%
 }

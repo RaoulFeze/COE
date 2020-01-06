@@ -63,6 +63,7 @@
             <asp:MultiView ID="RoutesMultiView" runat="server" ActiveViewIndex="0">
                 <asp:View ID="RouteA_View" runat="server">
                     <fieldset class="form-horizontal">
+                        <div class="RouteAStyle">
                         <asp:ListView ID="RouteAListView" runat="server" DataSourceID="ObjectDataSource1">
                             <AlternatingItemTemplate>
                                 <tr style="background-color: #E9E9E9; color: black;" class="cellPad">
@@ -134,9 +135,9 @@
                                                     <th runat="server" style="text-align: center; width: 70px;">Pin</th>
                                                     <th runat="server" style="text-align: center; width: 100px;">Community</th>
                                                     <th runat="server" style="text-align: center; width: 150px;">Neighbourhood</th>
-                                                    <th runat="server" style="text-align: center; width: 300px;">Address</th>
+                                                    <th runat="server" style="text-align: center; width: 200px;">Address</th>
                                                     <th runat="server" style="text-align: center; width: 50px;">Area</th>
-                                                    <th runat="server" style="text-align: center; width: 200px;">Notes</th>
+                                                    <th runat="server" style="text-align: center; width: 300px;">Notes</th>
                                                     <th runat="server" class="cycleHeader">Cycle 1</th>
                                                     <th runat="server" class="cycleHeader">Cycle 2</th>
                                                     <th runat="server" class="cycleHeader">Cycle 3</th>
@@ -163,6 +164,7 @@
                                 </table>
                             </LayoutTemplate>
                         </asp:ListView>
+                            </div>
                     </fieldset>
                 </asp:View>
                 <asp:View ID="RouteB_View" runat="server">
