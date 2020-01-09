@@ -60,6 +60,7 @@
                                <li><a runat="server" href="~/Pages/CrewLeader/Equipments">Equipments</a></li>
                                <li><a runat="server" href="~/Pages/CrewLeader/Training">Training</a></li>
                                <li><a runat="server" href="~/Pages/CrewLeader/Incident">Incident</a></li>
+                               <li><a runat="server" href="~/Pages/CrewLeader/Time">Time</a></li>
                            </ul>
                            <asp:LoginView runat="server" ViewStateMode="Disabled">
                                <AnonymousTemplate>

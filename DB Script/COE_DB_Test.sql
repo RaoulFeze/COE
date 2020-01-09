@@ -1,46 +1,45 @@
 --Create DATABASE COE_DB
---Drop Table SBM
+Drop Table SBM
 
---Drop Table Pruning
+Drop Table Pruning
 
---Drop Table Mulching
+Drop Table Mulching
 
---Drop Table Grass
+Drop Table Grass
 
+Drop Table SiteHazard
 
---Drop Table SiteHazard
+Drop Table ToolsCheckList
 
---Drop Table ToolsCheckList
+Drop Table CrewSite
 
---Drop Table CrewSite
+Drop Table CrewMember
 
---Drop Table CrewMember
+Drop Table Crew
 
---Drop Table Crew
+Drop Table Tool
 
---Drop Table Tool
+Drop Table Unit
 
---Drop Table Unit
+Drop Table Site 
 
---Drop Table Site 
+Drop Table Employee
 
---Drop Table Employee
+Drop Table CorrectiveAction
 
---Drop Table CorrectiveAction
+Drop Table Hazard
 
---Drop Table Hazard
+Drop Table Yard
 
---Drop Table Yard
+Drop Table Community
 
---Drop Table Community
+Drop Table HazardCategory
 
---Drop Table HazardCategory
+Drop Table SiteType
 
---Drop Table SiteType
+Drop Table District
 
---Drop Table District
-
---Drop Table Season
+Drop Table Season
 
 
 create table District
@@ -118,7 +117,7 @@ create table Employee
 	StreetAddress varchar(35) null,
 	Area int not null, 
 	Notes varchar(1000) null,
-	Grass bit constraint df_GrassOnSite default null,
+	Grass int constraint df_GrassOnSite default 0,
 	SiteTypeID int not null constraint fk_Site_To_SiteType references SiteType(SiteTypeID),
 	YardID int not null constraint fk_Site_To_yard references Yard(YardID),
 	CommunityID int not null constraint fk_Site_To_Community references Community(CommunityID),
@@ -288,26 +287,26 @@ insert into SiteType(SiteTypeDescription, NumberOfCyle)
 Values('B', 2)
 
 ----------------------------------------------------------------------------------------------
-insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (492282, 'Southgate Mall', '11001 25 Ave', 2584, null, 1, 1, 1, 4);
+insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, Grass, SiteTypeID, YardID, CommunityID, SeasonID) values (492282, 'Southgate Mall', '11001 25 Ave', 2584, null, 30, 1, 1, 1, 4);
 insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (589622, 'O"Keefe', '125036 Wlaterdale', 8275, null, 1, 1, 1, 4);
-insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (369852, 'Hermitage', '114 Street & 15 Ave', 265, null, 1, 1, 1, 4);
+insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, Grass, SiteTypeID, YardID, CommunityID, SeasonID) values (369852, 'Hermitage', '114 Street & 15 Ave', 265, null, 102, 1, 1, 1, 4);
 insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (120589, 'River Valley', '1047 Jasper Ave', 1124, null, 1, 1, 1, 4);
 insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (20583, 'Ndog-Bong', '9 Street & 57 Ave', 2002, null, 1, 1, 1, 4);
 insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (968452, 'Twin Brooks', '10258 23 Street', 4040, null, 1, 1, 1, 4);
-insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (895762, 'McEwan', '2682 McAllister Loop', 306, null, 1, 1, 2, 4);
+insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, Grass, SiteTypeID, YardID, CommunityID, SeasonID) values (895762, 'McEwan', '2682 McAllister Loop', 306, null, 10, 1, 1, 2, 4);
 insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (258964, 'McEwan', '50 Street & 101 Ave', 487, null, 1, 1, 2, 4);
-insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (89657, 'Allard', '90 Del Mar Court', 8800, null, 1, 1, 2, 4);
+insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, Grass, SiteTypeID, YardID, CommunityID, SeasonID) values (89657, 'Allard', '90 Del Mar Court', 8800, null, 25, 1, 1, 2, 4);
 insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (120588, 'Asteraceae', '10258 127 Street', 2013, null, 1, 1, 2, 4);
 insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (301844, 'Star Wars', '12506 Roper Road', 256, null, 1, 1, 3, 4);
 insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (421256, 'Twin Towers', '36 Street & 128 Ave', 854, null, 1, 1, 3, 4);
 insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (685249, 'South Common', '111 Street & Gateway Boulevard', 8275, null, 1, 1, 3, 4);
 insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (789005, 'South Park', 'Calgary Trail & 25 Ave', 62, null, 1, 1, 3, 4);
-insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (741056, 'Glenridding', '117 Street & 115 Ave', 45, null, 1, 1, 4, 4);
+insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, Grass, SiteTypeID, YardID, CommunityID, SeasonID) values (741056, 'Glenridding', '117 Street & 115 Ave', 45, null, 47, 1, 1, 4, 4);
 insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (942039, 'Glenridding', '120 Street & 105 Ave', 2258, null, 1, 1, 4, 4);
 insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (8520, 'Landcaster', '12745 Leger Trail', 115, null, 1, 1, 4, 4);
 insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (10236, 'Victoria Hights', '19 Street & 12 AVe', 20, null, 1, 1, 4, 4);
 insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (452289, 'Mercedes', '91 Street & Victoria Trail', 152, null, 1, 1, 5, 4);
-insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, SiteTypeID, YardID, CommunityID, SeasonID) values (3332545, 'Buleya', '11011 29A Ave', 25, null, 1, 1, 5, 4);
+insert into Site (Pin, Neighbourhood, StreetAddress, Area, Notes, Grass,SiteTypeID, YardID, CommunityID, SeasonID) values (3332545, 'Buleya', '11011 29A Ave', 25, null, 73, 1, 1, 5, 4);
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -469,6 +468,164 @@ insert into Pruning (CrewSiteID) values (17);
 insert into Pruning (CrewSiteID) values (6);
 insert into Pruning (CrewSiteID) values (11);
 insert into Pruning (CrewSiteID) values (8);
+-----------------------------------------------------------------------------------------------------------------------------
+									/*Employee*/
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Neely', 'Gaffer', '(458) 6085483', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Nicolis', 'Joist', '(906) 9212728', 3, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Fenelia', 'Spearing', '(568) 5895758', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Audie', 'Shoebrook', '(706) 4043346', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Caresse', 'Codner', '(473) 6177730', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Donna', 'Pascow', '(516) 3806183', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Esra', 'Jerschke', '(871) 4397391', 3, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Rhett', 'Duthie', '(634) 3606008', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Jandy', 'Dunsmuir', '(248) 3191035', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Daryl', 'Matiashvili', '(223) 7646424', 2, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Paolo', 'Cleugher', '(589) 9797442', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Tait', 'Fulmen', '(980) 9503182', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Elana', 'Fishpoole', '(113) 4914910', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Ursa', 'Pittendreigh', '(313) 4801921', 2, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Lucio', 'Bromwich', '(730) 3459495', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Kaitlynn', 'Gethyn', '(959) 2258979', 3, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Rochester', 'Pechan', '(518) 8248236', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Jamison', 'Housaman', '(357) 6150620', 3, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Mara', 'Bodocs', '(505) 5570430', 3, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Kailey', 'Kelf', '(882) 9682880', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Perren', 'Ivens', '(555) 5107445', 2, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Brand', 'Tomankowski', '(564) 9320661', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Nollie', 'Stainer', '(503) 7104129', 2, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Jillane', 'Dunnet', '(317) 1599912', 3, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Dania', 'McWilliam', '(349) 9947732', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Tucky', 'Gait', '(296) 9169502', 2, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Dulcie', 'Carlin', '(839) 7305403', 2, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Susann', 'Brigginshaw', '(489) 2389477', 3, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Clemmie', 'Dudill', '(949) 6863263', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Sheppard', 'Busher', '(574) 3544710', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Vonny', 'Ander', '(758) 7660451', 3, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Felicdad', 'Boc', '(741) 5907613', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Teddi', 'Moulden', '(260) 3302737', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Emmi', 'McKinnon', '(571) 5046184', 3, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Marylynne', 'Jilkes', '(500) 9266608', 2, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Reinhold', 'Chang', '(270) 1288147', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Susann', 'Hindenburg', '(910) 5306583', 3, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Rosamund', 'Vaughan-Hughes', '(144) 7857041', 2, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Darcy', 'Obell', '(919) 6187705', 3, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Shanon', 'Pedrazzi', '(929) 6829365', 3, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Nadean', 'Brimilcome', '(553) 8331021', 2, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Shayla', 'Moulton', '(693) 8923871', 3, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Albrecht', 'Pert', '(540) 9229554', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Maighdiln', 'Biggen', '(914) 3094481', 3, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Sergei', 'Rameaux', '(547) 7934424', 2, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Kimball', 'Galego', '(607) 1982856', 1, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Denice', 'Loosley', '(423) 6706098', 2, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Daffi', 'Gellett', '(968) 2668208', 2, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Patten', 'Borzoni', '(961) 5169338', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Laney', 'Swyne', '(496) 6873622', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Judy', 'Amis', '(167) 1385319', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Lindie', 'Godwyn', '(866) 9937415', 5, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Morey', 'Fay', '(775) 5351652', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Alard', 'Queree', '(830) 8770804', 6, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Gabbie', 'Biner', '(682) 4122539', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Marcela', 'Leeves', '(478) 5182363', 6, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Kat', 'Luetkemeyers', '(928) 4568974', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Victoria', 'Aingel', '(848) 4401641', 6, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Iago', 'Sarfas', '(876) 9946221', 5, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Shaun', 'Lower', '(404) 7168843', 5, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Waylen', 'Sheldrick', '(187) 7816097', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Jackson', 'Klimowski', '(932) 6078113', 5, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Amos', 'Mercy', '(935) 3708790', 5, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Mozelle', 'Packer', '(795) 3221507', 8, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Kally', 'Mold', '(497) 2152905', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Law', 'Robey', '(635) 6780890', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Corri', 'Tindall', '(623) 3790745', 5, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Kingsley', 'Ledingham', '(365) 3696323', 5, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Xylia', 'Surgison', '(792) 9854533', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Desiri', 'Kittoe', '(504) 6643811', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Nesta', 'Rugg', '(102) 3495258', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Dulce', 'Domleo', '(242) 5513069', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Florida', 'Ferrara', '(266) 8318210', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Lanette', 'Aguirrezabala', '(880) 1573798', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Fredra', 'Biggin', '(755) 7616603', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Packston', 'Worcester', '(133) 9128038', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Julianne', 'McClinton', '(565) 7086169', 8, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Kirby', 'Naire', '(668) 6391967', 8, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Jerry', 'Copsey', '(893) 7792602', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Lyon', 'Paddy', '(404) 5029581', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Brandea', 'Gaytor', '(907) 8666658', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Mitchel', 'Godmer', '(774) 2283225', 6, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Wilfred', 'Kerby', '(659) 1973728', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Zabrina', 'Grigoire', '(596) 2445236', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Adi', 'Cesco', '(284) 6188182', 5, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Janeczka', 'Duley', '(516) 7528895', 6, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Caz', 'Sturzaker', '(631) 4238906', 5, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Alexis', 'Hess', '(748) 7378510', 6, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Kaile', 'Boarleyson', '(175) 4305957', 5, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Lotte', 'Milsted', '(146) 9579332', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Stefania', 'Krojn', '(714) 3977011', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Morgan', 'Swinbourne', '(322) 1011322', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Margaretha', 'Bison', '(839) 1017897', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Nikki', 'Fenners', '(385) 2676878', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Cchaddie', 'Sutheran', '(365) 3994595', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Carie', 'Kleinhandler', '(432) 1850520', 5, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Lorenzo', 'Dyshart', '(178) 2000893', 6, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Meier', 'Maisey', '(545) 2364731', 8, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Thorndike', 'Kean', '(258) 7412749', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Nanice', 'Bousfield', '(161) 2309010', 8, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Milly', 'Dasent', '(571) 8440511', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Ford', 'Rawne', '(349) 7126373', 8, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Barry', 'Horbart', '(756) 9591979', 6, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Gratia', 'Hue', '(230) 9405954', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Bill', 'Winspare', '(432) 8473014', 5, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Rex', 'Sandercock', '(824) 9860616', 5, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Rick', 'Cave', '(209) 2124857', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Lira', 'Canas', '(222) 8952089', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Dulcy', 'Urvoy', '(555) 4628997', 5, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Tudor', 'Ellings', '(767) 4609185', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Leland', 'Hayles', '(469) 2786963', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Marcelle', 'Broadbent', '(547) 1631105', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Bobbie', 'Pott', '(508) 2966393', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Baudoin', 'Beneix', '(313) 3048661', 6, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Lockwood', 'Perrins', '(603) 6626107', 8, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Dmitri', 'Extil', '(164) 5128433', 8, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Heddie', 'Bourtoumieux', '(626) 7807972', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Birgitta', 'Rickson', '(115) 7608409', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Margy', 'O''Keeffe', '(189) 6342359', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Lewiss', 'Brangan', '(778) 4762643', 8, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Magdalene', 'Hillock', '(164) 2776885', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Tanya', 'Gostall', '(286) 1881022', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Kalila', 'Coit', '(332) 9521872', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Sheppard', 'Motherwell', '(227) 6056076', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Maryanne', 'Glassard', '(169) 9057969', 6, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Kenyon', 'Nairns', '(645) 2372869', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Deena', 'Harvard', '(251) 2468078', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Luke', 'Teasey', '(284) 4645732', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Meredith', 'Yezafovich', '(442) 9885247', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Jackie', 'Penhale', '(590) 2349663', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Ode', 'Wyllis', '(270) 4566296', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Merell', 'Fance', '(368) 9373515', 6, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Marlin', 'Fladgate', '(106) 4666540', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Irina', 'Kleszinski', '(857) 4659457', 8, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Bert', 'Lower', '(955) 9197914', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Malissa', 'Carr', '(769) 3618701', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Douglass', 'Blader', '(878) 7637511', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Sinclair', 'Alderson', '(777) 6784661', 7, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Guthry', 'Simmens', '(888) 8278862', 8, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Mari', 'Brugger', '(943) 7809991', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Stefano', 'Demeter', '(888) 5313261', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Mandy', 'Sharrard', '(290) 8217592', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Tiphanie', 'Hundell', '(114) 6141157', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Violette', 'Syrad', '(870) 1045364', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Meryl', 'Garmston', '(738) 4478212', 5, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Cynde', 'Dullingham', '(622) 5302317', 6, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Devland', 'Zienkiewicz', '(310) 2837088', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Katina', 'Dosdell', '(290) 1217418', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Weidar', 'Akker', '(462) 2900419', 5, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Cecil', 'Dahlbom', '(258) 5201496', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Briney', 'Fillgate', '(697) 2463657', 5, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Thornie', 'Judron', '(447) 3273743', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Hetty', 'Stive', '(127) 6963928', 9, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Becka', 'MacDunlevy', '(422) 4298565', 4, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Gael', 'Brader', '(942) 6071693', 8, 0, 0, 1);
+insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Collete', 'Akroyd', '(170) 2761854', 5, 0, 0, 1);
 
 
 
@@ -482,4 +639,5 @@ select*from CrewSite
 select*from SBM order by CrewSIteID
 select*from Grass order by CrewSIteID
 select*from Mulching order by CrewSIteID
+select*from Employee order by EmployeeID
 */

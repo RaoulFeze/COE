@@ -2,15 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using COE_Application.Security;
 
 #region Additonal Namespaces
 using COESystem.BLL;
-using COESystem.Data.DTOs;
+using COESystem.Data.POCOs;
 #endregion
 
 namespace COE_Application.Pages.CrewLeader
@@ -36,10 +33,18 @@ namespace COE_Application.Pages.CrewLeader
             // Set the Yard ID as in invisible label on the web page.
             SecurityController securityManager = new SecurityController();
             int? employeeId = securityManager.GetCurrentUserId(User.Identity.Name);
-            //RouteController routeManager = new RouteController();
-            //YardID.Text = (routeManager.GetYardId(employeeId)).ToString();
+            RouteController routeManager = new RouteController();
             Season.Text = DateTime.Now.Year.ToString();
-            //AllRoutes(int.Parse(YardID.Text));
+            Yard.Text = routeManager.GetYardName(employeeId);
+            YardID.Text = routeManager.GetYardId(employeeId).ToString();
+
+            //This poertion of code loads the first view (A Routes) when the page loads initially.
+            MessageUserControl.TryRun(() =>
+            {
+                List<Status> Aroutes = routeManager.RouteList(DateTime.Now.Year, int.Parse(YardID.Text), "A");
+                RouteAListView.DataSource = Aroutes;
+                RouteAListView.DataBind();
+            });
         }
 
         //This method switches views on the MultiView
@@ -47,20 +52,39 @@ namespace COE_Application.Pages.CrewLeader
         {
             int index = Int32.Parse(e.Item.Value);
             RoutesMultiView.ActiveViewIndex = index;
+            RouteController routeManager = new RouteController();
+
+            switch(index)
+            {
+                case 0:
+                    MessageUserControl.TryRun(() =>
+                    {
+                        List<Status> Aroutes = routeManager.RouteList(DateTime.Now.Year, int.Parse(YardID.Text), "A");
+                        RouteAListView.DataSource = Aroutes;
+                        RouteAListView.DataBind();
+                    });
+                    
+                    break;
+                case 1:
+                    MessageUserControl.TryRun(() =>
+                    {
+                        List<Status> Broutes = routeManager.RouteList(DateTime.Now.Year, int.Parse(YardID.Text), "A");
+                        RouteBListView.DataSource = Broutes;
+                        RouteBListView.DataBind();
+                    });
+                    break;
+                case 2:
+                    MessageUserControl.TryRun(() =>
+                    {
+                        List<GrassStatus> GrassRoute = routeManager.GrassList();
+                        GrassListView.DataSource = GrassRoute;
+                        GrassListView.DataBind();
+                    });
+                    break;
+            }
         }
 
-        protected void AllRoutes(int yardId)
-        {
-            //Load the Gridview
-            MessageUserControl.TryRun(() =>
-            {
-                RouteController routeManager = new RouteController();
-                //List<RouteStatus> routes = routeManager.RouteStatus_List(yardId);
-                //Yard.Text = routeManager.GetYardName(yardId);
-                //Routes_ListView.DataSource = routes;
-                //Routes_ListView.DataBind();
-            });
-        }
+      
 
         //protected void SearchRoutes_Click(object sender, EventArgs e)
         //{

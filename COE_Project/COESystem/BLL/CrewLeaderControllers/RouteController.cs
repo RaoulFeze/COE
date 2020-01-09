@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 #region Additionnal Namesapces
 using System.ComponentModel;
-using COESystem.Data.DTOs;
-using COESystem.Data.Entities;
 using COESystem.Data.POCOs;
 using System.Data.Entity;
 using COESystem.DAL;
@@ -20,13 +16,13 @@ namespace COESystem.BLL
     {
         #region COE_db_Test
         [DataObjectMethod(DataObjectMethodType.Select,false)]
-        public List<Status> RouteTest()
+        public List<Status> RouteList(int year, int yardId, string siteType)
         {
             using (var context = new COESystemContext())
             {
                 var RouteList = from site in context.Sites
                                 orderby site.Community.Name ascending
-                                where site.Season.SeasonYear == 2019 && site.Yard.YardID == 1 && site.SiteType.SiteTypeDescription.Equals("A")
+                                where site.Season.SeasonYear == 2019 && site.Yard.YardID == yardId && site.SiteType.SiteTypeDescription == siteType
                                 select new Status
                                 {
                                     Pin = site.Pin,
@@ -87,6 +83,28 @@ namespace COESystem.BLL
             }
         }
 
+        public List<GrassStatus> GrassList()
+        {
+            using(var context = new COESystemContext())
+            {
+                var GrassList = from site in context.Sites
+                             where site.Season.SeasonYear == 2019 && site.YardID == 1 && site.Grass > 0
+                             orderby site.Community.Name ascending
+                             select new GrassStatus
+                             {
+                                 Pin = site.Pin,
+                                 Community = site.Community.Name,
+                                 Neighbourhood = site.Neighbourhood,
+                                 Address = site.StreetAddress,
+                                 Area = site.Area,
+                                 Notes = site.Notes,
+                                 Count = site.Grass,
+                                 Date = ((from grass in context.Grasses where grass.CrewSite.SiteID == site.SiteID select new Cycle { Date = grass.CrewSite.Crew.TodayDate }).FirstOrDefault()).Equals(null) ? (DateTime?)null :
+                                         ((from grass in context.Grasses where grass.CrewSite.SiteID == site.SiteID select new Cycle { Date = grass.CrewSite.Crew.TodayDate }).FirstOrDefault()).Date
+                             };
+                return GrassList.ToList();
+            }
+        }
         #endregion
 
         #region this code uses COE_DB 
@@ -208,33 +226,33 @@ namespace COESystem.BLL
         //    }
         //}
 
-        ////Returns the Yard Name based on the YardID
-        //[DataObjectMethod(DataObjectMethodType.Select, false)]
-        //public string GetYardName(int userId)
-        //{
+        //Returns the Yard Name based on the YardID
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public string GetYardName(int? userId)
+        {
 
-        //    using (var context = new COESystemContext())
-        //    {
-        //        var yardName = from x in context.Employees
-        //                       where x.YardID == userId
-        //                       select x.Yard.YardName;
+            using (var context = new COESystemContext())
+            {
+                var yardName = from x in context.Employees
+                               where x.EmployeeID == userId
+                               select x.Yard.YardName;
 
-        //        return yardName.ToList()[0];
-        //    }
-        //}
+                return yardName.ToList()[0];
+            }
+        }
 
-        ////Returns the YardID based on the EmployeeID
-        //[DataObjectMethod(DataObjectMethodType.Select, false)]
-        //public int GetYardId(int? employeeId)
-        //{
-        //    using(var context = new COESystemContext())
-        //    {
-        //        var yardId = from x in context.Employees
-        //                     where x.EmployeeID == employeeId
-        //                     select x.YardID;
-        //        return yardId.ToList()[0];
-        //    }
-        //}
+        //Returns the YardID based on the EmployeeID
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public int GetYardId(int? employeeId)
+        {
+            using (var context = new COESystemContext())
+            {
+                var yardId = from x in context.Employees
+                             where x.EmployeeID == employeeId
+                             select x.YardID;
+                return yardId.ToList()[0];
+            }
+        }
         #endregion
 
     }
