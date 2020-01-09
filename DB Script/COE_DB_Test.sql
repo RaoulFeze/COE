@@ -212,8 +212,7 @@ create table Mulching
 create table Grass
 (
 	GrassStatusID integer identity(1,1) not null constraint pk_Grass primary key clustered,
-	CrewSiteID int not null constraint fk_Grass_To_CrewSite references CrewSite(CrewSiteID),
-	GrassCount int not null
+	CrewSiteID int not null constraint fk_Grass_To_CrewSite references CrewSite(CrewSiteID)
 )
 
 /*DISTRICT*/
@@ -438,16 +437,16 @@ insert into SBM (CrewSiteID, TaskDescription) values (41, 'Grass Pulling');
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 					/*Grass*/
-insert into Grass (CrewSiteID, GrassCount) values (8, 15);
-insert into Grass (CrewSiteID, GrassCount) values (13, 18);
-insert into Grass (CrewSiteID, GrassCount) values (7, 95);
-insert into Grass (CrewSiteID, GrassCount) values (16, 8);
-insert into Grass (CrewSiteID, GrassCount) values (11, 82);
-insert into Grass (CrewSiteID, GrassCount) values (12, 15);
-insert into Grass (CrewSiteID, GrassCount) values (2, 50);
-insert into Grass (CrewSiteID, GrassCount) values (6, 37);
-insert into Grass (CrewSiteID, GrassCount) values (4, 58);
-insert into Grass (CrewSiteID, GrassCount) values (20, 38);
+insert into Grass (CrewSiteID) values (8);
+insert into Grass (CrewSiteID) values (13);
+insert into Grass (CrewSiteID) values (7);
+insert into Grass (CrewSiteID) values (16);
+insert into Grass (CrewSiteID) values (11);
+insert into Grass (CrewSiteID) values (12);
+insert into Grass (CrewSiteID) values (2);
+insert into Grass (CrewSiteID) values (6);
+insert into Grass (CrewSiteID) values (4);
+insert into Grass (CrewSiteID) values (20);
 ------------------------------------------------------------------------------------------------------------------------------
 
 				/* Mulching*/
