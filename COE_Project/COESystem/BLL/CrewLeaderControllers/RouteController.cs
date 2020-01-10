@@ -7,6 +7,7 @@ using System.ComponentModel;
 using COESystem.Data.POCOs;
 using System.Data.Entity;
 using COESystem.DAL;
+using COESystem.Data.Entities;
 #endregion
 
 namespace COESystem.BLL
@@ -103,6 +104,60 @@ namespace COESystem.BLL
                                          ((from grass in context.Grasses where grass.CrewSite.SiteID == site.SiteID select new Cycle { Date = grass.CrewSite.Crew.TodayDate }).FirstOrDefault()).Date
                              };
                 return GrassList.ToList();
+            }
+        }
+
+        //Returns the Yard Name based on the YardID
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public string GetYardName(int? userId)
+        {
+
+            using (var context = new COESystemContext())
+            {
+                var yardName = from x in context.Employees
+                               where x.EmployeeID == userId
+                               select x.Yard.YardName;
+
+                return yardName.ToList()[0];
+            }
+        }
+
+        //Returns the YardID based on the EmployeeID
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public int GetYardId(int? employeeId)
+        {
+            using (var context = new COESystemContext())
+            {
+                var yardId = from x in context.Employees
+                             where x.EmployeeID == employeeId
+                             select x.YardID;
+                return yardId.ToList()[0];
+            }
+        }
+
+        //Returns the list of Units of a given Yard (YardID)
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Unit>GetUnits(int yardId)
+        {
+            using(var context = new COESystemContext())
+            {
+                var unitList = from x in context.Units
+                               where x.YardID == yardId
+                               select x;
+                return unitList.ToList();
+            }    
+        }
+
+        //Returns the list of field employees of a given Yard (YardID)
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Employee>GetEmployees(int yardId)
+        {
+            using(var context = new COESystemContext())
+            {
+                var employeeList = from x in context.Employees
+                                   where x.YardID == yardId && x.TeamLeader == false && x.CrewLeader == false
+                                   select x;
+                return employeeList.ToList();
             }
         }
         #endregion
@@ -226,33 +281,7 @@ namespace COESystem.BLL
         //    }
         //}
 
-        //Returns the Yard Name based on the YardID
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public string GetYardName(int? userId)
-        {
 
-            using (var context = new COESystemContext())
-            {
-                var yardName = from x in context.Employees
-                               where x.EmployeeID == userId
-                               select x.Yard.YardName;
-
-                return yardName.ToList()[0];
-            }
-        }
-
-        //Returns the YardID based on the EmployeeID
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public int GetYardId(int? employeeId)
-        {
-            using (var context = new COESystemContext())
-            {
-                var yardId = from x in context.Employees
-                             where x.EmployeeID == employeeId
-                             select x.YardID;
-                return yardId.ToList()[0];
-            }
-        }
         #endregion
 
     }
