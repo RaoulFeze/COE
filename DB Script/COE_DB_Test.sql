@@ -1,45 +1,45 @@
 --Create DATABASE COE_DB
-Drop Table SBM
+--Drop Table SBM
 
-Drop Table Pruning
+--Drop Table Pruning
 
-Drop Table Mulching
+--Drop Table Mulching
 
-Drop Table Grass
+--Drop Table Grass
 
-Drop Table SiteHazard
+--Drop Table SiteHazard
 
-Drop Table ToolsCheckList
+--Drop Table ToolsCheckList
 
-Drop Table CrewSite
+--Drop Table CrewSite
 
-Drop Table CrewMember
+--Drop Table CrewMember
 
-Drop Table Crew
+--Drop Table Crew
 
-Drop Table Tool
+--Drop Table Tool
 
-Drop Table Unit
+--Drop Table Unit
 
-Drop Table Site 
+--Drop Table Site 
 
-Drop Table Employee
+--Drop Table Employee
 
-Drop Table CorrectiveAction
+--Drop Table CorrectiveAction
 
-Drop Table Hazard
+--Drop Table Hazard
 
-Drop Table Yard
+--Drop Table Yard
 
-Drop Table Community
+--Drop Table Community
 
-Drop Table HazardCategory
+--Drop Table HazardCategory
 
-Drop Table SiteType
+--Drop Table SiteType
 
-Drop Table District
+--Drop Table District
 
-Drop Table Season
+--Drop Table Season
 
 
 create table District
@@ -626,6 +626,37 @@ insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader
 insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Gael', 'Brader', '(942) 6071693', 8, 0, 0, 1);
 insert into Employee (FirstName, LastName, Phone, YardID, TeamLeader, CrewLeader, Labourer) values ('Collete', 'Akroyd', '(170) 2761854', 5, 0, 0, 1);
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+										/*UNIT*/
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('WA1CGAFP8EA122491', '2-Ton Truck', 1);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('1G4GC5GR4CF868507', '2-Ton Truck', 2);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('WAUJC68E32A759623', '1-Ton truck', 6);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('3VW507AT6FM654186', '2-Ton Truck', 3);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('WBADR63412G715143', '3/4-Ton Truck', 1);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('1D4PU5GK2AW827636', '3/4-Ton Truck', 3);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('2HNYD18402H249606', '2-Ton Truck', 1);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('WAUKG98E16A960789', '1-Ton truck', 7);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('1VWAS7A37FC170246', '2-Ton Truck', 7);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('WBAWV53598P719649', '3/4-Ton Truck', 5);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('WAU2GAFC4DN395012', '3/4-Ton Truck', 8);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('2C3CDXEJ6EH806380', '2-Ton Truck', 2);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('5N1AR2MM7DC934384', '2-Ton Truck', 5);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('JN1BV7AP8FM606827', '1-Ton truck', 8);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('WBAVA33598K659459', '3/4-Ton Truck', 6);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('5NPDH4AE5DH411043', '3/4-Ton Truck', 2);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('JN8AZ2KR3CT570860', '2-Ton Truck', 5);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('5TDDCRFH7FS122421', '1-Ton truck', 1);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('3D7JB1EP7AG018153', '1-Ton truck', 4);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('5NMSG3AB5AH620446', '1-Ton truck', 1);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('WBABD53484P371328', '3/4-Ton Truck', 1);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('TRUUT28N931867969', '3/4-Ton Truck', 1);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('1GD311CG6FF371514', '1-Ton truck', 9);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('2C3CCAEG3EH911706', '1-Ton truck', 2);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('1G4GB5GR9FF325550', '1-Ton truck', 7);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('1C3CCBBB8EN682039', '3/4-Ton Truck', 8);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('19UUA65545A427724', '2-Ton Truck', 8);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('KM8JT3AC1AU799640', '3/4-Ton Truck', 3);
+insert into Unit (UnitNumber, UnitDescription, YardID) values ('2HNYD18763H734991', '2-Ton Truck', 5);
 
 
 /*select*from YARD	
@@ -639,4 +670,5 @@ select*from SBM order by CrewSIteID
 select*from Grass order by CrewSIteID
 select*from Mulching order by CrewSIteID
 select*from Employee order by EmployeeID
+select*from Unit order by YardID
 */
