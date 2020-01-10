@@ -56,11 +56,10 @@
                 <asp:MenuItem Text="A Routes" Selected="true" Value="0"></asp:MenuItem>
                 <asp:MenuItem Text="B Routes" Value="1"></asp:MenuItem>
                 <asp:MenuItem Text="Grass Routes" Value="2"></asp:MenuItem>
-                <asp:MenuItem Text="Statistics" Value="3"></asp:MenuItem>
-                <asp:MenuItem Text="Site Update" Value="4"></asp:MenuItem>
-                <asp:MenuItem Text="Route Update" Value="5"></asp:MenuItem>
-                <asp:MenuItem Text="History" Value="6"></asp:MenuItem>
-                <asp:MenuItem Text="Statistics" Value="7"></asp:MenuItem>
+                <asp:MenuItem Text="Site Update" Value="3"></asp:MenuItem>
+                <asp:MenuItem Text="Route Update" Value="4"></asp:MenuItem>
+                <asp:MenuItem Text="History" Value="5"></asp:MenuItem>
+                <asp:MenuItem Text="Statistics" Value="6"></asp:MenuItem>
             </Items>
         </asp:Menu>
         <div class="tabContents">
