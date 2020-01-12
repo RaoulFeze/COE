@@ -38,6 +38,15 @@ namespace COESystem.Data.Entities
 
         public bool? Labourer { get; set; }
 
+        [NotMapped]
+        public string Name
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CrewMember> CrewMembers { get; set; }
 

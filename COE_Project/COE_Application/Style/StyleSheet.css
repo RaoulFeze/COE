@@ -34,7 +34,7 @@ body{
 /*********Crew Leader Routes Page***********/
 
 /*Side Controls*/
- div.col-md-2{
+ /*div.col-md-2{
     width:165px;
 }
  .routeControls{
@@ -58,30 +58,24 @@ body{
 }
 .button {
     width: 100%;
-}
+}*/
 
 /*Header*/
 .routesHeader {
     text-align: center;
     margin-bottom: 25px;
 }
-.cellPad > td{
-    padding:5px;
+.cellPad > td {
+    padding: 5px;
 }
 
-    .cellPad > td:hover {
-        background-color: #228B22 /*#337AB7*/;
-    }
+.cellPad > td:hover {
+    background-color: #228B22;
+}
 
 .cycleHeader{
     text-align:center;
-    width: 70px;
-}
-
-.routeCell {
-    /*padding: 5px 0 5px 5px;
-    font-size:14px;
-    height:25px;*/
+ 
 }
 
 .routeListviewHeader > th{
@@ -112,4 +106,12 @@ body{
 }
 .RouteAStyle table{
     width:100%
+}
+
+
+.crewRow > td {
+    padding: 5px;
+}
+.crewRow > th {
+    padding: 5px;
 }

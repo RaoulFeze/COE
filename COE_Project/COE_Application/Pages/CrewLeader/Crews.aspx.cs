@@ -1,5 +1,4 @@
-﻿using COE_Application.Security;
-using COESystem.BLL;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,6 +6,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
+#region Additional Namespaces
+using COE_Application.Security;
+using COESystem.BLL;
+using COESystem.BLL.CrewLeaderControllers;
+using COESystem.Data.POCOs;
+#endregion
 
 namespace COE_Application.Pages.CrewLeader
 {
@@ -33,15 +39,52 @@ namespace COE_Application.Pages.CrewLeader
             int? employeeId = securityManager.GetCurrentUserId(User.Identity.Name);
             RouteController routeManager = new RouteController();
             YardID.Text = routeManager.GetYardId(employeeId).ToString();
-            UnitsDDL.Visible = false;
+           
         }
 
+        protected void CheckForException(object sender, ObjectDataSourceStatusEventArgs e)
+        {
+            MessageUserControl.HandleDataBoundException(e);
+        }
         protected void AddCrewLinkButton_Click(object sender, EventArgs e)
         {
-           
-                UnitsDDL.Visible = true;
-            
-           
+            MessageUserControl.TryRun(() =>
+            {
+                int yardId = int.Parse(YardID.Text);
+                UnitControllers unitManager = new UnitControllers();
+                List<YardUnits> unit = unitManager.GetUnits(int.Parse(YardID.Text));
+                UnitsDDL.DataSource = unit;
+                UnitsDDL.DataTextField = nameof(YardUnits.Number);
+                UnitsDDL.DataValueField = nameof(YardUnits.ID);
+                UnitsDDL.DataBind();
+                UnitsDDL.Items.Insert(0, "Select a Unit...");
+            });
+            UnitsDDL.Visible = true;
+            UnitLabel.Visible = true;
+        }
+
+        protected void UnitsDDL_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageUserControl.TryRun(() =>
+            {
+                EmployeeControllers employeeManager = new EmployeeControllers();
+                if (UnitsDDL.SelectedIndex == 0)
+                {
+                    EmployeesListView.DataSource = null;
+                    EmployeesListView.DataBind();
+                    EmployeesListView.Visible = false;
+                }
+                else
+                {
+                    EmployeesListView.Visible = true;
+                }
+            });
+            EmployeesListView.Visible = true;
+        }
+
+        protected void RouteCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

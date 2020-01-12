@@ -33,6 +33,7 @@ namespace COE_Application.Pages.CrewLeader
             // Set the Yard ID as in invisible label on the web page.
             SecurityController securityManager = new SecurityController();
             int? employeeId = securityManager.GetCurrentUserId(User.Identity.Name);
+
             RouteController routeManager = new RouteController();
             Season.Text = DateTime.Now.Year.ToString();
             Yard.Text = routeManager.GetYardName(employeeId);
@@ -47,6 +48,10 @@ namespace COE_Application.Pages.CrewLeader
             });
         }
 
+        protected void CheckForException(object sender, ObjectDataSourceStatusEventArgs e)
+        {
+            MessageUserControl.HandleDataBoundException(e);
+        }
         //This method switches views on the MultiView
         protected void RouteMenu_MenuItemClick(object sender, MenuEventArgs e)
         {
@@ -68,6 +73,7 @@ namespace COE_Application.Pages.CrewLeader
                 case 1:
                     MessageUserControl.TryRun(() =>
                     {
+                        //TODO: Change the siteType to B
                         List<Status> Broutes = routeManager.RouteList(DateTime.Now.Year, int.Parse(YardID.Text), "A");
                         RouteBListView.DataSource = Broutes;
                         RouteBListView.DataBind();

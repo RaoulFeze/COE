@@ -107,18 +107,14 @@ namespace COESystem.BLL
             }
         }
 
-        //Returns the Yard Name based on the YardID
+        //Returns the Yard Name based on the EmployeeID
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public string GetYardName(int? userId)
         {
 
             using (var context = new COESystemContext())
             {
-                var yardName = from x in context.Employees
-                               where x.EmployeeID == userId
-                               select x.Yard.YardName;
-
-                return yardName.ToList()[0];
+                return context.Employees.Find(userId).Yard.YardName;
             }
         }
 
@@ -128,38 +124,10 @@ namespace COESystem.BLL
         {
             using (var context = new COESystemContext())
             {
-                var yardId = from x in context.Employees
-                             where x.EmployeeID == employeeId
-                             select x.YardID;
-                return yardId.ToList()[0];
+                return context.Employees.Find(employeeId).YardID;
             }
         }
 
-        //Returns the list of Units of a given Yard (YardID)
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<Unit>GetUnits(int yardId)
-        {
-            using(var context = new COESystemContext())
-            {
-                var unitList = from x in context.Units
-                               where x.YardID == yardId
-                               select x;
-                return unitList.ToList();
-            }    
-        }
-
-        //Returns the list of field employees of a given Yard (YardID)
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<Employee>GetEmployees(int yardId)
-        {
-            using(var context = new COESystemContext())
-            {
-                var employeeList = from x in context.Employees
-                                   where x.YardID == yardId && x.TeamLeader == false && x.CrewLeader == false
-                                   select x;
-                return employeeList.ToList();
-            }
-        }
         #endregion
 
         #region this code uses COE_DB 

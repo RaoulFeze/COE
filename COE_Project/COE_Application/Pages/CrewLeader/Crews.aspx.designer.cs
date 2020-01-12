@@ -51,13 +51,13 @@ namespace COE_Application.Pages.CrewLeader
         protected global::System.Web.UI.WebControls.LinkButton AddCrewLinkButton;
 
         /// <summary>
-        /// RadioButtonList1 control.
+        /// UnitLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
+        protected global::System.Web.UI.WebControls.Label UnitLabel;
 
         /// <summary>
         /// UnitsDDL control.
@@ -69,12 +69,30 @@ namespace COE_Application.Pages.CrewLeader
         protected global::System.Web.UI.WebControls.DropDownList UnitsDDL;
 
         /// <summary>
-        /// UnitListODS control.
+        /// RouteCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource UnitListODS;
+        protected global::System.Web.UI.WebControls.RadioButtonList RouteCategory;
+
+        /// <summary>
+        /// EmployeesListView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView EmployeesListView;
+
+        /// <summary>
+        /// EmployeeListODS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource EmployeeListODS;
     }
 }
