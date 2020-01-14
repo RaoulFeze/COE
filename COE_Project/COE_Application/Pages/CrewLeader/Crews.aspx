@@ -13,7 +13,7 @@
  
     <div class="row">
         <div class="col-md-3">
-            <asp:Label ID="AddCrewLabel" runat="server" Text=" Add Crew"></asp:Label>
+            <asp:Label ID="AddCrewLabel" runat="server" Text="New Crew"></asp:Label>
             <asp:LinkButton ID="AddCrewLinkButton" runat="server" OnClick="AddCrewLinkButton_Click">
                 <span class="glyphicon glyphicon-plus"></span>
             </asp:LinkButton><br /><br />
@@ -26,7 +26,7 @@
             <asp:RadioButtonList ID="RouteCategory" runat="server"
                                  RepeatDirection="Vertical"
                                  RepeatLayout="Flow"
-                                 Visible="false" 
+                                 Visible="true" 
                                  OnSelectedIndexChanged="RouteCategory_SelectedIndexChanged">
                 <asp:ListItem Value="1">A Routes</asp:ListItem>
                 <asp:ListItem Value="2">B Routes</asp:ListItem>
@@ -37,7 +37,10 @@
         </div>
         <div class="col-md-9">
 
-            <asp:ListView ID="EmployeesListView" runat="server" DataSourceID="EmployeeListODS" Visible="false">
+            <asp:ListView ID="EmployeesListView" runat="server" 
+                DataSourceID="EmployeeListODS" 
+                Visible="false"
+                OnItemCommand="EmployeesListView_ItemCommand">
                 <AlternatingItemTemplate>
                     <tr style="background-color: #E9E9E9; color:black" class="crewRow">
                         <td><%# Container.DataItemIndex + 1%> </td>
@@ -101,6 +104,30 @@
                 </LayoutTemplate>
             </asp:ListView>
         </div>
+    </div>
+    <div class="row">
+        <asp:GridView ID="CreMemberGridView" runat="server" 
+            AutoGenerateColumns="false"
+            BorderStyle="None">
+            <columns>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <%# Container.DataItemIndex + 1%> 
+                        <asp:Label ID="EmployeeID" runat="server" Text='<%# Eval("EmployeeID") %>'</asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Name">
+                    <ItemTemplate>
+                        <asp:Label ID="Name" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Driver">
+                    <ItemTemplate>
+                        <asp:RadioButton ID="SelectedDriver" runat="server" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </columns>
+        </asp:GridView>
     </div>
     <asp:ObjectDataSource ID="EmployeeListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetEmployees" TypeName="COESystem.BLL.CrewLeaderControllers.EmployeeControllers">
         <SelectParameters>

@@ -1,12 +1,16 @@
 ﻿using COESystem.DAL;
-using COESystem.Data.Entities;
-using COESystem.Data.POCOs;
+
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+#region Addtional Namespaces
+using COESystem.Data.Entities;
+using COESystem.Data.POCOs;
+using System.Collections.Generic;
+using System.ComponentModel;
+#endregion
 
 namespace COESystem.BLL.CrewLeaderControllers
 {
@@ -28,6 +32,16 @@ namespace COESystem.BLL.CrewLeaderControllers
                                       Description = x.UnitDescription,
                                   };
                 return CurrentUnit.ToList();
+            }
+        }
+
+        //Ruturns a Unit based on its UnitID
+        [DataObjectMethod(DataObjectMethodType.Select,false)]
+        public Unit GetUnit(int unitId)
+        {
+            using(var context = new COESystemContext())
+            {
+                return context.Units.Find(unitId);
             }
         }
     }

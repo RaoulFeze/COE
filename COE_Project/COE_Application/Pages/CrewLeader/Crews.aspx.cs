@@ -86,5 +86,14 @@ namespace COE_Application.Pages.CrewLeader
         {
 
         }
+
+        protected void EmployeesListView_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            int employeeId = int.Parse(e.CommandArgument.ToString());
+            MessageUserControl.TryRun(() =>
+            {
+
+            });
+        }
     }
 }
