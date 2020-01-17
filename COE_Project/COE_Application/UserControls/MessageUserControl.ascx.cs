@@ -1,4 +1,5 @@
-﻿using System;
+﻿using COECommon.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Web.UI.WebControls;
 namespace COECommon.UserControls
 {
     public delegate void ProcessRequest();
+    public delegate string FeedBackRequest();
 
     public partial class MessageUserControl : System.Web.UI.UserControl
     {
@@ -58,6 +60,15 @@ namespace COECommon.UserControls
         {
             TryCatch(callback);
         }
+        public void TryRun(FeedBackRequest callback, string title)
+        {
+            string feedbackMessage;
+
+            if(TryCatch(callback, out feedbackMessage))
+            {
+                ShowInfo(feedbackMessage, title, STR_TITLE_ICON_success, STR_PANEL_success);
+            }
+        }
         /// <summary>
         /// Processes a request through a callback delegate within a try/catch block. Distinguished Entity Framework exceptions from general exceptions.
         /// </summary>
@@ -99,11 +110,34 @@ namespace COECommon.UserControls
         }
         #endregion
         #region Private methods - process details of messaging
+        private bool TryCatch(FeedBackRequest callback,out string feedback)
+        {
+            feedback = null;
+            try
+            {
+                feedback = callback();
+                return true;
+            }
+            catch (BusinessRuleException ex)
+            {
+                HandleException(ex);
+            }
+            catch (DbEntityValidationException ex)
+            {
+                HandleException(ex);
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex);
+            }
+            return false;
+        }
         /// <summary>
         /// Processes a request through a callback delegate within a try/catch block. Distinguished Entity Framework exceptions from general exceptions.
         /// </summary>
         /// <param name="callback">A delegate method to call within the try block</param>
         /// <returns>True if the callback was successful (did not generate an exception); false otherwise</returns>
+
         private bool TryCatch(ProcessRequest callback)
         {
             try

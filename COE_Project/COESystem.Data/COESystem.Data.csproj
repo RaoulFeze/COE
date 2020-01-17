@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\CurrentCrew.cs" />
     <Compile Include="Entities\Community.cs" />
     <Compile Include="Entities\CorrectiveAction.cs" />
     <Compile Include="Entities\Crew.cs" />
@@ -76,12 +77,12 @@
     <Compile Include="Entities\Yard.cs" />
     <Compile Include="POCOs\Cycle.cs" />
     <Compile Include="POCOs\GrassRoute.cs" />
+    <Compile Include="POCOs\Member.cs" />
     <Compile Include="POCOs\Status.cs" />
+    <Compile Include="POCOs\YardUnits.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTOs\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

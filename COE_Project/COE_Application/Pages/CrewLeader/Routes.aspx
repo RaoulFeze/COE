@@ -7,15 +7,15 @@
         <uc1:MessageUserControl runat="server" id="MessageUserControl" />
     </div>
     <div class="row">
-         <div class="routesHeader">
-        <h1>
-            <asp:Label ID="Yard" runat="server" Text=""></asp:Label>
-            <asp:Label ID="RouteType" runat="server" Text=""></asp:Label>
-            <asp:Label ID="Label1" runat="server" Text="Routes Inventory"></asp:Label>
-            <asp:Label ID="YardID" runat="server" Text="" Visible="false"></asp:Label>
-            <asp:Label ID="Season" runat="server" Text=""></asp:Label>
-        </h1>
-    </div>
+        <div class="routesHeader">
+            <h1>
+                <asp:Label ID="Yard" runat="server" Text=""></asp:Label>
+                <asp:Label ID="RouteType" runat="server" Text=""></asp:Label>
+                <asp:Label ID="Label1" runat="server" Text="Routes Inventory"></asp:Label>
+                <asp:Label ID="YardID" runat="server" Text="" Visible="false"></asp:Label>
+                <asp:Label ID="Season" runat="server" Text=""></asp:Label>
+            </h1>
+        </div>
     </div>
    
     <div class="row">
@@ -73,31 +73,31 @@
                                     <tr style="background-color: #E9E9E9; color: black;" class="cellPad">
                                         <td> <%# Container.DataItemIndex + 1%> </td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Pin") %>' runat="server" ID="PinLabel" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Pin") %>' runat="server" ID="PinLabel"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Community") %>' runat="server" ID="CommunityLabel" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Community") %>' runat="server" ID="CommunityLabel"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Neighbourhood") %>' runat="server" ID="NeighbourhoodLabel" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Neighbourhood") %>' runat="server" ID="NeighbourhoodLabel"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Address") %>' runat="server" ID="AddressLabel" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Address") %>' runat="server" ID="AddressLabel"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Area") %>' runat="server" ID="AreaLabel" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Area") %>' runat="server" ID="AreaLabel"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Notes") %>' runat="server" ID="NotesLabel" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Notes") %>' runat="server" ID="NotesLabel"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Cycle1", "{0:MMM-dd}") %>' runat="server" ID="Cycle1Label" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Cycle1", "{0:MMM-dd}") %>' runat="server" ID="Cycle1Label"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Cycle2", "{0:MMM-dd}") %>' runat="server" ID="Cycle2Label" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Cycle2", "{0:MMM-dd}") %>' runat="server" ID="Cycle2Label"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Cycle3", "{0:MMM-dd}") %>' runat="server" ID="Cycle3Label" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Cycle3", "{0:MMM-dd}") %>' runat="server" ID="Cycle3Label"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Cycle4", "{0:MMM-dd}") %>' runat="server" ID="Cycle4Label" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Cycle4", "{0:MMM-dd}") %>' runat="server" ID="Cycle4Label"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Cycle5", "{0:MMM-dd}") %>' runat="server" ID="Cycle5Label" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Cycle5", "{0:MMM-dd}") %>' runat="server" ID="Cycle5Label"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Pruning", "{0:MMM-dd}") %>' runat="server" ID="PruningLabel" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Pruning", "{0:MMM-dd}") %>' runat="server" ID="PruningLabel"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Mulching", "{0:MMM-dd}") %>' runat="server" ID="MulchingLabel" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Mulching", "{0:MMM-dd}") %>' runat="server" ID="MulchingLabel"/></td>
                                     </tr>
                                 </AlternatingItemTemplate>
 
@@ -105,31 +105,31 @@
                                     <tr style="background-color: #FFFFFF; color: black;" class="cellPad">
                                         <td> <%# Container.DataItemIndex + 1%> </td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Pin") %>' runat="server" ID="PinLabel" CssClass="routePin routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Pin") %>' runat="server" ID="PinLabel"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Community") %>' runat="server" ID="CommunityLabel" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Community") %>' runat="server" ID="CommunityLabel"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Neighbourhood") %>' runat="server" ID="NeighbourhoodLabel" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Neighbourhood") %>' runat="server" ID="NeighbourhoodLabel"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Address") %>' runat="server" ID="AddressLabel" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Address") %>' runat="server" ID="AddressLabel"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Area") %>' runat="server" ID="AreaLabel" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Area") %>' runat="server" ID="AreaLabel"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Notes") %>' runat="server" ID="NotesLabel" CssClass="routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Notes") %>' runat="server" ID="NotesLabel"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Cycle1", "{0:MMM-dd}") %>' runat="server" ID="Cycle1Label" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Cycle1", "{0:MMM-dd}") %>' runat="server" ID="Cycle1Label"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Cycle2", "{0:MMM-dd}") %>' runat="server" ID="Cycle2Label" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Cycle2", "{0:MMM-dd}") %>' runat="server" ID="Cycle2Label"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Cycle3", "{0:MMM-dd}") %>' runat="server" ID="Cycle3Label" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Cycle3", "{0:MMM-dd}") %>' runat="server" ID="Cycle3Label"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Cycle4", "{0:MMM-dd}") %>' runat="server" ID="Cycle4Label" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Cycle4", "{0:MMM-dd}") %>' runat="server" ID="Cycle4Label"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Cycle5", "{0:MMM-dd}") %>' runat="server" ID="Cycle5Label" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Cycle5", "{0:MMM-dd}") %>' runat="server" ID="Cycle5Label"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Pruning", "{0:MMM-dd}") %>' runat="server" ID="PruningLabel" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Pruning", "{0:MMM-dd}") %>' runat="server" ID="PruningLabel"/></td>
                                         <td>
-                                            <asp:Label Text='<%# Eval("Mulching", "{0:MMM-dd}") %>' runat="server" ID="MulchingLabel" CssClass=" routeCell" /></td>
+                                            <asp:Label Text='<%# Eval("Mulching", "{0:MMM-dd}") %>' runat="server" ID="MulchingLabel"/></td>
                                     </tr>
                                 </ItemTemplate>
                                 <LayoutTemplate>

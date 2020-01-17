@@ -56,7 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\BusinessRuleException.cs" />
+    <Compile Include="BLL\CrewLeaderControllers\CrewControllers.cs" />
+    <Compile Include="BLL\CrewLeaderControllers\EmployeeControllers.cs" />
     <Compile Include="BLL\CrewLeaderControllers\RouteController.cs" />
+    <Compile Include="BLL\CrewLeaderControllers\UnitControllers.cs" />
     <Compile Include="DAL\COESystemContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -7,6 +7,7 @@ using System.ComponentModel;
 using COESystem.Data.POCOs;
 using System.Data.Entity;
 using COESystem.DAL;
+using COESystem.Data.Entities;
 #endregion
 
 namespace COESystem.BLL
@@ -31,26 +32,26 @@ namespace COESystem.BLL
                                     Address = site.StreetAddress,
                                     Area = site.Area,
                                     Notes = site.Notes,
-                                    Cycle1 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).FirstOrDefault()).Equals(null)
-                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).FirstOrDefault()).Date,
+                                    Cycle1 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.Date) }).OrderBy(x => x.Date).FirstOrDefault()).Equals(null)
+                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.Date) }).OrderBy(x => x.Date).FirstOrDefault()).Date,
 
-                                    Cycle2 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).Skip(1).FirstOrDefault()).Equals(null)
-                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).Skip(1).FirstOrDefault()).Date,
+                                    Cycle2 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.Date) }).OrderBy(x => x.Date).Skip(1).FirstOrDefault()).Equals(null)
+                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.Date) }).OrderBy(x => x.Date).Skip(1).FirstOrDefault()).Date,
 
-                                    Cycle3 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).Skip(2).FirstOrDefault()).Equals(null)
-                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).Skip(2).FirstOrDefault()).Date,
+                                    Cycle3 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.Date) }).OrderBy(x => x.Date).Skip(2).FirstOrDefault()).Equals(null)
+                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.Date) }).OrderBy(x => x.Date).Skip(2).FirstOrDefault()).Date,
 
-                                    Cycle4 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).Skip(3).FirstOrDefault()).Equals(null)
-                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).Skip(3).FirstOrDefault()).Date,
+                                    Cycle4 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.Date) }).OrderBy(x => x.Date).Skip(3).FirstOrDefault()).Equals(null)
+                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.Date) }).OrderBy(x => x.Date).Skip(3).FirstOrDefault()).Date,
 
-                                    Cycle5 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).Skip(4).FirstOrDefault()).Equals(null)
-                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.TodayDate) }).OrderBy(x => x.Date).Skip(4).FirstOrDefault()).Date,
+                                    Cycle5 = ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.Date) }).OrderBy(x => x.Date).Skip(4).FirstOrDefault()).Equals(null)
+                                             ? (DateTime?)null : ((from sbm in context.SBMs where sbm.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(sbm.CrewSite.Crew.Date) }).OrderBy(x => x.Date).Skip(4).FirstOrDefault()).Date,
 
-                                    Pruning = ((from prune in context.Prunings where prune.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(prune.CrewSite.Crew.TodayDate) }).FirstOrDefault()).Equals(null)
-                                              ? (DateTime?)null : ((from prune in context.Prunings where prune.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(prune.CrewSite.Crew.TodayDate) }).FirstOrDefault()).Date,
+                                    Pruning = ((from prune in context.Prunings where prune.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(prune.CrewSite.Crew.Date) }).FirstOrDefault()).Equals(null)
+                                              ? (DateTime?)null : ((from prune in context.Prunings where prune.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(prune.CrewSite.Crew.Date) }).FirstOrDefault()).Date,
 
-                                    Mulching = ((from mulch in context.Mulchings where mulch.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(mulch.CrewSite.Crew.TodayDate) }).FirstOrDefault()).Equals(null)
-                                              ? (DateTime?)null : ((from mulch in context.Mulchings where mulch.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(mulch.CrewSite.Crew.TodayDate) }).FirstOrDefault()).Date
+                                    Mulching = ((from mulch in context.Mulchings where mulch.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(mulch.CrewSite.Crew.Date) }).FirstOrDefault()).Equals(null)
+                                              ? (DateTime?)null : ((from mulch in context.Mulchings where mulch.CrewSite.SiteID == site.SiteID select new Cycle { Date = DbFunctions.TruncateTime(mulch.CrewSite.Crew.Date) }).FirstOrDefault()).Date
 
                                 };
                 return RouteList.ToList();
@@ -99,12 +100,34 @@ namespace COESystem.BLL
                                  Area = site.Area,
                                  Notes = site.Notes,
                                  Count = site.Grass,
-                                 Date = ((from grass in context.Grasses where grass.CrewSite.SiteID == site.SiteID select new Cycle { Date = grass.CrewSite.Crew.TodayDate }).FirstOrDefault()).Equals(null) ? (DateTime?)null :
-                                         ((from grass in context.Grasses where grass.CrewSite.SiteID == site.SiteID select new Cycle { Date = grass.CrewSite.Crew.TodayDate }).FirstOrDefault()).Date
+                                 Date = ((from grass in context.Grasses where grass.CrewSite.SiteID == site.SiteID select new Cycle { Date = grass.CrewSite.Crew.Date }).FirstOrDefault()).Equals(null) ? (DateTime?)null :
+                                         ((from grass in context.Grasses where grass.CrewSite.SiteID == site.SiteID select new Cycle { Date = grass.CrewSite.Crew.Date }).FirstOrDefault()).Date
                              };
                 return GrassList.ToList();
             }
         }
+
+        //Returns the Yard Name based on the EmployeeID
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public string GetYardName(int? userId)
+        {
+
+            using (var context = new COESystemContext())
+            {
+                return context.Employees.Find(userId).Yard.YardName;
+            }
+        }
+
+        //Returns the YardID based on the EmployeeID
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public int GetYardId(int? employeeId)
+        {
+            using (var context = new COESystemContext())
+            {
+                return context.Employees.Find(employeeId).YardID;
+            }
+        }
+
         #endregion
 
         #region this code uses COE_DB 
@@ -226,33 +249,7 @@ namespace COESystem.BLL
         //    }
         //}
 
-        //Returns the Yard Name based on the YardID
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public string GetYardName(int? userId)
-        {
 
-            using (var context = new COESystemContext())
-            {
-                var yardName = from x in context.Employees
-                               where x.EmployeeID == userId
-                               select x.Yard.YardName;
-
-                return yardName.ToList()[0];
-            }
-        }
-
-        //Returns the YardID based on the EmployeeID
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public int GetYardId(int? employeeId)
-        {
-            using (var context = new COESystemContext())
-            {
-                var yardId = from x in context.Employees
-                             where x.EmployeeID == employeeId
-                             select x.YardID;
-                return yardId.ToList()[0];
-            }
-        }
         #endregion
 
     }
