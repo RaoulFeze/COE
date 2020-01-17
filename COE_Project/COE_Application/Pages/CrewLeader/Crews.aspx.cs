@@ -1,4 +1,5 @@
 ﻿
+
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,6 +12,7 @@ using System.Web.UI.WebControls;
 using COE_Application.Security;
 using COESystem.BLL;
 using COESystem.BLL.CrewLeaderControllers;
+using COESystem.Data.DTOs;
 using COESystem.Data.POCOs;
 #endregion
 
@@ -73,13 +75,13 @@ namespace COE_Application.Pages.CrewLeader
                     EmployeesListView.DataSource = null;
                     EmployeesListView.DataBind();
                     EmployeesListView.Visible = false;
+                    MessageUserControl.ShowInfo("You must select a Unit to proceed");
                 }
                 else
                 {
                     EmployeesListView.Visible = true;
                 }
             });
-            EmployeesListView.Visible = true;
         }
 
         protected void RouteCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -90,9 +92,16 @@ namespace COE_Application.Pages.CrewLeader
         protected void EmployeesListView_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
             int employeeId = int.Parse(e.CommandArgument.ToString());
+            int unitid = int.Parse(UnitsDDL.SelectedValue);
             MessageUserControl.TryRun(() =>
             {
+                //Add a new Member to a Crew
 
+                //Refresh the Crew List
+                CrewControllers crewManager = new CrewControllers();
+                List<CurrentCrew> currentCrews = crewManager.GetCurrentCrew(int.Parse(YardID.Text));
+                CrewRepeater.DataSource = currentCrews;
+                CrewRepeater.DataBind();
             });
         }
     }

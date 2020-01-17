@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Entity;
 using System.Linq;
+using COESystem.Data.DTOs;
+using COESystem.Data.POCOs;
 #endregion
 
 namespace COESystem.BLL.CrewLeaderControllers
@@ -32,7 +34,7 @@ namespace COESystem.BLL.CrewLeaderControllers
 
         //This method create a new crew
         [DataObjectMethod(DataObjectMethodType.Insert, false)]
-        public void CreateCrew(int unitId)
+        public void Add_To_A_Crew(int unitId, int employeeId)
         {
             using(var context = new COESystemContext())
             {
@@ -52,15 +54,85 @@ namespace COESystem.BLL.CrewLeaderControllers
                 }
                 else
                 {
-                    UnitControllers unitManager = new UnitControllers();
-                    Unit unit = unitManager.GetUnit(unitId);
-                    reasons.Add("A crew is already assigned with Unit " + unit.UnitNumber);
+                    int count = (from x in context.CrewMembers
+                                 where x.CrewID == crew.CrewID
+                                 select x).Count();
+
+                    CrewMember member = null;
+                    member = crew.CrewMembers.SingleOrDefault(x => x.EmployeeID == employeeId);
+
+                    if(member != null)
+                    {
+                        //An employee cannot be assigned only once in a Crew
+                        reasons.Add(context.Employees.Find(employeeId).Name + " is already assigned to this Crew");
+                    }
+                    else if (count > 5)
+                    {
+                        //A Crew cannot have more than 5 employees
+                        reasons.Add("A crew cannot have more than five (5) members");
+                    }
+                    else
+                    {
+                        //Check if the added employee is already assigned to a different Crew.
+                        List<CrewMember> CurrentCrews = (from x in context.CrewMembers
+                                                         where DbFunctions.TruncateTime(x.Crew.Date) == DbFunctions.TruncateTime(DateTime.Now)
+                                                         select x).ToList();
+
+                        foreach (CrewMember memb in CurrentCrews)
+                        {
+                            if (memb.EmployeeID == employeeId)
+                            {
+                                reasons.Add(context.Employees.Find(employeeId).Name + " is already in assigned to a crew");
+                            }
+                        }
+                    }
+                   
+                    
                 }
+
                 if (reasons.Count() > 0)
                 {
-                    throw new BusinessRuleException("Creatting new Crew ", reasons);
+                    throw new BusinessRuleException("Adding Crew Member ", reasons);
+                }
+                else
+                {
+                    CrewMember member = new CrewMember();
+                    member.EmployeeID = employeeId;
+
+                    //Use the navigational property to add the crew memeber because the pkey (crewID) 
+                    //is not know when the we create a brand new crew.
+                    crew.CrewMembers.Add(member);
+
+                    context.SaveChanges();
                 }
             }
         }
+
+        //This Method returns the List of the current crews
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<CurrentCrew> GetCurrentCrew(int yardId)
+        {
+            using(var context = new COESystemContext())
+            {
+                var CurrentCrews = from x in context.Crews
+                                   where x.Unit.YardID == yardId && DbFunctions.TruncateTime(x.Date) == DbFunctions.TruncateTime(DateTime.Now )
+
+                                   select new CurrentCrew
+                                   {
+                                       Unit = x.Unit.UnitNumber,
+                                       Crew = (from cr in context.CrewMembers
+                                               where cr.CrewID == x.CrewID
+                                               orderby cr.Employee.FirstName
+                                               select new Member
+                                               {
+                                                   EmployeeID = cr.EmployeeID,
+                                                   Name = cr.Employee.FirstName + " " + cr.Employee.LastName
+                                               }).ToList()
+
+                                   };
+                return CurrentCrews.ToList();
+            }
+        }
+
     }
 }

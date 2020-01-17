@@ -87,13 +87,13 @@ namespace COE_Application.Pages.CrewLeader
         protected global::System.Web.UI.WebControls.ListView EmployeesListView;
 
         /// <summary>
-        /// CreMemberGridView control.
+        /// CrewRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView CreMemberGridView;
+        protected global::System.Web.UI.WebControls.Repeater CrewRepeater;
 
         /// <summary>
         /// EmployeeListODS control.

@@ -3,6 +3,7 @@
 <%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <link href="../../Style/StyleSheet.css" rel="stylesheet" />
      <div class="row">
         <uc1:MessageUserControl runat="server" id="MessageUserControl" />
     </div>
@@ -26,7 +27,7 @@
             <asp:RadioButtonList ID="RouteCategory" runat="server"
                                  RepeatDirection="Vertical"
                                  RepeatLayout="Flow"
-                                 Visible="true" 
+                                 Visible="false" 
                                  OnSelectedIndexChanged="RouteCategory_SelectedIndexChanged">
                 <asp:ListItem Value="1">A Routes</asp:ListItem>
                 <asp:ListItem Value="2">B Routes</asp:ListItem>
@@ -50,7 +51,7 @@
                             <asp:Label Text='<%# Eval("Phone") %>' runat="server" ID="PhoneLabel" /></td>
                         <td style="text-align: center">
                             <asp:LinkButton CommandArgument='<%# Eval("EmployeeID") %>' runat="server" ID="LinkButton1">
-                                <span aria-hidden="true" class="glyphicon glyphicon-plus">&nbsp;</span>
+                                <span aria-hidden="true" class="glyphicon glyphicon-plus"></span>
                             </asp:LinkButton></td>
                     </tr>
                 </AlternatingItemTemplate>
@@ -72,7 +73,7 @@
                             <asp:Label Text='<%# Eval("Phone") %>' runat="server" ID="PhoneLabel" /></td>
                         <td style="text-align: center">
                             <asp:LinkButton CommandArgument='<%# Eval("EmployeeID") %>' runat="server" ID="EmployeeIDLabel">
-                                <span aria-hidden="true" class="glyphicon glyphicon-plus">&nbsp;</span>
+                                <span aria-hidden="true" class="glyphicon glyphicon-plus"></span>
                             </asp:LinkButton></td>
                     </tr>
                 </ItemTemplate>
@@ -105,29 +106,49 @@
             </asp:ListView>
         </div>
     </div>
+    <br />
     <div class="row">
-        <asp:GridView ID="CreMemberGridView" runat="server" 
-            AutoGenerateColumns="false"
-            BorderStyle="None">
-            <columns>
-                <asp:TemplateField>
-                    <ItemTemplate>
-                        <%# Container.DataItemIndex + 1%> 
-                        <asp:Label ID="EmployeeID" runat="server" Text='<%# Eval("EmployeeID") %>'</asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Name">
-                    <ItemTemplate>
-                        <asp:Label ID="Name" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Driver">
-                    <ItemTemplate>
-                        <asp:RadioButton ID="SelectedDriver" runat="server" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </columns>
-        </asp:GridView>
+        <asp:Repeater ID="CrewRepeater" runat="server"
+            ItemType="COESystem.Data.DTOs.CurrentCrew">
+            <ItemTemplate>
+                <div class="repeater col-sm-2">
+                    <h5><strong>Unit: <%# Item.Unit %></strong></h5>
+                    <asp:GridView ID="CreMemberGridView" runat="server"
+                        AutoGenerateColumns="false"
+                        CssClass="table table-hover table-striped"
+                        BorderWidth="1px"
+                     GridLines="Both"
+                        DataSource="<%# Item.Crew %>">
+                        <Columns>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <%# Container.DataItemIndex + 1%>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Name">
+                                <ItemTemplate>
+                                    <asp:Label ID="Name" runat="server" Text='<%# Eval("Name") %>' CssClass=""></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Driver" ControlStyle-CssClass="CrewMemberCell">
+                                <ItemTemplate>
+                                    <asp:RadioButton ID="SelectedDriver" runat="server" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="RemoveEmployee" runat="server" CommandArgument='<%# Eval("EmployeeID") %>'>
+                            <span aria-hidden="true" class="glyphicon glyphicon-remove" ></span>
+                                    </asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+            </ItemTemplate>
+        </asp:Repeater>
+
+        
     </div>
     <asp:ObjectDataSource ID="EmployeeListODS" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetEmployees" TypeName="COESystem.BLL.CrewLeaderControllers.EmployeeControllers">
         <SelectParameters>
