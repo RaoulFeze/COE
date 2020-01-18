@@ -26,7 +26,7 @@ namespace COESystem.BLL.CrewLeaderControllers
             using(var context = new COESystemContext())
             {
                 Crew crew = (from x in context.Crews
-                           where x.UnitID == unitID && DbFunctions.TruncateTime(date) == DbFunctions.TruncateTime(x.Date)
+                           where x.UnitID == unitID && DbFunctions.TruncateTime(date) == DbFunctions.TruncateTime(x.CrewDate)
                             select x).FirstOrDefault();
                 return crew;
             }
@@ -39,7 +39,7 @@ namespace COESystem.BLL.CrewLeaderControllers
             using(var context = new COESystemContext())
             {
                 Crew crew = (from x in context.Crews
-                            where x.UnitID == unitId && DbFunctions.TruncateTime(DateTime.Now) == DbFunctions.TruncateTime(x.Date)
+                            where x.UnitID == unitId && DbFunctions.TruncateTime(DateTime.Now) == DbFunctions.TruncateTime(x.CrewDate)
                             select x).FirstOrDefault();
 
                 List<string> reasons = new List<string>();
@@ -49,7 +49,7 @@ namespace COESystem.BLL.CrewLeaderControllers
                     //Create the new Crew
                     crew = new Crew();
                     crew.UnitID = unitId;
-                    crew.Date = (DateTime)DbFunctions.TruncateTime(DateTime.Now);
+                    crew.CrewDate = (DateTime)DbFunctions.TruncateTime(DateTime.Now);
                     context.Crews.Add(crew);
                 }
                 else
@@ -75,7 +75,7 @@ namespace COESystem.BLL.CrewLeaderControllers
                     {
                         //Check if the added employee is already assigned to a different Crew.
                         List<CrewMember> CurrentCrews = (from x in context.CrewMembers
-                                                         where DbFunctions.TruncateTime(x.Crew.Date) == DbFunctions.TruncateTime(DateTime.Now)
+                                                         where DbFunctions.TruncateTime(x.Crew.CrewDate) == DbFunctions.TruncateTime(DateTime.Now)
                                                          select x).ToList();
 
                         foreach (CrewMember memb in CurrentCrews)
@@ -115,7 +115,7 @@ namespace COESystem.BLL.CrewLeaderControllers
             using(var context = new COESystemContext())
             {
                 var CurrentCrews = from x in context.Crews
-                                   where x.Unit.YardID == yardId && DbFunctions.TruncateTime(x.Date) == DbFunctions.TruncateTime(DateTime.Now )
+                                   where x.Unit.YardID == yardId && DbFunctions.TruncateTime(x.CrewDate) == DbFunctions.TruncateTime(DateTime.Now )
 
                                    select new CurrentCrew
                                    {

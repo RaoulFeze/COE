@@ -19,7 +19,7 @@ namespace COESystem.Data.Entities
 
         public int CrewID { get; set; }
 
-        public DateTime Date { get; set; }
+        public DateTime CrewDate { get; set; }
 
         public int UnitID { get; set; }
 
