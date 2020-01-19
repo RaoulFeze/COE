@@ -116,7 +116,7 @@ namespace COESystem.BLL.CrewLeaderControllers
             {
                 var CurrentCrews = from x in context.Crews
                                    where x.Unit.YardID == yardId && DbFunctions.TruncateTime(x.CrewDate) == DbFunctions.TruncateTime(DateTime.Now )
-
+                                   orderby x.CrewID descending
                                    select new CurrentCrew
                                    {
                                        Unit = x.Unit.UnitNumber,
@@ -126,8 +126,17 @@ namespace COESystem.BLL.CrewLeaderControllers
                                                select new Member
                                                {
                                                    EmployeeID = cr.EmployeeID,
-                                                   Name = cr.Employee.FirstName + " " + cr.Employee.LastName
-                                               }).ToList()
+                                                   Name = cr.Employee.FirstName + " " + cr.Employee.LastName,
+                                                   Driver = cr.Driver
+                                               }).ToList(),
+                                       Sites = (from y in context.CrewSites
+                                                where y.CrewID == x.CrewID
+                                                orderby y.SiteID ascending
+                                                select new WorkSite
+                                                {
+                                                    SiteID = y.SiteID,
+                                                    Pin = y.Site.Pin
+                                                }).ToList()
 
                                    };
                 return CurrentCrews.ToList();

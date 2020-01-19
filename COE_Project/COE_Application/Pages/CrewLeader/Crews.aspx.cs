@@ -35,12 +35,21 @@ namespace COE_Application.Pages.CrewLeader
                 Response.Redirect("~/Account/Login.aspx");
             }
 
-            // Retrieve the YardID based on the current userId 
-            // Set the Yard ID as in invisible label on the web page.
-            SecurityController securityManager = new SecurityController();
-            int? employeeId = securityManager.GetCurrentUserId(User.Identity.Name);
-            RouteController routeManager = new RouteController();
-            YardID.Text = routeManager.GetYardId(employeeId).ToString();
+            MessageUserControl.TryRun(() =>
+            {
+                // Retrieve the YardID based on the current userId 
+                // Set the Yard ID as in invisible label on the web page.
+                SecurityController securityManager = new SecurityController();
+                int? employeeId = securityManager.GetCurrentUserId(User.Identity.Name);
+                RouteController routeManager = new RouteController();
+                YardID.Text = routeManager.GetYardId(employeeId).ToString();
+
+                //Populate the current Crews
+                CrewControllers crewManager = new CrewControllers();
+                List<CurrentCrew> currentCrews = crewManager.GetCurrentCrew(int.Parse(YardID.Text));
+                CrewRepeater.DataSource = currentCrews;
+                CrewRepeater.DataBind();
+            });
            
         }
 

@@ -144,7 +144,7 @@ create table Employee
 create table Crew
 (
 	CrewID integer identity(1,1) not null constraint pk_Crew primary key clustered,
-	Date datetime not null,
+	CrewDate datetime not null,
 	UnitID int not null constraint fk_Crew_To_Unit references Unit(UnitID),
 	KM_Start int null,
 	KM_End int null,
@@ -320,7 +320,7 @@ insert into Unit (UnitNumber, UnitDescription, YardID) values ('WAUJC68E32A75962
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-insert into Crew (Date, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/20/2019', 2, 197, 715, null);
+insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/20/2019', 2, 197, 715, null);
 
 insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (1, 'Pruning', '07:15', '09:08', null, 1);
 insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (2, 'Pruning', '10:07', '11:48', null, 1);
@@ -334,7 +334,7 @@ insert into SBM (CrewSiteID, TaskDescription) values (3, 'Grass Pulling');
 insert into SBM (CrewSiteID, TaskDescription) values (4, 'Grass Pulling');
 insert into SBM (CrewSiteID, TaskDescription) values (5, 'Grass Pulling');
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-insert into Crew (Date, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/21/2019', 2, 197, 715, null);
+insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/21/2019', 2, 197, 715, null);
 
 insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (6, 'Pruning', '07:15', '08:08', null, 2);
 insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (7, 'Pruning', '08:15', '09:20', null, 2);
@@ -350,7 +350,7 @@ insert into SBM (CrewSiteID, TaskDescription) values (9, 'Grass Pulling');
 insert into SBM (CrewSiteID, TaskDescription) values (10, 'Grass Pulling');
 insert into SBM (CrewSiteID, TaskDescription) values (11, 'Grass Pulling');
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-insert into Crew (Date, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/22/2019', 2, 197, 715, null);
+insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/22/2019', 2, 197, 715, null);
 
 insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (1, 'Pruning', '07:15', '08:08', null, 3);
 insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (2, 'Pruning', '08:15', '09:20', null, 3);
@@ -366,7 +366,7 @@ insert into SBM (CrewSiteID, TaskDescription) values (15, 'Grass Pulling');
 insert into SBM (CrewSiteID, TaskDescription) values (16, 'Grass Pulling');
 insert into SBM (CrewSiteID, TaskDescription) values (17, 'Grass Pulling');
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
-insert into Crew (Date, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/23/2019', 2, 197, 715, null);
+insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/23/2019', 2, 197, 715, null);
 
 insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (4, 'Pruning', '07:15', '08:08', null, 4);
 insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (5, 'Pruning', '08:15', '09:20', null, 4);
@@ -382,7 +382,7 @@ insert into SBM (CrewSiteID, TaskDescription) values (21, 'Grass Pulling');
 insert into SBM (CrewSiteID, TaskDescription) values (22, 'Grass Pulling');
 insert into SBM (CrewSiteID, TaskDescription) values (23, 'Grass Pulling');
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-insert into Crew (Date, UnitID, KM_Start, KM_End, AdditionalComments) values ('2/12/2019', 2, 197, 715, null);
+insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('2/12/2019', 2, 197, 715, null);
 
 
 insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (1, 'Pruning', '07:15', '08:08', null, 5);
@@ -399,7 +399,7 @@ insert into SBM (CrewSiteID, TaskDescription) values (27, 'Grass Pulling');
 insert into SBM (CrewSiteID, TaskDescription) values (28, 'Grass Pulling');
 insert into SBM (CrewSiteID, TaskDescription) values (29, 'Grass Pulling');
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
-insert into Crew (Date, UnitID, KM_Start, KM_End, AdditionalComments) values ('2/20/2019', 2, 197, 715, null);
+insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('2/20/2019', 2, 197, 715, null);
 
 
 insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (1, 'Pruning', '07:15', '08:08', null, 6);
@@ -417,7 +417,7 @@ insert into SBM (CrewSiteID, TaskDescription) values (34, 'Grass Pulling');
 insert into SBM (CrewSiteID, TaskDescription) values (35, 'Grass Pulling');
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
-insert into Crew (Date, UnitID, KM_Start, KM_End, AdditionalComments) values ('3/01/2019', 2, 197, 715, null);
+insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('3/01/2019', 2, 197, 715, null);
 
 
 insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (1, 'Pruning', '07:15', '08:08', null, 7);
@@ -658,11 +658,69 @@ insert into Unit (UnitNumber, UnitDescription, YardID) values ('19UUA65545A42772
 insert into Unit (UnitNumber, UnitDescription, YardID) values ('KM8JT3AC1AU799640', '3/4-Ton Truck', 3);
 insert into Unit (UnitNumber, UnitDescription, YardID) values ('2HNYD18763H734991', '2-Ton Truck', 5);
 
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/19/2020', 1, 197, 715, null);
+
+insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (1, 1, 1, 8);
+insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (3, 0, 0, 8);
+insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (4, 0, 0, 8);
+insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (5, 0, 0, 8);
+insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (6, 0, 0, 8);
+
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (1, 'Pruning', '07:15', '08:08', null, 8);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (2, 'Pruning', '07:15', '08:08', null, 8);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (3, 'Pruning', '07:15', '08:08', null, 8);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (4, 'Pruning', '07:15', '08:08', null, 8);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (5, 'Pruning', '07:15', '08:08', null, 8);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (6, 'Pruning', '07:15', '08:08', null, 8);
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/19/2020', 2, 187, 315, null);
+
+insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (8, 1, 0, 9);
+insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (9, 0, 0, 9);
+insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (11, 0, 1, 9);
+insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (12, 0, 0, 9);
+insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (13, 0, 0, 9);
+
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (7, 'Pruning', '07:15', '08:08', null, 9);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (8, 'Pruning', '07:15', '08:08', null, 9);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (9, 'Pruning', '07:15', '08:08', null, 9);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (10, 'Pruning', '07:15', '08:08', null, 9);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (11, 'Pruning', '07:15', '08:08', null, 9);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (12, 'Pruning', '07:15', '08:08', null, 9);
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/19/2020', 3, 187, 315, null);
+
+insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (15, 1, 0, 10);
+insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (17, 0, 1, 10);
+insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (20, 0, 0, 10);
+
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (13, 'Pruning', '07:15', '08:08', null, 10);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (14, 'Pruning', '07:15', '08:08', null, 10);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (15, 'Pruning', '07:15', '08:08', null, 10);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (16, 'Pruning', '07:15', '08:08', null, 10);
+
+-------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/19/2020', 8, 187, 315, null);
+
+insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (22, 1, 0, 11);
+insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (25, 0, 0, 11);
+insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (29, 0, 0, 11);
+insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (30, 0, 1, 11);
+
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (17, 'Pruning', '07:15', '08:08', null, 11);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (18, 'Pruning', '07:15', '08:08', null, 11);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (19, 'Pruning', '07:15', '08:08', null, 11);
+insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (20, 'Pruning', '07:15', '08:08', null, 11);
 
 /*select*from YARD	
 select*from Community
 select*from Season
-select*from site
+select*from site order by YardID
 select*from Unit
 Select*from Crew
 select*from CrewSite

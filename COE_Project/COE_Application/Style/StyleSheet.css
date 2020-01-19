@@ -119,11 +119,29 @@
 }
 
 .repeater {
-    float: right;
+    /*float: left;*/
 }
 .glyphicon-remove{
     color:red;
 }
 .glyphicon-plus{
     color:forestgreen;
+}
+
+.CrewGridContainer{
+    border:2px solid black;
+    float:left;
+}
+.CrewContainer{
+    float:left;
+}
+.SiteContainer{
+    float:right;
+    border-left:2px solid black;
+}
+.table{
+    margin:0;
+}
+.SiteContainer > button{
+    text-align:center;
 }

@@ -11,5 +11,6 @@ namespace COESystem.Data.DTOs
     {
         public string Unit { get; set; }
         public List<Member> Crew { get; set; }
+        public List<WorkSite> Sites { get; set; }
     }
 }
