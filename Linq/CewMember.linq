@@ -11,7 +11,7 @@
 void Main()
 {
 	var CurrentCrews = from x in Crews
-					   where x.Unit.YardID == 1 && x.CrewDate == System.DateTime.Parse("2020-01-18 12:00:00 AM") //DateTime.Now 
+					   where x.Unit.YardID == 1 && x.CrewDate == System.DateTime.Parse("2020-01-20 ") //DateTime.Now 
 
 					   select new CurrentCrew
 					   {
@@ -30,8 +30,8 @@ void Main()
 									 orderby y.SiteID ascending
 									 select new WorkSite
 									 {
-									 	SiteID = y.SiteID,
-									 	Pin = y.Site.Pin
+									 	SiteID = y.SiteID.Equals(null)?0:y.SiteID,
+									 	Pin = y.Site.Pin.Equals(null)?0:y.Site.Pin
 									 }).ToList()
 						
 					   };

@@ -101,13 +101,13 @@ namespace COE_Application.Pages.CrewLeader
         protected void EmployeesListView_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
             int employeeId = int.Parse(e.CommandArgument.ToString());
-            int unitid = int.Parse(UnitsDDL.SelectedValue);
+            int unitId = int.Parse(UnitsDDL.SelectedValue);
             MessageUserControl.TryRun(() =>
             {
-                //Add a new Member to a Crew
-
-                //Refresh the Crew List
                 CrewControllers crewManager = new CrewControllers();
+                //Add a new Member to a Crew
+                crewManager.Add_To_A_Crew(unitId, employeeId);
+                //Refresh the Crew List
                 List<CurrentCrew> currentCrews = crewManager.GetCurrentCrew(int.Parse(YardID.Text));
                 CrewRepeater.DataSource = currentCrews;
                 CrewRepeater.DataBind();

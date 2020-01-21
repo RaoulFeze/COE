@@ -165,7 +165,7 @@ create table CrewSite
 (
 	CrewSiteID Integer identity(1,1) not null constraint pk_CrewSite primary key clustered,
 	SiteID int not null constraint fk_CrewSite_to_Site references Site(SiteID),
-	TaskDescription varchar(100) not null,
+	TaskDescription varchar(100) null,
 	TimeOnSite time null,
     TimeOffSite time null,
 	ActionRequired varchar(100) null,
@@ -692,7 +692,7 @@ insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRe
 insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (12, 'Pruning', '07:15', '08:08', null, 9);
 -------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------
-insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/19/2020', 3, 187, 315, null);
+insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/20/2020', 3, 187, 315, null);
 
 insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (15, 1, 0, 10);
 insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (17, 0, 1, 10);
@@ -705,7 +705,7 @@ insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRe
 
 -------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------
-insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/19/2020', 8, 187, 315, null);
+insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/20/2020', 8, 187, 315, null);
 
 insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (22, 1, 0, 11);
 insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (25, 0, 0, 11);
@@ -723,10 +723,11 @@ select*from Season
 select*from site order by YardID
 select*from Unit
 Select*from Crew
-select*from CrewSite
+select*from CrewSite 
 select*from SBM order by CrewSIteID
 select*from Grass order by CrewSIteID
 select*from Mulching order by CrewSIteID
 select*from Employee order by EmployeeID
 select*from Unit order by YardID
+select*from CrewMember where CrewID = 13
 */

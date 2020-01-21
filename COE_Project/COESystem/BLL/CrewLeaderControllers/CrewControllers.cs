@@ -34,7 +34,7 @@ namespace COESystem.BLL.CrewLeaderControllers
 
         //This method create a new crew
         [DataObjectMethod(DataObjectMethodType.Insert, false)]
-        public void Add_To_A_Crew(int unitId, int employeeId)
+        public int Add_To_A_Crew(int unitId, int employeeId)
         {
             using(var context = new COESystemContext())
             {
@@ -49,8 +49,13 @@ namespace COESystem.BLL.CrewLeaderControllers
                     //Create the new Crew
                     crew = new Crew();
                     crew.UnitID = unitId;
-                    crew.CrewDate = (DateTime)DbFunctions.TruncateTime(DateTime.Now);
+                    crew.CrewDate = DateTime.Now;
                     context.Crews.Add(crew);
+
+                    //Create the First CrewSite
+
+                    CrewSite crewSite = new CrewSite();
+                    crew.CrewSites.Add(crewSite);
                 }
                 else
                 {
@@ -61,7 +66,7 @@ namespace COESystem.BLL.CrewLeaderControllers
                     CrewMember member = null;
                     member = crew.CrewMembers.SingleOrDefault(x => x.EmployeeID == employeeId);
 
-                    if(member != null)
+                    if (member != null)
                     {
                         //An employee cannot be assigned only once in a Crew
                         reasons.Add(context.Employees.Find(employeeId).Name + " is already assigned to this Crew");
@@ -86,8 +91,8 @@ namespace COESystem.BLL.CrewLeaderControllers
                             }
                         }
                     }
-                   
-                    
+
+
                 }
 
                 if (reasons.Count() > 0)
@@ -103,8 +108,36 @@ namespace COESystem.BLL.CrewLeaderControllers
                     //is not know when the we create a brand new crew.
                     crew.CrewMembers.Add(member);
 
+
                     context.SaveChanges();
                 }
+                return crew.CrewID;
+            }
+        }
+
+        //Assigns Sites to a Crew
+        [DataObjectMethod(DataObjectMethodType.Insert,false)]
+        public void Add_Site_To_Crew(int CrewID, int siteId, int crewSiteId)
+        {
+            using(var context = new COESystemContext())
+            {
+                CrewSite crewSite = (from x in context.CrewSites
+                                     where x.CrewSiteID == crewSiteId && x.SiteID.Equals(null)
+                                     select x).FirstOrDefault();
+                if(crewSite == null)
+                {
+                    //Assigns the Site to the First CrewSite
+                    crewSite.SiteID = siteId;
+                }
+                else
+                {
+                    //Create a new CrewSite
+                    crewSite = new CrewSite();
+                    crewSite.SiteID = siteId;
+                    crewSite.CrewID = CrewID;
+
+                }
+
             }
         }
 
@@ -134,8 +167,8 @@ namespace COESystem.BLL.CrewLeaderControllers
                                                 orderby y.SiteID ascending
                                                 select new WorkSite
                                                 {
-                                                    SiteID = y.SiteID,
-                                                    Pin = y.Site.Pin
+                                                    SiteID = y.SiteID.Equals(null) ? 0 : y.SiteID,
+                                                    Pin = y.Site.Pin.Equals(null) ? 0 : y.Site.Pin
                                                 }).ToList()
 
                                    };
