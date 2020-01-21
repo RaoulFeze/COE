@@ -660,7 +660,7 @@ insert into Unit (UnitNumber, UnitDescription, YardID) values ('2HNYD18763H73499
 
 -------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------
-insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/19/2020', 1, 197, 715, null);
+insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/21/2020', 1, 197, 715, null);
 
 insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (1, 1, 1, 8);
 insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (3, 0, 0, 8);
@@ -676,7 +676,7 @@ insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRe
 insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (6, 'Pruning', '07:15', '08:08', null, 8);
 -------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------
-insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/19/2020', 2, 187, 315, null);
+insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/21/2020', 2, 187, 315, null);
 
 insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (8, 1, 0, 9);
 insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (9, 0, 0, 9);
@@ -692,7 +692,7 @@ insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRe
 insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRequired, CrewID) values (12, 'Pruning', '07:15', '08:08', null, 9);
 -------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------
-insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/20/2020', 3, 187, 315, null);
+insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/21/2020', 3, 187, 315, null);
 
 insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (15, 1, 0, 10);
 insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (17, 0, 1, 10);
@@ -705,7 +705,7 @@ insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRe
 
 -------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------
-insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/20/2020', 8, 187, 315, null);
+insert into Crew (CrewDate, UnitID, KM_Start, KM_End, AdditionalComments) values ('1/21/2020', 8, 187, 315, null);
 
 insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (22, 1, 0, 11);
 insert into CrewMember (EmployeeID, Driver, FLHA_CompletedBy, CrewID) values (25, 0, 0, 11);
