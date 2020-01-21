@@ -107,6 +107,7 @@ namespace COE_Application.Pages.CrewLeader
                 CrewControllers crewManager = new CrewControllers();
                 //Add a new Member to a Crew
                 crewManager.Add_To_A_Crew(unitId, employeeId);
+
                 //Refresh the Crew List
                 List<CurrentCrew> currentCrews = crewManager.GetCurrentCrew(int.Parse(YardID.Text));
                 CrewRepeater.DataSource = currentCrews;

@@ -164,7 +164,7 @@ create table CrewMember
 create table CrewSite
 (
 	CrewSiteID Integer identity(1,1) not null constraint pk_CrewSite primary key clustered,
-	SiteID int not null constraint fk_CrewSite_to_Site references Site(SiteID),
+	SiteID int null constraint fk_CrewSite_to_Site references Site(SiteID),
 	TaskDescription varchar(100) null,
 	TimeOnSite time null,
     TimeOffSite time null,

@@ -23,7 +23,6 @@ namespace COESystem.Data.Entities
 
         public int SiteID { get; set; }
 
-        [Required]
         [StringLength(100)]
         public string TaskDescription { get; set; }
 
