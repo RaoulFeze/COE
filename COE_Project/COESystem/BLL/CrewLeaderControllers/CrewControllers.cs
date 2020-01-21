@@ -26,7 +26,7 @@ namespace COESystem.BLL.CrewLeaderControllers
             using(var context = new COESystemContext())
             {
                 Crew crew = (from x in context.Crews
-                           where x.UnitID == unitID && DbFunctions.TruncateTime(date) == DbFunctions.TruncateTime(x.Date)
+                           where x.UnitID == unitID && DbFunctions.TruncateTime(date) == DbFunctions.TruncateTime(x.CrewDate)
                             select x).FirstOrDefault();
                 return crew;
             }
@@ -34,12 +34,12 @@ namespace COESystem.BLL.CrewLeaderControllers
 
         //This method create a new crew
         [DataObjectMethod(DataObjectMethodType.Insert, false)]
-        public void Add_To_A_Crew(int unitId, int employeeId)
+        public int Add_To_A_Crew(int unitId, int employeeId)
         {
             using(var context = new COESystemContext())
             {
                 Crew crew = (from x in context.Crews
-                            where x.UnitID == unitId && DbFunctions.TruncateTime(DateTime.Now) == DbFunctions.TruncateTime(x.Date)
+                            where x.UnitID == unitId && DbFunctions.TruncateTime(DateTime.Now) == DbFunctions.TruncateTime(x.CrewDate)
                             select x).FirstOrDefault();
 
                 List<string> reasons = new List<string>();
@@ -49,8 +49,13 @@ namespace COESystem.BLL.CrewLeaderControllers
                     //Create the new Crew
                     crew = new Crew();
                     crew.UnitID = unitId;
-                    crew.Date = (DateTime)DbFunctions.TruncateTime(DateTime.Now);
+                    crew.CrewDate = DateTime.Now;
                     context.Crews.Add(crew);
+
+                    //Create the First CrewSite
+
+                    CrewSite crewSite = new CrewSite();
+                    crew.CrewSites.Add(crewSite);
                 }
                 else
                 {
@@ -61,7 +66,7 @@ namespace COESystem.BLL.CrewLeaderControllers
                     CrewMember member = null;
                     member = crew.CrewMembers.SingleOrDefault(x => x.EmployeeID == employeeId);
 
-                    if(member != null)
+                    if (member != null)
                     {
                         //An employee cannot be assigned only once in a Crew
                         reasons.Add(context.Employees.Find(employeeId).Name + " is already assigned to this Crew");
@@ -75,7 +80,7 @@ namespace COESystem.BLL.CrewLeaderControllers
                     {
                         //Check if the added employee is already assigned to a different Crew.
                         List<CrewMember> CurrentCrews = (from x in context.CrewMembers
-                                                         where DbFunctions.TruncateTime(x.Crew.Date) == DbFunctions.TruncateTime(DateTime.Now)
+                                                         where DbFunctions.TruncateTime(x.Crew.CrewDate) == DbFunctions.TruncateTime(DateTime.Now)
                                                          select x).ToList();
 
                         foreach (CrewMember memb in CurrentCrews)
@@ -86,8 +91,8 @@ namespace COESystem.BLL.CrewLeaderControllers
                             }
                         }
                     }
-                   
-                    
+
+
                 }
 
                 if (reasons.Count() > 0)
@@ -103,8 +108,36 @@ namespace COESystem.BLL.CrewLeaderControllers
                     //is not know when the we create a brand new crew.
                     crew.CrewMembers.Add(member);
 
+
                     context.SaveChanges();
                 }
+                return crew.CrewID;
+            }
+        }
+
+        //Assigns Sites to a Crew
+        [DataObjectMethod(DataObjectMethodType.Insert,false)]
+        public void Add_Site_To_Crew(int CrewID, int siteId, int crewSiteId)
+        {
+            using(var context = new COESystemContext())
+            {
+                CrewSite crewSite = (from x in context.CrewSites
+                                     where x.CrewSiteID == crewSiteId && x.SiteID.Equals(null)
+                                     select x).FirstOrDefault();
+                if(crewSite == null)
+                {
+                    //Assigns the Site to the First CrewSite
+                    crewSite.SiteID = siteId;
+                }
+                else
+                {
+                    //Create a new CrewSite
+                    crewSite = new CrewSite();
+                    crewSite.SiteID = siteId;
+                    crewSite.CrewID = CrewID;
+
+                }
+
             }
         }
 
@@ -115,8 +148,8 @@ namespace COESystem.BLL.CrewLeaderControllers
             using(var context = new COESystemContext())
             {
                 var CurrentCrews = from x in context.Crews
-                                   where x.Unit.YardID == yardId && DbFunctions.TruncateTime(x.Date) == DbFunctions.TruncateTime(DateTime.Now )
-
+                                   where x.Unit.YardID == yardId && DbFunctions.TruncateTime(x.CrewDate) == DbFunctions.TruncateTime(DateTime.Now )
+                                   orderby x.CrewID descending
                                    select new CurrentCrew
                                    {
                                        Unit = x.Unit.UnitNumber,
@@ -126,8 +159,17 @@ namespace COESystem.BLL.CrewLeaderControllers
                                                select new Member
                                                {
                                                    EmployeeID = cr.EmployeeID,
-                                                   Name = cr.Employee.FirstName + " " + cr.Employee.LastName
-                                               }).ToList()
+                                                   Name = cr.Employee.FirstName + " " + cr.Employee.LastName,
+                                                   Driver = cr.Driver
+                                               }).ToList(),
+                                       Sites = (from y in context.CrewSites
+                                                where y.CrewID == x.CrewID
+                                                orderby y.SiteID ascending
+                                                select new WorkSite
+                                                {
+                                                    SiteID = y.SiteID.Equals(null) ? 0 : y.SiteID,
+                                                    Pin = y.Site.Pin.Equals(null) ? 0 : y.Site.Pin
+                                                }).ToList()
 
                                    };
                 return CurrentCrews.ToList();

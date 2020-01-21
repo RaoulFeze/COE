@@ -11,7 +11,7 @@
 void Main()
 {
 	var CurrentCrews = from x in Crews
-					   where x.Unit.YardID == 1 && x.Date == System.DateTime.Parse("2020-01-17 12:00:00 AM") //DateTime.Now 
+					   where x.Unit.YardID == 1 && x.CrewDate == System.DateTime.Parse("2020-01-20 ") //DateTime.Now 
 
 					   select new CurrentCrew
 					   {
@@ -22,8 +22,17 @@ void Main()
 								   select new Member
 								   {
 								   		EmployeeID = cr.EmployeeID,
-								   		Name = cr.Employee.FirstName +' '+ cr.Employee.LastName
-								   }).ToList()
+								   		Name = cr.Employee.FirstName +' '+ cr.Employee.LastName,
+										Driver = cr.Driver
+								   }).ToList(),
+							Sites = (from y in CrewSites
+									 where y.CrewID == x.CrewID
+									 orderby y.SiteID ascending
+									 select new WorkSite
+									 {
+									 	SiteID = y.SiteID.Equals(null)?0:y.SiteID,
+									 	Pin = y.Site.Pin.Equals(null)?0:y.Site.Pin
+									 }).ToList()
 						
 					   };
 		CurrentCrews.Dump();
@@ -35,10 +44,18 @@ public class CurrentCrew
 {
 	public string Unit{get; set;}
 	public List<Member> Crew{get; set;}
+	public List<WorkSite> Sites{get; set;}
 }
 
 public class Member
 {
 	public int EmployeeID{get;set;}
 	public string Name {get; set;}
+	public bool? Driver{get;set;}
+}
+
+public class WorkSite
+{
+	public int SiteID {get; set;}
+	public int Pin{get;set;}
 }

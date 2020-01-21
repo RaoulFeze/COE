@@ -111,39 +111,76 @@
         <asp:Repeater ID="CrewRepeater" runat="server"
             ItemType="COESystem.Data.DTOs.CurrentCrew">
             <ItemTemplate>
-                <div class="repeater col-sm-2">
+                <div class="repeater col-sm-3">
                     <h5><strong>Unit: <%# Item.Unit %></strong></h5>
-                    <asp:GridView ID="CreMemberGridView" runat="server"
-                        AutoGenerateColumns="false"
-                        CssClass="table table-hover table-striped"
-                        BorderWidth="1px"
-                     GridLines="Both"
-                        DataSource="<%# Item.Crew %>">
-                        <Columns>
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <%# Container.DataItemIndex + 1%>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Name">
-                                <ItemTemplate>
-                                    <asp:Label ID="Name" runat="server" Text='<%# Eval("Name") %>' CssClass=""></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Driver" ControlStyle-CssClass="CrewMemberCell">
-                                <ItemTemplate>
-                                    <asp:RadioButton ID="SelectedDriver" runat="server" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="RemoveEmployee" runat="server" CommandArgument='<%# Eval("EmployeeID") %>'>
-                            <span aria-hidden="true" class="glyphicon glyphicon-remove" ></span>
-                                    </asp:LinkButton>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                    </asp:GridView>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="CrewGridContainer">
+                        <div class="CrewContainer">
+                            <asp:GridView ID="CrewMemberGridView" runat="server"
+                                AutoGenerateColumns="false"
+                                CssClass="table"
+                                BorderWidth="0"
+                                GridLines="None"
+                                DataSource="<%# Item.Crew %>">
+                                <Columns>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <%# Container.DataItemIndex + 1%>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Name">
+                                        <ItemTemplate>
+                                            <asp:Label ID="Name" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Driver" ControlStyle-CssClass="CrewMemberCell">
+                                        <ItemTemplate>
+                                            <asp:RadioButton ID="SelectedDriver" runat="server" Checked='<%# Eval("Driver") %>' Enabled="false" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="RemoveEmployee" runat="server" CommandArgument='<%# Eval("EmployeeID") %>'>
+                                                <span aria-hidden="true" class="glyphicon glyphicon-remove" ></span>
+                                            </asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
+                             <asp:Button ID="UpdateCrewButton" runat="server" Text="Update" />
+                        </div>
+                        <div class="SiteContainer">
+                            <asp:GridView ID="WorkSiteGridView" runat="server"
+                                AutoGenerateColumns="false"
+                                CssClass="table"
+                                BorderWidth="0"
+                                GridLines="None"
+                                DataSource="<%# Item.Sites %>">
+                                <Columns>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <%# Container.DataItemIndex + 1%>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Sites (Pin)">
+                                        <ItemTemplate>
+                                            <asp:Label ID="Name" runat="server" Text='<%# Eval("Pin") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="RemoveEmployee" runat="server" CommandArgument='<%# Eval("SiteID") %>'>
+                                                <span aria-hidden="true" class="glyphicon glyphicon-remove" ></span>
+                                            </asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
+                             <asp:Button ID="UpdateSiteButton" runat="server" Text="Update" />
+                        </div>
+                    </div>
+
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
             </ItemTemplate>
         </asp:Repeater>

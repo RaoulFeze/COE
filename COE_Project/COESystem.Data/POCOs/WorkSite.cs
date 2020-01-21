@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace COESystem.Data.POCOs
 {
-    public class Member
+    public class WorkSite
     {
-        public int EmployeeID { get; set; }
-        public string Name { get; set; }
-        public bool? Driver { get; set; }
+        public int SiteID { get; set; }
+        public int Pin { get; set; }
     }
 }

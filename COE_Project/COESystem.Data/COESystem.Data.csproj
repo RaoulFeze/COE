@@ -79,6 +79,7 @@
     <Compile Include="POCOs\GrassRoute.cs" />
     <Compile Include="POCOs\Member.cs" />
     <Compile Include="POCOs\Status.cs" />
+    <Compile Include="POCOs\WorkSite.cs" />
     <Compile Include="POCOs\YardUnits.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
