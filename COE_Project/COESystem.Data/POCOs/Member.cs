@@ -8,7 +8,7 @@ namespace COESystem.Data.POCOs
 {
     public class Member
     {
-        public int EmployeeID { get; set; }
+        public int CrewMemberID { get; set; }
         public string Name { get; set; }
         public bool? Driver { get; set; }
     }

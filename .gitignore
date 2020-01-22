@@ -565,3 +565,4 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/macos,csharp,windows,visualstudio
 COE_Project/COE_Application/WebConnectionStrings.config
+*.config

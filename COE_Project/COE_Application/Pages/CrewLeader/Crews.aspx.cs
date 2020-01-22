@@ -100,19 +100,25 @@ namespace COE_Application.Pages.CrewLeader
 
         protected void EmployeesListView_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
+            string name = "";
             int employeeId = int.Parse(e.CommandArgument.ToString());
             int unitId = int.Parse(UnitsDDL.SelectedValue);
             MessageUserControl.TryRun(() =>
             {
                 CrewControllers crewManager = new CrewControllers();
                 //Add a new Member to a Crew
-                crewManager.Add_To_A_Crew(unitId, employeeId);
+                name = crewManager.Add_To_A_Crew(unitId, employeeId);
 
                 //Refresh the Crew List
                 List<CurrentCrew> currentCrews = crewManager.GetCurrentCrew(int.Parse(YardID.Text));
                 CrewRepeater.DataSource = currentCrews;
                 CrewRepeater.DataBind();
-            });
+            },"Add Crew Member", name + " was added Successfully");
+        }
+
+        protected void CrewRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+
         }
     }
 }

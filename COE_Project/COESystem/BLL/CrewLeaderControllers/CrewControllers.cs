@@ -19,7 +19,7 @@ namespace COESystem.BLL.CrewLeaderControllers
     [DataObject]
     public class CrewControllers
     {
-        //This method returns the Crew of a crew based on the Date and UnitID
+        //This method returns a Crew based on the Date and UnitID
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public Crew GetCrew(int unitID, DateTime date)
         {
@@ -32,9 +32,9 @@ namespace COESystem.BLL.CrewLeaderControllers
             }
         } 
 
-        //This method create a new crew
+        //This method create a new Crew and update current Crews
         [DataObjectMethod(DataObjectMethodType.Insert, false)]
-        public int Add_To_A_Crew(int unitId, int employeeId)
+        public string Add_To_A_Crew(int unitId, int employeeId)
         {
             using(var context = new COESystemContext())
             {
@@ -54,8 +54,8 @@ namespace COESystem.BLL.CrewLeaderControllers
 
                     //Create the First CrewSite
 
-                    CrewSite crewSite = new CrewSite();
-                    crew.CrewSites.Add(crewSite);
+                    //CrewSite crewSite = new CrewSite();
+                    //crew.CrewSites.Add(crewSite);
                 }
                 else
                 {
@@ -71,29 +71,27 @@ namespace COESystem.BLL.CrewLeaderControllers
                         //An employee cannot be assigned only once in a Crew
                         reasons.Add(context.Employees.Find(employeeId).Name + " is already assigned to this Crew");
                     }
-                    else if (count > 5)
+                    else if (count == 5)
                     {
                         //A Crew cannot have more than 5 employees
                         reasons.Add("A crew cannot have more than five (5) members");
                     }
-                    else
-                    {
-                        //Check if the added employee is already assigned to a different Crew.
-                        List<CrewMember> CurrentCrews = (from x in context.CrewMembers
-                                                         where DbFunctions.TruncateTime(x.Crew.CrewDate) == DbFunctions.TruncateTime(DateTime.Now)
-                                                         select x).ToList();
-
-                        foreach (CrewMember memb in CurrentCrews)
-                        {
-                            if (memb.EmployeeID == employeeId)
-                            {
-                                reasons.Add(context.Employees.Find(employeeId).Name + " is already in assigned to a crew");
-                            }
-                        }
-                    }
-
 
                 }
+
+                //Check if the added employee is already assigned to a different Crew.
+                List<CrewMember> CurrentCrews = (from x in context.CrewMembers
+                                                 where DbFunctions.TruncateTime(x.Crew.CrewDate) == DbFunctions.TruncateTime(DateTime.Now)
+                                                 select x).ToList();
+
+                foreach (CrewMember memb in CurrentCrews)
+                {
+                    if (memb.EmployeeID == employeeId)
+                    {
+                        reasons.Add(context.Employees.Find(employeeId).Name + " is already in assigned to a crew (" + memb.Crew.Unit.UnitNumber + ")");
+                    }
+                }
+
 
                 if (reasons.Count() > 0)
                 {
@@ -111,7 +109,25 @@ namespace COESystem.BLL.CrewLeaderControllers
 
                     context.SaveChanges();
                 }
-                return crew.CrewID;
+                return context.Employees.Find(employeeId).Name;
+            }
+        }
+
+        //This method removes a Crew member from his crew.
+        public void RemoveCrewMember(int crewMemberID)
+        {
+            using(var context = new COESystemContext())
+            {
+                CrewMember member = context.CrewMembers.Find(crewMemberID);
+                if(member == null)
+                {
+                    throw new Exception("This employee is already removed from the crew");
+                }
+                else
+                {
+                    context.CrewMembers.Remove(member);
+                    context.SaveChanges();
+                }
             }
         }
 
@@ -158,7 +174,7 @@ namespace COESystem.BLL.CrewLeaderControllers
                                                orderby cr.Employee.FirstName
                                                select new Member
                                                {
-                                                   EmployeeID = cr.EmployeeID,
+                                                   CrewMemberID = cr.CrewMemberID,
                                                    Name = cr.Employee.FirstName + " " + cr.Employee.LastName,
                                                    Driver = cr.Driver
                                                }).ToList(),

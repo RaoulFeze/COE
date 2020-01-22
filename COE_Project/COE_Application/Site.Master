@@ -90,7 +90,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Parks & Roads Services</p>
+                <h2>&copy; <%: DateTime.Now.Year %> - Parks & Roads Services</h2>
             </footer>
         </div>
     </form>

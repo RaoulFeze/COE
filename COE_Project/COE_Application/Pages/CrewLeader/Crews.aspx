@@ -109,7 +109,8 @@
     <br />
     <div class="row">
         <asp:Repeater ID="CrewRepeater" runat="server"
-            ItemType="COESystem.Data.DTOs.CurrentCrew">
+            ItemType="COESystem.Data.DTOs.CurrentCrew" 
+            OnItemCommand="CrewRepeater_ItemCommand">
             <ItemTemplate>
                 <div class="repeater col-sm-3">
                     <h5><strong>Unit: <%# Item.Unit %></strong></h5>
@@ -134,19 +135,18 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Driver" ControlStyle-CssClass="CrewMemberCell">
                                         <ItemTemplate>
-                                            <asp:RadioButton ID="SelectedDriver" runat="server" Checked='<%# Eval("Driver") %>' Enabled="false" />
+                                            <%--<asp:RadioButton ID="SelectedDriver" runat="server" Checked='<%# Eval("Driver") %>' Enabled="false" />--%>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="RemoveEmployee" runat="server" CommandArgument='<%# Eval("EmployeeID") %>'>
+                                            <asp:LinkButton ID="RemoveEmployee" runat="server" CommandArgument='<%# Eval("CrewMemberID") %>'>
                                                 <span aria-hidden="true" class="glyphicon glyphicon-remove" ></span>
                                             </asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
-                             <asp:Button ID="UpdateCrewButton" runat="server" Text="Update" />
                         </div>
                         <div class="SiteContainer">
                             <asp:GridView ID="WorkSiteGridView" runat="server"
