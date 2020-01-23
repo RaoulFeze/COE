@@ -64,19 +64,21 @@ namespace COE_Application.Pages.CrewLeader
                 case 0:
                     MessageUserControl.TryRun(() =>
                     {
-                        List<Status> Aroutes = routeManager.RouteList(DateTime.Now.Year, int.Parse(YardID.Text), 1);
-                        RouteAListView.DataSource = Aroutes;
-                        RouteAListView.DataBind();
+                        //List<Status> Aroutes = routeManager.RouteList(DateTime.Now.Year, int.Parse(YardID.Text), 1);
+                        //RouteAListView.DataSource = Aroutes;
+                        //RouteAListView.DataBind();
+                        SiteType.Text = "1";
                     });
                     
                     break;
                 case 1:
                     MessageUserControl.TryRun(() =>
                     {
-                        //TODO: Change the siteType to B
-                        List<Status> Broutes = routeManager.RouteList(DateTime.Now.Year, int.Parse(YardID.Text), 2);
-                        RouteBListView.DataSource = Broutes;
-                        RouteBListView.DataBind();
+
+                        //List<Status> Broutes = routeManager.RouteList(DateTime.Now.Year, int.Parse(YardID.Text), 2);
+                        //RouteBListView.DataSource = Broutes;
+                        //RouteBListView.DataBind();
+                        SiteType.Text = "2";
                     });
                     break;
                 case 2:

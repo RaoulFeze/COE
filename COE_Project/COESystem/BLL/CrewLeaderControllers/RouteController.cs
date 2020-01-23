@@ -16,13 +16,14 @@ namespace COESystem.BLL
     public class RouteController
     {
         [DataObjectMethod(DataObjectMethodType.Select,false)]
-        public List<Status> RouteList(int year, int yardId, int siteTypeId)
+        public List<Status> RouteList(int yardId, int siteTypeId)
         {
             using (var context = new COESystemContext())
             {
                 var RouteList = from site in context.Sites
                                 orderby site.Community.Name ascending
                                 where site.Season.SeasonYear == 2019 && site.Yard.YardID == yardId && site.SiteTypeID == siteTypeId
+                                orderby site.Community.Name ascending
                                 select new Status
                                 {
                                     Pin = site.Pin,

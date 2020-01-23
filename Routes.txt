@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Routes" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Routes.aspx.cs" Inherits="COE_Application.Pages.CrewLeader.Routes" %>
+<%@ Page Title="Routes" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Routes.aspx.cs" Inherits="COE_Application.Pages.CrewLeader.Routes" %>
 
 <%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
 
@@ -14,7 +14,6 @@
                 <asp:Label ID="Label1" runat="server" Text="Routes Inventory"></asp:Label>
                 <asp:Label ID="YardID" runat="server" Text="" Visible="false"></asp:Label>
                 <asp:Label ID="Season" runat="server" Text=""></asp:Label>
-                <asp:Label ID="SiteType" runat="server" Text="" Visible="false"></asp:Label>
             </h1>
         </div>
     </div>
@@ -69,7 +68,7 @@
                 <asp:View ID="RouteA_View" runat="server">
                     <fieldset class="form-horizontal">
                         <div class="RouteAStyle">
-                            <asp:ListView ID="RouteAListView" runat="server" DataSourceID="ObjectDataSource1">
+                            <asp:ListView ID="RouteAListView" runat="server">
                                 <AlternatingItemTemplate>
                                     <tr style="background-color: #E9E9E9; color: black;" class="cellPad">
                                         <td> <%# Container.DataItemIndex + 1%> </td>
@@ -176,7 +175,7 @@
                 <asp:View ID="RouteB_View" runat="server">
                    <fieldset class="form-horizontal">
                        <div class="RouteAStyle">
-                           <asp:ListView ID="RouteBListView" runat="server" DataSourceID="ObjectDataSource1">
+                            <asp:ListView ID="RouteBListView" runat="server">
                                 <AlternatingItemTemplate>
                                     <tr style="background-color: #E9E9E9; color: black;" class="cellPad">
                                         <td><%# Container.DataItemIndex + 1%> </td>
@@ -252,11 +251,13 @@
                                         </tr>
                                         <tr runat="server">
                                             <td runat="server" style="text-align: center; background-color: white; font-family: Verdana, Arial, Helvetica, sans-serif; color: black">
-                                                <asp:DataPager runat="server" ID="DataPager1" PageSize="20">
-                                                   <Fields>
-                                                       <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True"></asp:NextPreviousPagerField>
-                                                   </Fields>
-                                               </asp:DataPager>
+                                                <asp:DataPager runat="server" ID="DataPager2" PagedControlID="RouteBListView" PageSize="20">
+                                                    <Fields>
+                                                        <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False"></asp:NextPreviousPagerField>
+                                                        <asp:NumericPagerField></asp:NumericPagerField>
+                                                        <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False"></asp:NextPreviousPagerField>
+                                                    </Fields>
+                                                </asp:DataPager>
                                             </td>
                                         </tr>
                                     </table>
@@ -375,12 +376,6 @@
     </div>
   </div>
    
-    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="RouteList" TypeName="COESystem.BLL.RouteController">
-        <SelectParameters>
-            <asp:Parameter Name="year" Type="Int32"></asp:Parameter>
-            <asp:Parameter Name="yardId" Type="Int32"></asp:Parameter>
-            <asp:Parameter Name="siteTypeId" Type="Int32"></asp:Parameter>
-        </SelectParameters>
-    </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="RouteTest" TypeName="COESystem.BLL.RouteController"></asp:ObjectDataSource>
 
 </asp:Content>

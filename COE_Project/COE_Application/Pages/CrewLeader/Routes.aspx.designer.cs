@@ -69,6 +69,15 @@ namespace COE_Application.Pages.CrewLeader
         protected global::System.Web.UI.WebControls.Label Season;
 
         /// <summary>
+        /// SiteType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label SiteType;
+
+        /// <summary>
         /// RouteMenu control.
         /// </summary>
         /// <remarks>
