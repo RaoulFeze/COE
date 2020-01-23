@@ -89,8 +89,8 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
-                <h2>&copy; <%: DateTime.Now.Year %> - Parks & Roads Services</h2>
+            <footer style="text-align:center">
+                <h3>&copy; <%: DateTime.Now.Year %> - Parks & Roads Services</h3>
             </footer>
         </div>
     </form>

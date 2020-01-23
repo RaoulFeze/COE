@@ -175,7 +175,6 @@
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
-                             <asp:Button ID="UpdateSiteButton" runat="server" Text="Update" />
                         </div>
                     </div>
 

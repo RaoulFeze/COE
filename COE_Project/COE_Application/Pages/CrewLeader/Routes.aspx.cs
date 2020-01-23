@@ -42,7 +42,7 @@ namespace COE_Application.Pages.CrewLeader
             //This poertion of code loads the first view (A Routes) when the page loads initially.
             MessageUserControl.TryRun(() =>
             {
-                List<Status> Aroutes = routeManager.RouteList(DateTime.Now.Year, int.Parse(YardID.Text), "A");
+                List<Status> Aroutes = routeManager.RouteList(DateTime.Now.Year, int.Parse(YardID.Text), 1);
                 RouteAListView.DataSource = Aroutes;
                 RouteAListView.DataBind();
             });
@@ -64,7 +64,7 @@ namespace COE_Application.Pages.CrewLeader
                 case 0:
                     MessageUserControl.TryRun(() =>
                     {
-                        List<Status> Aroutes = routeManager.RouteList(DateTime.Now.Year, int.Parse(YardID.Text), "A");
+                        List<Status> Aroutes = routeManager.RouteList(DateTime.Now.Year, int.Parse(YardID.Text), 1);
                         RouteAListView.DataSource = Aroutes;
                         RouteAListView.DataBind();
                     });
@@ -74,7 +74,7 @@ namespace COE_Application.Pages.CrewLeader
                     MessageUserControl.TryRun(() =>
                     {
                         //TODO: Change the siteType to B
-                        List<Status> Broutes = routeManager.RouteList(DateTime.Now.Year, int.Parse(YardID.Text), "A");
+                        List<Status> Broutes = routeManager.RouteList(DateTime.Now.Year, int.Parse(YardID.Text), 2);
                         RouteBListView.DataSource = Broutes;
                         RouteBListView.DataBind();
                     });

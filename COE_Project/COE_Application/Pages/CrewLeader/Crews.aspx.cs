@@ -61,6 +61,7 @@ namespace COE_Application.Pages.CrewLeader
         {
             MessageUserControl.TryRun(() =>
             {
+                //Populate the Units Dropdown List
                 int yardId = int.Parse(YardID.Text);
                 UnitControllers unitManager = new UnitControllers();
                 List<YardUnits> unit = unitManager.GetUnits(int.Parse(YardID.Text));
@@ -81,6 +82,7 @@ namespace COE_Application.Pages.CrewLeader
                 EmployeeControllers employeeManager = new EmployeeControllers();
                 if (UnitsDDL.SelectedIndex == 0)
                 {
+                    //Validate that a Unit was selected
                     EmployeesListView.DataSource = null;
                     EmployeesListView.DataBind();
                     EmployeesListView.Visible = false;
@@ -100,25 +102,38 @@ namespace COE_Application.Pages.CrewLeader
 
         protected void EmployeesListView_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
-            string name = "";
             int employeeId = int.Parse(e.CommandArgument.ToString());
             int unitId = int.Parse(UnitsDDL.SelectedValue);
             MessageUserControl.TryRun(() =>
             {
                 CrewControllers crewManager = new CrewControllers();
                 //Add a new Member to a Crew
-                name = crewManager.Add_To_A_Crew(unitId, employeeId);
+                crewManager.Add_To_A_Crew(unitId, employeeId);
 
                 //Refresh the Crew List
                 List<CurrentCrew> currentCrews = crewManager.GetCurrentCrew(int.Parse(YardID.Text));
                 CrewRepeater.DataSource = currentCrews;
                 CrewRepeater.DataBind();
-            },"Add Crew Member", name + " was added Successfully");
+
+                //
+                RouteCategory.Visible = true;
+            });
         }
 
         protected void CrewRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
+            int crewMemberId = int.Parse(e.CommandArgument.ToString());
+            MessageUserControl.TryRun(() =>
+            {
+                CrewControllers crewManager = new CrewControllers();
+                crewManager.RemoveCrewMember(crewMemberId);
 
+                //refresh the current Crews
+                List<CurrentCrew> currentCrews = crewManager.GetCurrentCrew(int.Parse(YardID.Text));
+                CrewRepeater.DataSource = currentCrews;
+                CrewRepeater.DataBind();
+            });
+           
         }
     }
 }

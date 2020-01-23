@@ -34,7 +34,7 @@ namespace COESystem.BLL.CrewLeaderControllers
 
         //This method create a new Crew and update current Crews
         [DataObjectMethod(DataObjectMethodType.Insert, false)]
-        public string Add_To_A_Crew(int unitId, int employeeId)
+        public void Add_To_A_Crew(int unitId, int employeeId)
         {
             using(var context = new COESystemContext())
             {
@@ -44,7 +44,21 @@ namespace COESystem.BLL.CrewLeaderControllers
 
                 List<string> reasons = new List<string>();
 
-                if(crew == null)
+
+                //Check if the added employee is already assigned to a different Crew.
+                List<CrewMember> CurrentCrews = (from x in context.CrewMembers
+                                                 where DbFunctions.TruncateTime(x.Crew.CrewDate) == DbFunctions.TruncateTime(DateTime.Now)
+                                                 select x).ToList();
+
+                foreach (CrewMember memb in CurrentCrews)
+                {
+                    if (memb.EmployeeID == employeeId)
+                    {
+                        throw new Exception(context.Employees.Find(employeeId).Name + " is already in assigned to a crew (" + memb.Crew.Unit.UnitNumber + ")");
+                    }
+                }
+
+                if (crew == null)
                 {
                     //Create the new Crew
                     crew = new Crew();
@@ -79,20 +93,6 @@ namespace COESystem.BLL.CrewLeaderControllers
 
                 }
 
-                //Check if the added employee is already assigned to a different Crew.
-                List<CrewMember> CurrentCrews = (from x in context.CrewMembers
-                                                 where DbFunctions.TruncateTime(x.Crew.CrewDate) == DbFunctions.TruncateTime(DateTime.Now)
-                                                 select x).ToList();
-
-                foreach (CrewMember memb in CurrentCrews)
-                {
-                    if (memb.EmployeeID == employeeId)
-                    {
-                        reasons.Add(context.Employees.Find(employeeId).Name + " is already in assigned to a crew (" + memb.Crew.Unit.UnitNumber + ")");
-                    }
-                }
-
-
                 if (reasons.Count() > 0)
                 {
                     throw new BusinessRuleException("Adding Crew Member ", reasons);
@@ -109,7 +109,6 @@ namespace COESystem.BLL.CrewLeaderControllers
 
                     context.SaveChanges();
                 }
-                return context.Employees.Find(employeeId).Name;
             }
         }
 

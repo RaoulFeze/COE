@@ -720,6 +720,7 @@ insert into CrewSite (SiteID, TaskDescription, TimeOnSite, TimeOffSite, ActionRe
 /*select*from YARD	
 select*from Community
 select*from Season
+select*from SiteType
 select*from site order by YardID
 select*from Unit
 Select*from Crew
