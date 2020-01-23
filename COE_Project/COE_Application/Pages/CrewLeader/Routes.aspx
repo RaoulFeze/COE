@@ -2,6 +2,8 @@
 
 <%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
 
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <uc1:MessageUserControl runat="server" id="MessageUserControl" />
@@ -377,9 +379,9 @@
    
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="RouteList" TypeName="COESystem.BLL.RouteController">
         <SelectParameters>
-            <asp:Parameter Name="year" Type="Int32"></asp:Parameter>
-            <asp:Parameter Name="yardId" Type="Int32"></asp:Parameter>
-            <asp:Parameter Name="siteTypeId" Type="Int32"></asp:Parameter>
+            <asp:ControlParameter ControlID="YardID" PropertyName="Text" Name="yardId" Type="Int32"></asp:ControlParameter>
+            <asp:ControlParameter ControlID="SiteType" PropertyName="Text" Name="siteTypeId" Type="Int32"></asp:ControlParameter>
+
         </SelectParameters>
     </asp:ObjectDataSource>
 

@@ -38,13 +38,15 @@ namespace COE_Application.Pages.CrewLeader
             Season.Text = DateTime.Now.Year.ToString();
             Yard.Text = routeManager.GetYardName(employeeId);
             YardID.Text = routeManager.GetYardId(employeeId).ToString();
+            SiteType.Text = "1";
+            
 
             //This poertion of code loads the first view (A Routes) when the page loads initially.
             MessageUserControl.TryRun(() =>
             {
-                List<Status> Aroutes = routeManager.RouteList(DateTime.Now.Year, int.Parse(YardID.Text), 1);
-                RouteAListView.DataSource = Aroutes;
-                RouteAListView.DataBind();
+                //List<Status> Aroutes = routeManager.RouteList( int.Parse(YardID.Text), 1);
+                //RouteAListView.DataSource = Aroutes;
+                //RouteAListView.DataBind();
             });
         }
 
