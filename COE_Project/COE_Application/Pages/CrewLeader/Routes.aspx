@@ -254,11 +254,11 @@
                                         </tr>
                                         <tr runat="server">
                                             <td runat="server" style="text-align: center; background-color: white; font-family: Verdana, Arial, Helvetica, sans-serif; color: black">
-                                                <asp:DataPager runat="server" ID="DataPager1" PageSize="20">
+                                              <%--  <asp:DataPager runat="server" ID="DataPager1" PagedControlID="RouteBListView" PageSize="20">
                                                    <Fields>
                                                        <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True"></asp:NextPreviousPagerField>
                                                    </Fields>
-                                               </asp:DataPager>
+                                               </asp:DataPager>--%>
                                             </td>
                                         </tr>
                                     </table>
