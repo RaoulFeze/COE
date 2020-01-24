@@ -70,7 +70,7 @@
             <asp:MultiView ID="RoutesMultiView" runat="server" ActiveViewIndex="0">
                 <asp:View ID="RouteA_View" runat="server">
                     <fieldset class="form-horizontal">
-                        <div class="RouteAStyle">
+                        <div class="RouteStyle">
                             <asp:ListView ID="RouteAListView" runat="server" DataSourceID="ObjectDataSource1">
                                 <AlternatingItemTemplate>
                                     <tr style="background-color: #E9E9E9; color: black;" class="cellPad">
@@ -162,7 +162,7 @@
                                         </tr>
                                         <tr runat="server">
                                             <td runat="server" style="text-align: center; background-color: white; font-family: Verdana, Arial, Helvetica, sans-serif; color: black">
-                                                <asp:DataPager runat="server" ID="DataPager2" PagedControlID="RouteAListView" PageSize="20">
+                                                <asp:DataPager runat="server" ID="RouteA_DataPager" PageSize="10" PagedControlID="RouteAListView">
                                                     <Fields>
                                                         <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True"></asp:NextPreviousPagerField>
                                                     </Fields>
@@ -177,7 +177,7 @@
                 </asp:View>
                 <asp:View ID="RouteB_View" runat="server">
                    <fieldset class="form-horizontal">
-                       <div class="RouteAStyle">
+                       <div class="RouteStyle">
                            <asp:ListView ID="RouteBListView" runat="server" DataSourceID="ObjectDataSource1">
                                 <AlternatingItemTemplate>
                                     <tr style="background-color: #E9E9E9; color: black;" class="cellPad">
@@ -204,7 +204,13 @@
                                             <asp:Label Text='<%# Eval("Mulching", "{0:MMM-dd}") %>' runat="server" ID="MulchingLabel" CssClass=" routeCell" /></td>
                                     </tr>
                                 </AlternatingItemTemplate>
-
+                               <EmptyDataTemplate>
+                                   <table runat="server" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px;">
+                                       <tr>
+                                           <td><span style="color: firebrick;">No Data Returned</span></td>
+                                       </tr>
+                                   </table>
+                               </EmptyDataTemplate>
                                 <ItemTemplate>
                                     <tr style="background-color: #FFFFFF; color: black;" class="cellPad">
                                         <td><%# Container.DataItemIndex + 1%> </td>
@@ -254,11 +260,11 @@
                                         </tr>
                                         <tr runat="server">
                                             <td runat="server" style="text-align: center; background-color: white; font-family: Verdana, Arial, Helvetica, sans-serif; color: black">
-                                              <%--  <asp:DataPager runat="server" ID="DataPager1" PagedControlID="RouteBListView" PageSize="20">
-                                                   <Fields>
-                                                       <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True"></asp:NextPreviousPagerField>
-                                                   </Fields>
-                                               </asp:DataPager>--%>
+                                                <asp:DataPager ID="RouteB_DataPager" runat="server" PageSize="30" PagedControlID="RouteBListView">
+                                                    <Fields>
+                                                        <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True"></asp:NextPreviousPagerField>
+                                                    </Fields>
+                                                </asp:DataPager>
                                             </td>
                                         </tr>
                                     </table>

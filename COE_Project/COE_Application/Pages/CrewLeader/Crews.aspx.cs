@@ -91,6 +91,7 @@ namespace COE_Application.Pages.CrewLeader
                 else
                 {
                     EmployeesListView.Visible = true;
+                    RouteCategory.Visible = true;
                 }
             });
         }
@@ -114,9 +115,6 @@ namespace COE_Application.Pages.CrewLeader
                 List<CurrentCrew> currentCrews = crewManager.GetCurrentCrew(int.Parse(YardID.Text));
                 CrewRepeater.DataSource = currentCrews;
                 CrewRepeater.DataBind();
-
-                //
-                RouteCategory.Visible = true;
             });
         }
 
