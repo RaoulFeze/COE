@@ -162,7 +162,7 @@
                                         </tr>
                                         <tr runat="server">
                                             <td runat="server" style="text-align: center; background-color: white; font-family: Verdana, Arial, Helvetica, sans-serif; color: black">
-                                                <asp:DataPager runat="server" ID="RouteA_DataPager" PageSize="10" PagedControlID="RouteAListView">
+                                                <asp:DataPager runat="server" ID="RouteA_DataPager" PageSize="10" PagedControlID="RouteAListView"  QueryStringField="pageNumber">
                                                     <Fields>
                                                         <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True"></asp:NextPreviousPagerField>
                                                     </Fields>
@@ -260,7 +260,7 @@
                                         </tr>
                                         <tr runat="server">
                                             <td runat="server" style="text-align: center; background-color: white; font-family: Verdana, Arial, Helvetica, sans-serif; color: black">
-                                                <asp:DataPager ID="RouteB_DataPager" runat="server" PageSize="30" PagedControlID="RouteBListView">
+                                                <asp:DataPager ID="RouteB_DataPager" runat="server" PageSize="30" PagedControlID="RouteBListView" QueryStringField="pageNumber" ViewStateMode="Inherit">
                                                     <Fields>
                                                         <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True"></asp:NextPreviousPagerField>
                                                     </Fields>
