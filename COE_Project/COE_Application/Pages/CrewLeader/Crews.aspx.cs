@@ -87,6 +87,7 @@ namespace COE_Application.Pages.CrewLeader
                     EmployeesListView.DataBind();
                     EmployeesListView.Visible = false;
                     MessageUserControl.ShowInfo("You must select a Unit to proceed");
+                    RouteCategory.Visible = false;
                 }
                 else
                 {
@@ -98,7 +99,15 @@ namespace COE_Application.Pages.CrewLeader
 
         protected void RouteCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Test.Text = RouteCategory.SelectedValue;
+            MessageUserControl.TryRun(() =>
+            {
+                CrewControllers crewManager = new CrewControllers();
+                List<CurrentCrew> currentCrews = crewManager.GetCurrentCrew(int.Parse(YardID.Text));
+                CrewRepeater.DataSource = currentCrews;
+                CrewRepeater.DataBind();
+            });
+            
         }
 
         protected void EmployeesListView_ItemCommand(object sender, ListViewCommandEventArgs e)

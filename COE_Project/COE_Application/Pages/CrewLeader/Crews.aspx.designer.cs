@@ -78,6 +78,15 @@ namespace COE_Application.Pages.CrewLeader
         protected global::System.Web.UI.WebControls.RadioButtonList RouteCategory;
 
         /// <summary>
+        /// Test control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Test;
+
+        /// <summary>
         /// EmployeesListView control.
         /// </summary>
         /// <remarks>

@@ -31,22 +31,17 @@ namespace COE_Application.Pages.CrewLeader
 
             // Retrieve the YardID based on the current userId 
             // Set the Yard ID as in invisible label on the web page.
-            SecurityController securityManager = new SecurityController();
-            int? employeeId = securityManager.GetCurrentUserId(User.Identity.Name);
-
-            RouteController routeManager = new RouteController();
-            Season.Text = DateTime.Now.Year.ToString();
-            Yard.Text = routeManager.GetYardName(employeeId);
-            YardID.Text = routeManager.GetYardId(employeeId).ToString();
-            SiteType.Text = "1";
-            
-
-            //This poertion of code loads the first view (A Routes) when the page loads initially.
             MessageUserControl.TryRun(() =>
             {
-                //List<Status> Aroutes = routeManager.RouteList( int.Parse(YardID.Text), 1);
-                //RouteAListView.DataSource = Aroutes;
-                //RouteAListView.DataBind();
+                SecurityController securityManager = new SecurityController();
+                int? employeeId = securityManager.GetCurrentUserId(User.Identity.Name);
+
+                RouteController routeManager = new RouteController();
+                Season.Text = DateTime.Now.Year.ToString();
+                Yard.Text = routeManager.GetYardName(employeeId);
+                YardID.Text = routeManager.GetYardId(employeeId).ToString();
+                SiteType.Text = "1";
+
             });
         }
 
@@ -54,11 +49,13 @@ namespace COE_Application.Pages.CrewLeader
         {
             MessageUserControl.HandleDataBoundException(e);
         }
+
         //This method switches views on the MultiView
         protected void RouteMenu_MenuItemClick(object sender, MenuEventArgs e)
         {
             int index = Int32.Parse(e.Item.Value);
             RoutesMultiView.ActiveViewIndex = index;
+           
             RouteController routeManager = new RouteController();
 
             switch(index)
@@ -66,9 +63,6 @@ namespace COE_Application.Pages.CrewLeader
                 case 0:
                     MessageUserControl.TryRun(() =>
                     {
-                        //List<Status> Aroutes = routeManager.RouteList(DateTime.Now.Year, int.Parse(YardID.Text), 1);
-                        //RouteAListView.DataSource = Aroutes;
-                        //RouteAListView.DataBind();
                         SiteType.Text = "1";
                     });
                     
@@ -76,10 +70,6 @@ namespace COE_Application.Pages.CrewLeader
                 case 1:
                     MessageUserControl.TryRun(() =>
                     {
-
-                        //List<Status> Broutes = routeManager.RouteList(DateTime.Now.Year, int.Parse(YardID.Text), 2);
-                        //RouteBListView.DataSource = Broutes;
-                        //RouteBListView.DataBind();
                         SiteType.Text = "2";
                     });
                     break;
