@@ -35,6 +35,8 @@
                 <asp:ListItem Value="4">Planting Routes</asp:ListItem>
                 <asp:ListItem Value="5">Watering Routes</asp:ListItem>
             </asp:RadioButtonList>
+            <br /><br />
+            <asp:Button ID="SelectSiteButton" runat="server" Text="Select Sites" Visible="false" OnClick="SelectSiteButton_Click" />
             <asp:Label ID="Test" runat="server" Text=""></asp:Label>
         </div>
         <div class="col-md-9">
@@ -114,7 +116,13 @@
             OnItemCommand="CrewRepeater_ItemCommand">
             <ItemTemplate>
                 <div class="repeater col-sm-3">
-                    <h5><strong>Unit: <%# Item.Unit %></strong></h5>
+                    <h5>
+                        <strong>Unit:<asp:LinkButton ID="SelectCrewLinkButton" runat="server" CommandArgument='<%# Item.UnitID %>' CommandName="SelectCrew"> <%# Item.Unit %></asp:LinkButton></strong>
+                        &nbsp;&nbsp;
+                        <asp:LinkButton ID="RemoveCrew" runat="server" CommandArgument='<%# Item.UnitID %>' CommandName="DeleteCrew">
+                        <span aria-hidden="true" class="glyphicon glyphicon-remove" ></span> 
+                        </asp:LinkButton>
+                    </h5>
                     <div class="CrewGridContainer">
                         <div class="CrewContainer">
                             <asp:GridView ID="CrewMemberGridView" runat="server"
@@ -141,7 +149,7 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="RemoveEmployee" runat="server" CommandArgument='<%# Eval("CrewMemberID") %>'>
+                                            <asp:LinkButton ID="RemoveEmployee" runat="server" CommandArgument='<%# Eval("CrewMemberID") %>' CommandName="DeleteMember" >
                                                 <span aria-hidden="true" class="glyphicon glyphicon-remove" ></span>
                                             </asp:LinkButton>
                                         </ItemTemplate>
@@ -169,7 +177,7 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <asp:LinkButton ID="RemoveEmployee" runat="server" CommandArgument='<%# Eval("SiteID") %>'>
+                                            <asp:LinkButton ID="RemoveEmployee" runat="server" CommandArgument='<%# Eval("SiteID") %>'  CommandName="DeleteSite">
                                                 <span aria-hidden="true" class="glyphicon glyphicon-remove" ></span>
                                             </asp:LinkButton>
                                         </ItemTemplate>

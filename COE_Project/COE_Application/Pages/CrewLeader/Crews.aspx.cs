@@ -59,42 +59,12 @@ namespace COE_Application.Pages.CrewLeader
         }
         protected void AddCrewLinkButton_Click(object sender, EventArgs e)
         {
-            MessageUserControl.TryRun(() =>
-            {
-                //Populate the Units Dropdown List
-                int yardId = int.Parse(YardID.Text);
-                UnitControllers unitManager = new UnitControllers();
-                List<YardUnits> unit = unitManager.GetUnits(int.Parse(YardID.Text));
-                UnitsDDL.DataSource = unit;
-                UnitsDDL.DataTextField = nameof(YardUnits.Number);
-                UnitsDDL.DataValueField = nameof(YardUnits.ID);
-                UnitsDDL.DataBind();
-                UnitsDDL.Items.Insert(0, "Select a Unit...");
-            });
-            UnitsDDL.Visible = true;
-            UnitLabel.Visible = true;
+            LoadDDLUnits();
         }
 
         protected void UnitsDDL_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MessageUserControl.TryRun(() =>
-            {
-                EmployeeControllers employeeManager = new EmployeeControllers();
-                if (UnitsDDL.SelectedIndex == 0)
-                {
-                    //Validate that a Unit was selected
-                    EmployeesListView.DataSource = null;
-                    EmployeesListView.DataBind();
-                    EmployeesListView.Visible = false;
-                    MessageUserControl.ShowInfo("You must select a Unit to proceed");
-                    RouteCategory.Visible = false;
-                }
-                else
-                {
-                    EmployeesListView.Visible = true;
-                    RouteCategory.Visible = true;
-                }
-            });
+            PopulateEmployeeAndSiteType();
         }
 
         protected void RouteCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -129,18 +99,91 @@ namespace COE_Application.Pages.CrewLeader
 
         protected void CrewRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            int crewMemberId = int.Parse(e.CommandArgument.ToString());
+            switch (e.CommandName)
+            {
+                case "SelectCrew":
+                    LoadDDLUnits();
+                    UnitsDDL.SelectedValue = e.CommandArgument.ToString();
+                    PopulateEmployeeAndSiteType();
+                    break;
+
+                case "DeleteCrew":
+                    int crewId = int.Parse(e.CommandArgument.ToString());
+                    MessageUserControl.TryRun(() =>
+                    {
+                        CrewControllers crewManager = new CrewControllers();
+                        crewManager.DeleteCrew(crewId);
+
+                        //refresh the current Crews
+                        List<CurrentCrew> currentCrews = crewManager.GetCurrentCrew(int.Parse(YardID.Text));
+                        CrewRepeater.DataSource = currentCrews;
+                        CrewRepeater.DataBind();
+                    });
+                    break;
+
+                case "DeleteMember":
+                    int crewMemberId = int.Parse(e.CommandArgument.ToString());
+                    MessageUserControl.TryRun(() =>
+                    {
+                        CrewControllers crewManager = new CrewControllers();
+                        crewManager.RemoveCrewMember(crewMemberId);
+
+                        //refresh the current Crews
+                        List<CurrentCrew> currentCrews = crewManager.GetCurrentCrew(int.Parse(YardID.Text));
+                        CrewRepeater.DataSource = currentCrews;
+                        CrewRepeater.DataBind();
+                    });
+                    break;
+
+                case "DeleteSite":
+                    break;
+            }
+        }
+
+        protected void SelectSiteButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+        protected void LoadDDLUnits()
+        {
             MessageUserControl.TryRun(() =>
             {
-                CrewControllers crewManager = new CrewControllers();
-                crewManager.RemoveCrewMember(crewMemberId);
-
-                //refresh the current Crews
-                List<CurrentCrew> currentCrews = crewManager.GetCurrentCrew(int.Parse(YardID.Text));
-                CrewRepeater.DataSource = currentCrews;
-                CrewRepeater.DataBind();
+                //Populate the Units Dropdown List
+                int yardId = int.Parse(YardID.Text);
+                UnitControllers unitManager = new UnitControllers();
+                List<YardUnits> unit = unitManager.GetUnits(int.Parse(YardID.Text));
+                UnitsDDL.DataSource = unit;
+                UnitsDDL.DataTextField = nameof(YardUnits.Number);
+                UnitsDDL.DataValueField = nameof(YardUnits.ID);
+                UnitsDDL.DataBind();
+                UnitsDDL.Items.Insert(0, "Select a Unit...");
             });
-           
+
+            UnitsDDL.Visible = true;
+            UnitLabel.Visible = true;
+        }
+
+        protected void PopulateEmployeeAndSiteType()
+        {
+            MessageUserControl.TryRun(() =>
+            {
+                EmployeeControllers employeeManager = new EmployeeControllers();
+                if (UnitsDDL.SelectedIndex == 0)
+                {
+                    //Validate that a Unit was selected
+                    EmployeesListView.DataSource = null;
+                    EmployeesListView.DataBind();
+                    EmployeesListView.Visible = false;
+                    MessageUserControl.ShowInfo("You must select a Unit to proceed");
+                    RouteCategory.Visible = false;
+                }
+                else
+                {
+                    EmployeesListView.Visible = true;
+                    RouteCategory.Visible = true;
+                    SelectSiteButton.Visible = true;
+                }
+            });
         }
     }
 }

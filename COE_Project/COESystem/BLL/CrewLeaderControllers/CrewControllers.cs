@@ -163,11 +163,12 @@ namespace COESystem.BLL.CrewLeaderControllers
             using(var context = new COESystemContext())
             {
                 var CurrentCrews = from x in context.Crews
-                                   where x.Unit.YardID == yardId && DbFunctions.TruncateTime(x.CrewDate) == DbFunctions.TruncateTime(DateTime.Now )
+                                   where x.Unit.YardID == yardId && DbFunctions.TruncateTime(x.CrewDate) == DbFunctions.TruncateTime(DateTime.Now)
                                    orderby x.CrewID descending
                                    select new CurrentCrew
                                    {
                                        Unit = x.Unit.UnitNumber,
+                                       UnitID = x.UnitID,
                                        Crew = (from cr in context.CrewMembers
                                                where cr.CrewID == x.CrewID
                                                orderby cr.Employee.FirstName
@@ -188,6 +189,27 @@ namespace COESystem.BLL.CrewLeaderControllers
 
                                    };
                 return CurrentCrews.ToList();
+            }
+        }
+
+        //This method deletes a Crew and all its crew members
+        public void DeleteCrew(int crewId)
+        {
+            using(var context = new COESystemContext())
+            {
+                Crew crew = context.Crews.Find(crewId);
+                List<CrewMember> crewMembers = crew.CrewMembers.Select(x => x).ToList();
+                
+                if(crewMembers != null)
+                {
+                    foreach(CrewMember cm in crewMembers)
+                    {
+                        context.CrewMembers.Remove(cm);
+                    }
+                }
+
+                context.Crews.Remove(crew);
+                context.SaveChanges();
             }
         }
 
