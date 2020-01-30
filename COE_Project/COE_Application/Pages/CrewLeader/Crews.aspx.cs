@@ -22,35 +22,37 @@ namespace COE_Application.Pages.CrewLeader
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string crewLeaderRole = ConfigurationManager.AppSettings["crewLeaderRole"];
-            if (Request.IsAuthenticated)
+            if (!Page.IsPostBack)
             {
-                if (!User.IsInRole(crewLeaderRole))
+                string crewLeaderRole = ConfigurationManager.AppSettings["crewLeaderRole"];
+                if (Request.IsAuthenticated)
+                {
+                    if (!User.IsInRole(crewLeaderRole))
+                    {
+                        Response.Redirect("~/Account/Login.aspx");
+                    }
+                }
+                else
                 {
                     Response.Redirect("~/Account/Login.aspx");
                 }
-            }
-            else
-            {
-                Response.Redirect("~/Account/Login.aspx");
-            }
 
-            MessageUserControl.TryRun(() =>
-            {
-                // Retrieve the YardID based on the current userId 
-                // Set the Yard ID as in invisible label on the web page.
-                SecurityController securityManager = new SecurityController();
-                int? employeeId = securityManager.GetCurrentUserId(User.Identity.Name);
-                RouteController routeManager = new RouteController();
-                YardID.Text = routeManager.GetYardId(employeeId).ToString();
+                MessageUserControl.TryRun(() =>
+                {
+                    // Retrieve the YardID based on the current userId 
+                    // Set the Yard ID as in invisible label on the web page.
+                    SecurityController securityManager = new SecurityController();
+                    int? employeeId = securityManager.GetCurrentUserId(User.Identity.Name);
+                    RouteController routeManager = new RouteController();
+                    YardID.Text = routeManager.GetYardId(employeeId).ToString();
 
-                //Populate the current Crews
-                CrewControllers crewManager = new CrewControllers();
-                List<CurrentCrew> currentCrews = crewManager.GetCurrentCrew(int.Parse(YardID.Text));
-                CrewRepeater.DataSource = currentCrews;
-                CrewRepeater.DataBind();
-            });
-           
+                    //Populate the current Crews
+                    CrewControllers crewManager = new CrewControllers();
+                    List<CurrentCrew> currentCrews = crewManager.GetCurrentCrew(int.Parse(YardID.Text));
+                    CrewRepeater.DataSource = currentCrews;
+                    CrewRepeater.DataBind();
+                });
+            }
         }
 
         protected void CheckForException(object sender, ObjectDataSourceStatusEventArgs e)
@@ -105,6 +107,7 @@ namespace COE_Application.Pages.CrewLeader
                     LoadDDLUnits();
                     UnitsDDL.SelectedValue = e.CommandArgument.ToString();
                     PopulateEmployeeAndSiteType();
+                    EmployeesListView.Visible = false;
                     break;
 
                 case "DeleteCrew":
@@ -142,7 +145,16 @@ namespace COE_Application.Pages.CrewLeader
 
         protected void SelectSiteButton_Click(object sender, EventArgs e)
         {
-            
+            int index = int.Parse(RouteCategory.SelectedValue.ToString());
+
+            switch (index)
+            {
+                case 1:
+                    SiteType.Text = "1";
+                    RouteAListView.Visible = true;
+                    EmployeesListView.Visible = false;
+                    break;
+            }
         }
         protected void LoadDDLUnits()
         {

@@ -16,33 +16,37 @@ namespace COE_Application.Pages.CrewLeader
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string crewLeaderRole = ConfigurationManager.AppSettings["crewLeaderRole"];
-            if (Request.IsAuthenticated)
+            if (!Page.IsPostBack)
             {
-                if (!User.IsInRole(crewLeaderRole))
+                string crewLeaderRole = ConfigurationManager.AppSettings["crewLeaderRole"];
+                if (Request.IsAuthenticated)
+                {
+                    if (!User.IsInRole(crewLeaderRole))
+                    {
+                        Response.Redirect("~/Account/Login.aspx");
+                    }
+                }
+                else
                 {
                     Response.Redirect("~/Account/Login.aspx");
                 }
+
+                // Retrieve the YardID based on the current userId 
+                // Set the Yard ID as in invisible label on the web page.
+                MessageUserControl.TryRun(() =>
+                {
+                    SecurityController securityManager = new SecurityController();
+                    int? employeeId = securityManager.GetCurrentUserId(User.Identity.Name);
+
+                    RouteController routeManager = new RouteController();
+                    Season.Text = DateTime.Now.Year.ToString();
+                    Yard.Text = routeManager.GetYardName(employeeId);
+                    YardID.Text = routeManager.GetYardId(employeeId).ToString();
+                    SiteType.Text = "1";
+
+                });
             }
-            else
-            {
-                Response.Redirect("~/Account/Login.aspx");
-            }
-
-            // Retrieve the YardID based on the current userId 
-            // Set the Yard ID as in invisible label on the web page.
-            MessageUserControl.TryRun(() =>
-            {
-                SecurityController securityManager = new SecurityController();
-                int? employeeId = securityManager.GetCurrentUserId(User.Identity.Name);
-
-                RouteController routeManager = new RouteController();
-                Season.Text = DateTime.Now.Year.ToString();
-                Yard.Text = routeManager.GetYardName(employeeId);
-                YardID.Text = routeManager.GetYardId(employeeId).ToString();
-                SiteType.Text = "1";
-
-            });
+           
         }
 
         protected void CheckForException(object sender, ObjectDataSourceStatusEventArgs e)
@@ -61,17 +65,11 @@ namespace COE_Application.Pages.CrewLeader
             switch(index)
             {
                 case 0:
-                    MessageUserControl.TryRun(() =>
-                    {
                         SiteType.Text = "1";
-                    });
                     
                     break;
                 case 1:
-                    MessageUserControl.TryRun(() =>
-                    {
                         SiteType.Text = "2";
-                    });
                     break;
                 case 2:
                     MessageUserControl.TryRun(() =>

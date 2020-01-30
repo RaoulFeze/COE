@@ -33,6 +33,15 @@ namespace COE_Application.Pages.CrewLeader
         protected global::System.Web.UI.WebControls.Label YardID;
 
         /// <summary>
+        /// SiteType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label SiteType;
+
+        /// <summary>
         /// AddCrewLabel control.
         /// </summary>
         /// <remarks>
@@ -105,6 +114,15 @@ namespace COE_Application.Pages.CrewLeader
         protected global::System.Web.UI.WebControls.ListView EmployeesListView;
 
         /// <summary>
+        /// RouteAListView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView RouteAListView;
+
+        /// <summary>
         /// CrewRepeater control.
         /// </summary>
         /// <remarks>
@@ -121,5 +139,14 @@ namespace COE_Application.Pages.CrewLeader
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource EmployeeListODS;
+
+        /// <summary>
+        /// RouteODS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource RouteODS;
     }
 }
