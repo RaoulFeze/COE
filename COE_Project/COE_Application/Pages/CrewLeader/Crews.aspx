@@ -10,7 +10,7 @@
     <div class="routesHeader">
         <h1>Crews Assignment</h1>
         <asp:Label ID="YardID" runat="server" Text="" Visible="false"></asp:Label>
-        <asp:Label ID="SiteType" runat="server" Text="100" ></asp:Label>
+        <asp:Label ID="SiteType" runat="server" Text="" Visible="false" ></asp:Label>
     </div>
  
     <div class="row">

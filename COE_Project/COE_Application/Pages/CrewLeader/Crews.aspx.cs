@@ -67,6 +67,7 @@ namespace COE_Application.Pages.CrewLeader
         protected void UnitsDDL_SelectedIndexChanged(object sender, EventArgs e)
         {
             PopulateEmployeeAndSiteType();
+            RouteAListView.Visible = false;
         }
 
         protected void RouteCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -107,7 +108,12 @@ namespace COE_Application.Pages.CrewLeader
                     LoadDDLUnits();
                     UnitsDDL.SelectedValue = e.CommandArgument.ToString();
                     PopulateEmployeeAndSiteType();
-                    EmployeesListView.Visible = false;
+
+                    if(RouteAListView.Visible == true)
+                    {
+                        RouteAListView.Visible = false;
+                    }
+                    
                     break;
 
                 case "DeleteCrew":
