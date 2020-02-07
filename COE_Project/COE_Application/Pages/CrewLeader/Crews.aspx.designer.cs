@@ -123,6 +123,15 @@ namespace COE_Application.Pages.CrewLeader
         protected global::System.Web.UI.WebControls.ListView RouteAListView;
 
         /// <summary>
+        /// RouteBListView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView RouteBListView;
+
+        /// <summary>
         /// CrewRepeater control.
         /// </summary>
         /// <remarks>

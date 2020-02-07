@@ -260,7 +260,7 @@
                                         </tr>
                                         <tr runat="server">
                                             <td runat="server" style="text-align: center; background-color: white; font-family: Verdana, Arial, Helvetica, sans-serif; color: black">
-                                                <asp:DataPager ID="RouteB_DataPager" runat="server" PageSize="10" PagedControlID="RouteBListView">
+                                                <asp:DataPager ID="RouteB_DataPager" runat="server" PageSize="20" PagedControlID="RouteBListView">
                                                     <Fields>
                                                         <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True"></asp:NextPreviousPagerField>
                                                     </Fields>

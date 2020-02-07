@@ -41,13 +41,13 @@
             <asp:Label ID="Test" runat="server" Text=""></asp:Label>
         </div>
         <div class="col-md-9">
-
-            <asp:ListView ID="EmployeesListView" runat="server" 
-                DataSourceID="EmployeeListODS" 
+            <%-- -------------------------------------------------------------EMPLOYEE LISTVIEW---------------------------------------------------------------- --%>
+            <asp:ListView ID="EmployeesListView" runat="server"
+                DataSourceID="EmployeeListODS"
                 Visible="false"
                 OnItemCommand="EmployeesListView_ItemCommand">
                 <AlternatingItemTemplate>
-                    <tr style="background-color: #E9E9E9; color:black" class="crewRow">
+                    <tr style="background-color: #E9E9E9; color: black" class="crewRow">
                         <td><%# Container.DataItemIndex + 1%> </td>
                         <td>
                             <asp:Label Text='<%# Eval("Name") %>' runat="server" ID="NameLabel" /></td>
@@ -56,19 +56,20 @@
                         <td style="text-align: center">
                             <asp:LinkButton CommandArgument='<%# Eval("EmployeeID") %>' runat="server" ID="LinkButton1">
                                 <span aria-hidden="true" class="glyphicon glyphicon-plus"></span>
-                            </asp:LinkButton></td>
+                            </asp:LinkButton>
+                        </td>
                     </tr>
                 </AlternatingItemTemplate>
                 <EmptyDataTemplate>
                     <table runat="server" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; border-width: 1px;">
                         <tr>
-                            <td><span style="color:firebrick;">A Unit must be selected before proceeding...</span></td>
+                            <td><span style="color: firebrick;">A Unit must be selected before proceeding...</span></td>
                         </tr>
                     </table>
                 </EmptyDataTemplate>
-                
+
                 <ItemTemplate>
-                    <tr style="background-color: #FFFFFF; color: black;"class="crewRow">
+                    <tr style="background-color: #FFFFFF; color: black;" class="crewRow">
 
                         <td><%# Container.DataItemIndex + 1%> </td>
                         <td>
@@ -85,7 +86,7 @@
                     <table runat="server">
                         <tr runat="server">
                             <td runat="server">
-                                <table runat="server" id="itemPlaceholderContainer" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none;  font-weight: normal; border-width: 1px; font-family: Verdana, Arial, Helvetica, sans-serif;" border="1">
+                                <table runat="server" id="itemPlaceholderContainer" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; font-weight: normal; border-width: 1px; font-family: Verdana, Arial, Helvetica, sans-serif;" border="1">
                                     <tr runat="server" style="background-color: #DCDCDC; color: #000000;" class="crewRow">
                                         <th runat="server"></th>
                                         <th runat="server">Name</th>
@@ -97,8 +98,8 @@
                             </td>
                         </tr>
                         <tr runat="server">
-                            <td runat="server" style="text-align: center; background-color: #FFFFFF;  padding-top:5px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #000000;">
-                                <asp:DataPager runat="server" ID="EmployeeDataPager" PagedControlID="EmployeesListView" >
+                            <td runat="server" style="text-align: center; background-color: #FFFFFF; padding-top: 5px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #000000;">
+                                <asp:DataPager runat="server" ID="EmployeeDataPager" PagedControlID="EmployeesListView">
                                     <Fields>
                                         <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True"></asp:NextPreviousPagerField>
                                     </Fields>
@@ -108,9 +109,10 @@
                     </table>
                 </LayoutTemplate>
             </asp:ListView>
+            <%-- ----------------------------------------------------------------ROUTE A LISTVIEW-------------------------------------------------------------------------- --%>
             <asp:ListView ID="RouteAListView" runat="server" DataSourceID="RouteODS" Visible="true">
                 <AlternatingItemTemplate>
-                    <tr style="background-color: #E9E9E9; color: black;" class="cellPad">
+                    <tr style="background-color: #E9E9E9; color: black;" class="crewRow">
                         <td><%# Container.DataItemIndex + 1%> </td>
                         <td>
                             <asp:Label Text='<%# Eval("Pin") %>' runat="server" ID="PinLabel" /></td>
@@ -142,7 +144,7 @@
                 </AlternatingItemTemplate>
 
                 <ItemTemplate>
-                    <tr style="background-color: #FFFFFF; color: black;" class="cellPad">
+                    <tr style="background-color: #FFFFFF; color: black;" class="crewRow">
                         <td><%# Container.DataItemIndex + 1%> </td>
                         <td>
                             <asp:Label Text='<%# Eval("Pin") %>' runat="server" ID="PinLabel" /></td>
@@ -198,7 +200,96 @@
                         </tr>
                         <tr runat="server">
                             <td runat="server" style="text-align: center; background-color: white; font-family: Verdana, Arial, Helvetica, sans-serif; color: black">
-                                <asp:DataPager runat="server" ID="RouteA_DataPager" PageSize="10" PagedControlID="RouteAListView">
+                                <asp:DataPager runat="server" ID="RouteDataPager" PageSize="10" PagedControlID="RouteAListView">
+                                    <Fields>
+                                        <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True"></asp:NextPreviousPagerField>
+                                    </Fields>
+                                </asp:DataPager>
+                            </td>
+                        </tr>
+                    </table>
+                </LayoutTemplate>
+            </asp:ListView>
+            <%-- ----------------------------------------------------------------ROUTE B LISTVIEW-------------------------------------------------------------------------- --%>
+            <asp:ListView ID="RouteBListView" runat="server" DataSourceID="RouteODS" Visible="true">
+                <AlternatingItemTemplate>
+                    <tr style="background-color: #E9E9E9; color: black;" class="crewRow">
+                        <td><%# Container.DataItemIndex + 1%> </td>
+                        <td>
+                            <asp:Label Text='<%# Eval("Pin") %>' runat="server" ID="PinLabel" /></td>
+                        <td>
+                            <asp:Label Text='<%# Eval("Community") %>' runat="server" ID="CommunityLabel" /></td>
+                        <td>
+                            <asp:Label Text='<%# Eval("Neighbourhood") %>' runat="server" ID="NeighbourhoodLabel" /></td>
+                        <td>
+                            <asp:Label Text='<%# Eval("Address") %>' runat="server" ID="AddressLabel" /></td>
+                        <td>
+                            <asp:Label Text='<%# Eval("Area") %>' runat="server" ID="AreaLabel" /></td>
+                        <td>
+                            <asp:Label Text='<%# Eval("Notes") %>' runat="server" ID="NotesLabel" /></td>
+                        <td>
+                            <asp:Label Text='<%# Eval("Cycle1", "{0:MMM-dd}") %>' runat="server" ID="Cycle1Label" /></td>
+                        <td>
+                            <asp:Label Text='<%# Eval("Cycle2", "{0:MMM-dd}") %>' runat="server" ID="Cycle2Label" /></td>
+                       
+                        <td style="text-align: center">
+                            <asp:LinkButton runat="server" ID="LinkButton1">
+                                <span aria-hidden="true" class="glyphicon glyphicon-plus"></span>
+                            </asp:LinkButton>
+                        </td>
+                    </tr>
+                </AlternatingItemTemplate>
+
+                <ItemTemplate>
+                    <tr style="background-color: #FFFFFF; color: black;" class="crewRow">
+                        <td><%# Container.DataItemIndex + 1%> </td>
+                        <td>
+                            <asp:Label Text='<%# Eval("Pin") %>' runat="server" ID="PinLabel" /></td>
+                        <td>
+                            <asp:Label Text='<%# Eval("Community") %>' runat="server" ID="CommunityLabel" /></td>
+                        <td>
+                            <asp:Label Text='<%# Eval("Neighbourhood") %>' runat="server" ID="NeighbourhoodLabel" /></td>
+                        <td>
+                            <asp:Label Text='<%# Eval("Address") %>' runat="server" ID="AddressLabel" /></td>
+                        <td>
+                            <asp:Label Text='<%# Eval("Area") %>' runat="server" ID="AreaLabel" /></td>
+                        <td>
+                            <asp:Label Text='<%# Eval("Notes") %>' runat="server" ID="NotesLabel" /></td>
+                        <td>
+                            <asp:Label Text='<%# Eval("Cycle1", "{0:MMM-dd}") %>' runat="server" ID="Cycle1Label" /></td>
+                        <td>
+                            <asp:Label Text='<%# Eval("Cycle2", "{0:MMM-dd}") %>' runat="server" ID="Cycle2Label" /></td>
+                        <td style="text-align: center">
+                            <asp:LinkButton runat="server" ID="LinkButton1">
+                                <span aria-hidden="true" class="glyphicon glyphicon-plus"></span>
+                            </asp:LinkButton>
+                        </td>
+                    </tr>
+                </ItemTemplate>
+                <LayoutTemplate>
+                    <table runat="server">
+                        <tr runat="server">
+                            <td runat="server">
+                                <table runat="server" id="itemPlaceholderContainer" style="background-color: #FFFFFF; border-collapse: collapse; border-color: #999999; border-style: none; font-weight: normal; border-width: 1px; font-family: Verdana, Arial, Helvetica, sans-serif;" border="1">
+                                    <tr runat="server" style="background-color: #DCDCDC; color: black;" class="routeListviewHeader">
+                                        <th runat="server" style="width: 5px"></th>
+                                        <th runat="server" style="text-align: center; width: 70px;">Pin</th>
+                                        <th runat="server" style="text-align: center; width: 100px;">Community</th>
+                                        <th runat="server" style="text-align: center; width: 150px;">Neighbourhood</th>
+                                        <th runat="server" style="text-align: center; width: 200px;">Address</th>
+                                        <th runat="server" style="text-align: center; width: 50px;">Area</th>
+                                        <th runat="server" style="text-align: center; width: 300px;">Notes</th>
+                                        <th runat="server" class="cycleHeader">Cycle 1</th>
+                                        <th runat="server" class="cycleHeader">Cycle 2</th>
+                                        <th runat="server" class="cycleHeader">Add Site</th>
+                                    </tr>
+                                    <tr runat="server" id="itemPlaceholder"></tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr runat="server">
+                            <td runat="server" style="text-align: center; background-color: white; font-family: Verdana, Arial, Helvetica, sans-serif; color: black">
+                                <asp:DataPager runat="server" ID="RouteDataPager" PageSize="10" PagedControlID="RouteBListView">
                                     <Fields>
                                         <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True"></asp:NextPreviousPagerField>
                                     </Fields>
@@ -212,6 +303,7 @@
     </div>
     <br />
     <div class="row">
+        <%-- -----------------------------------------------------------------------------CREW & SITES---------------------------------------------------------------------------- --%>
         <asp:Repeater ID="CrewRepeater" runat="server"
             ItemType="COESystem.Data.DTOs.CurrentCrew" 
             OnItemCommand="CrewRepeater_ItemCommand">
@@ -226,6 +318,7 @@
                     </h5>
                     <div class="CrewGridContainer">
                         <div class="CrewContainer">
+    <%-- --------------------------------------------------------------------------------CREW MEMBERS--------------------------------------------------------------------------- --%>
                             <asp:GridView ID="CrewMemberGridView" runat="server"
                                 AutoGenerateColumns="false"
                                 CssClass="table"
@@ -259,6 +352,7 @@
                             </asp:GridView>
                         </div>
                         <div class="SiteContainer">
+        <%-- --------------------------------------------------------------SITES----------------------------------------------------------------------------------------------- --%>
                             <asp:GridView ID="WorkSiteGridView" runat="server"
                                 AutoGenerateColumns="false"
                                 CssClass="table"
@@ -287,8 +381,6 @@
                             </asp:GridView>
                         </div>
                     </div>
-
-
                     &nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
             </ItemTemplate>

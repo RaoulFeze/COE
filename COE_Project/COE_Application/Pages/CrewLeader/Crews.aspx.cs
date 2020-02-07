@@ -158,6 +158,14 @@ namespace COE_Application.Pages.CrewLeader
                 case 1:
                     SiteType.Text = "1";
                     RouteAListView.Visible = true;
+                    RouteBListView.Visible = false;
+                    EmployeesListView.Visible = false;
+                    
+                    break;
+                case 2:
+                    SiteType.Text = "2";
+                    RouteAListView.Visible = false;
+                    RouteBListView.Visible = true;
                     EmployeesListView.Visible = false;
                     break;
             }
