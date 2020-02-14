@@ -110,7 +110,10 @@
                 </LayoutTemplate>
             </asp:ListView>
             <%-- ----------------------------------------------------------------ROUTE A LISTVIEW-------------------------------------------------------------------------- --%>
-            <asp:ListView ID="RouteAListView" runat="server" DataSourceID="RouteODS" Visible="true">
+            <asp:ListView ID="RouteAListView" runat="server" 
+                DataSourceID="RouteODS" 
+                Visible="true"
+                OnItemCommand="RouteListView_ItemCommand">
                 <AlternatingItemTemplate>
                     <tr style="background-color: #E9E9E9; color: black;" class="crewRow">
                         <td><%# Container.DataItemIndex + 1%> </td>
@@ -136,7 +139,7 @@
                             <asp:Label Text='<%# Eval("Cycle4", "{0:MMM-dd}") %>' runat="server" ID="Cycle4Label" /></td>
                         <td>
                         <td style="text-align: center">
-                            <asp:LinkButton runat="server" ID="LinkButton1">
+                            <asp:LinkButton runat="server" ID="LinkButton1" CommandArgument='<%# Eval("SiteID") %>'>
                                 <span aria-hidden="true" class="glyphicon glyphicon-plus"></span>
                             </asp:LinkButton>
                         </td>
@@ -169,7 +172,7 @@
                         <td>
                             <asp:Label Text='<%# Eval("Cycle5", "{0:MMM-dd}") %>' runat="server" ID="Cycle5Label" /></td>
                         <td style="text-align: center">
-                            <asp:LinkButton runat="server" ID="LinkButton1">
+                            <asp:LinkButton runat="server" ID="LinkButton1" CommandArgument='<%# Eval("SiteID") %>'>
                                 <span aria-hidden="true" class="glyphicon glyphicon-plus"></span>
                             </asp:LinkButton>
                         </td>
@@ -233,7 +236,7 @@
                             <asp:Label Text='<%# Eval("Cycle2", "{0:MMM-dd}") %>' runat="server" ID="Cycle2Label" /></td>
                        
                         <td style="text-align: center">
-                            <asp:LinkButton runat="server" ID="LinkButton1">
+                            <asp:LinkButton runat="server" ID="LinkButton1" CommandArgument='<%# Eval("SiteID") %>'>
                                 <span aria-hidden="true" class="glyphicon glyphicon-plus"></span>
                             </asp:LinkButton>
                         </td>
@@ -260,7 +263,7 @@
                         <td>
                             <asp:Label Text='<%# Eval("Cycle2", "{0:MMM-dd}") %>' runat="server" ID="Cycle2Label" /></td>
                         <td style="text-align: center">
-                            <asp:LinkButton runat="server" ID="LinkButton1">
+                            <asp:LinkButton runat="server" ID="LinkButton1" CommandArgument='<%# Eval("SiteID") %>'>
                                 <span aria-hidden="true" class="glyphicon glyphicon-plus"></span>
                             </asp:LinkButton>
                         </td>
@@ -312,7 +315,7 @@
                     <h5>
                         <strong>Unit:<asp:LinkButton ID="SelectCrewLinkButton" runat="server" CommandArgument='<%# Item.UnitID %>' CommandName="SelectCrew"> <%# Item.Unit %></asp:LinkButton></strong>
                         &nbsp;&nbsp;
-                        <asp:LinkButton ID="RemoveCrew" runat="server" CommandArgument='<%# Item.UnitID %>' CommandName="DeleteCrew">
+                        <asp:LinkButton ID="RemoveCrew" runat="server" CommandArgument='<%# Item.CrewID %>' CommandName="DeleteCrew">
                         <span aria-hidden="true" class="glyphicon glyphicon-remove" ></span> 
                         </asp:LinkButton>
                     </h5>

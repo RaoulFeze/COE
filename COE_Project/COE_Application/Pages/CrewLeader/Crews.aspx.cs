@@ -62,12 +62,14 @@ namespace COE_Application.Pages.CrewLeader
         protected void AddCrewLinkButton_Click(object sender, EventArgs e)
         {
             LoadDDLUnits();
+
         }
 
         protected void UnitsDDL_SelectedIndexChanged(object sender, EventArgs e)
         {
             PopulateEmployeeAndSiteType();
             RouteAListView.Visible = false;
+            RouteBListView.Visible = false;
         }
 
         protected void RouteCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -117,6 +119,7 @@ namespace COE_Application.Pages.CrewLeader
                     break;
 
                 case "DeleteCrew":
+                    //TODO: Verify that you are not using the UnitID instead of the CrewID
                     int crewId = int.Parse(e.CommandArgument.ToString());
                     MessageUserControl.TryRun(() =>
                     {
@@ -210,6 +213,11 @@ namespace COE_Application.Pages.CrewLeader
                     SelectSiteButton.Visible = true;
                 }
             });
+        }
+
+        protected void RouteListView_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            int siteId = int.Parse(e.CommandArgument.ToString());
         }
     }
 }

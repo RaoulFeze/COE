@@ -167,6 +167,7 @@ namespace COESystem.BLL.CrewLeaderControllers
                                    orderby x.CrewID descending
                                    select new CurrentCrew
                                    {
+                                       CrewID = x.CrewID,
                                        Unit = x.Unit.UnitNumber,
                                        UnitID = x.UnitID,
                                        Crew = (from cr in context.CrewMembers

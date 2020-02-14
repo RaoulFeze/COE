@@ -9,6 +9,7 @@ namespace COESystem.Data.DTOs
 {
     public class CurrentCrew
     {
+        public int CrewID { get; set; }
         public string Unit { get; set; }
         public int UnitID { get; set; }
         public List<Member> Crew { get; set; }

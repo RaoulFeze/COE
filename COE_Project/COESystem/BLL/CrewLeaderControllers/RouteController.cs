@@ -26,6 +26,7 @@ namespace COESystem.BLL
                                 orderby site.Community.Name ascending
                                 select new Status
                                 {
+                                    SiteID = site.SiteID,
                                     Pin = site.Pin,
                                     Community = site.Community.Name,
                                     Neighbourhood = site.Neighbourhood,
