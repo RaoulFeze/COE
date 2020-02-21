@@ -11,6 +11,7 @@
         <h1>Crews Assignment</h1>
         <asp:Label ID="YardID" runat="server" Text="" Visible="false"></asp:Label>
         <asp:Label ID="SiteType" runat="server" Text="" Visible="false" ></asp:Label>
+        <asp:Label ID="SelectedCrew" runat="server" Text="" Visible="false"></asp:Label>
     </div>
  
     <div class="row">
@@ -313,7 +314,11 @@
             <ItemTemplate>
                 <div class="repeater col-sm-3">
                     <h5>
-                        <strong>Unit:<asp:LinkButton ID="SelectCrewLinkButton" runat="server" CommandArgument='<%# Item.UnitID %>' CommandName="SelectCrew"> <%# Item.Unit %></asp:LinkButton></strong>
+                        <strong>Unit:
+                            <asp:LinkButton ID="SelectCrewLinkButton" runat="server" CommandArgument='<%# Item.CrewID %>' CommandName="SelectCrew"> 
+                                    <%# Item.Unit %> 
+                             </asp:LinkButton>
+                        </strong>
                         &nbsp;&nbsp;
                         <asp:LinkButton ID="RemoveCrew" runat="server" CommandArgument='<%# Item.CrewID %>' CommandName="DeleteCrew">
                         <span aria-hidden="true" class="glyphicon glyphicon-remove" ></span> 

@@ -33,7 +33,6 @@ namespace COESystem.BLL.CrewLeaderControllers
         } 
 
         //This method create a new Crew and update current Crews
-        [DataObjectMethod(DataObjectMethodType.Insert, false)]
         public void Add_To_A_Crew(int unitId, int employeeId)
         {
             using(var context = new COESystemContext())
@@ -131,27 +130,54 @@ namespace COESystem.BLL.CrewLeaderControllers
         }
 
         //Assigns Sites to a Crew
-        [DataObjectMethod(DataObjectMethodType.Insert,false)]
-        public void Add_Site_To_Crew(int CrewID, int siteId, int crewSiteId)
+        public string Add_Site_To_Crew(int crewId, int siteId)
         {
             using(var context = new COESystemContext())
             {
+                string units = "";
+
                 CrewSite crewSite = (from x in context.CrewSites
-                                     where x.CrewSiteID == crewSiteId && x.SiteID.Equals(null)
+                                     where x.CrewID == crewId && x.SiteID == siteId
                                      select x).FirstOrDefault();
-                if(crewSite == null)
+                List<string> reasons = new List<string>();
+
+                if (crewSite != null)
                 {
-                    //Assigns the Site to the First CrewSite
-                    crewSite.SiteID = siteId;
+                    reasons.Add("This site is already assigned to the current crew");
                 }
                 else
                 {
-                    //Create a new CrewSite
-                    crewSite = new CrewSite();
-                    crewSite.SiteID = siteId;
-                    crewSite.CrewID = CrewID;
+                    //Notify user that the site is already assigned to at least another crew
+                    List<CrewSite> crewSites = new List<CrewSite>();
+                    crewSites = (from x in context.CrewSites
+                                 where DbFunctions.TruncateTime(x.Crew.CrewDate) == DbFunctions.TruncateTime(DateTime.Now) && siteId == x.SiteID
+                                 select x).ToList();
 
+                    if(crewSites != null)
+                    {
+                        foreach (CrewSite cs in crewSites)
+                        {
+                            units += cs.Crew.Unit.UnitNumber + ", ";
+                        }
+                    }
+
+
+                    if(reasons.Count() > 0)
+                    {
+                        throw new BusinessRuleException("Adding Site", reasons);
+                    }
+                    else
+                    {
+                        //Create a new CrewSite
+                        crewSite = new CrewSite();
+                        crewSite.SiteID = siteId;
+                        crewSite.CrewID = crewId;
+
+                        context.SaveChanges();
+                    }
                 }
+
+                return units;
 
             }
         }
@@ -214,5 +240,12 @@ namespace COESystem.BLL.CrewLeaderControllers
             }
         }
 
+        public int unitNumber (int crewId)
+        {
+            using(var context = new COESystemContext())
+            {
+                return context.Crews.Find(crewId).Unit.UnitID;
+            }
+        }
     }
 }

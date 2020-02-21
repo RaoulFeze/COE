@@ -108,8 +108,15 @@ namespace COE_Application.Pages.CrewLeader
             {
                 case "SelectCrew":
                     LoadDDLUnits();
-                    UnitsDDL.SelectedValue = e.CommandArgument.ToString();
+                    int crewId = int.Parse(e.CommandArgument.ToString());
+
+                    MessageUserControl.TryRun(() =>
+                    {
+                        CrewControllers crewManager = new CrewControllers();
+                        UnitsDDL.SelectedValue = crewManager.unitNumber(crewId).ToString();
+                    });
                     PopulateEmployeeAndSiteType();
+                    SelectedCrew.Text = crewId.ToString();
 
                     if(RouteAListView.Visible == true)
                     {
@@ -120,11 +127,12 @@ namespace COE_Application.Pages.CrewLeader
 
                 case "DeleteCrew":
                     //TODO: Verify that you are not using the UnitID instead of the CrewID
-                    int crewId = int.Parse(e.CommandArgument.ToString());
+                    
                     MessageUserControl.TryRun(() =>
                     {
+                        int CrewId = int.Parse(e.CommandArgument.ToString());
                         CrewControllers crewManager = new CrewControllers();
-                        crewManager.DeleteCrew(crewId);
+                        crewManager.DeleteCrew(CrewId);
 
                         //refresh the current Crews
                         List<CurrentCrew> currentCrews = crewManager.GetCurrentCrew(int.Parse(YardID.Text));
@@ -218,6 +226,24 @@ namespace COE_Application.Pages.CrewLeader
         protected void RouteListView_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
             int siteId = int.Parse(e.CommandArgument.ToString());
+            int crewId = int.Parse(SelectedCrew.Text);
+            string message = "";
+
+            CrewControllers crewManager = new CrewControllers();
+            MessageUserControl.TryRun(() =>
+            {
+                message = crewManager.Add_Site_To_Crew(crewId, siteId);
+            });
+
+            if (!string.IsNullOrEmpty(message))
+            {
+                MessageUserControl.ShowInfo("This site is already assigned to the following crews: " + message);
+            }
+
+            //Refresh the Crew List
+            List<CurrentCrew> currentCrews = crewManager.GetCurrentCrew(int.Parse(YardID.Text));
+            CrewRepeater.DataSource = currentCrews;
+            CrewRepeater.DataBind();
         }
     }
 }
