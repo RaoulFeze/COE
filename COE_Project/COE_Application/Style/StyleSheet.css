@@ -64,7 +64,7 @@
     text-align: center;
     margin-bottom: 25px;
 }
-.cellPad > td {
+.cellPad > td, .crewCell > td {
     padding: 5px;
 }
 
@@ -147,4 +147,8 @@
 }
 .SiteContainer > button{
     text-align:center;
+}
+
+ .col-sm-3{
+    padding-bottom:25px;
 }
