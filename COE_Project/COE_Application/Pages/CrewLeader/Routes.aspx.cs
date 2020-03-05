@@ -72,9 +72,10 @@ namespace COE_Application.Pages.CrewLeader
                         SiteType.Text = "2";
                     break;
                 case 2:
+                    int yardId = int.Parse(YardID.Text);
                     MessageUserControl.TryRun(() =>
                     {
-                        List<GrassStatus> GrassRoute = routeManager.GrassList();
+                        List<GrassStatus> GrassRoute = routeManager.GrassList(yardId);
                         GrassListView.DataSource = GrassRoute;
                         GrassListView.DataBind();
                     });

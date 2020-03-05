@@ -22,7 +22,7 @@ namespace COESystem.BLL
             {
                 var RouteList = from site in context.Sites
                                 orderby site.Community.Name ascending
-                                where site.Season.SeasonYear == 2019 && site.Yard.YardID == yardId && site.SiteTypeID == siteTypeId
+                                where site.Season.SeasonYear == DateTime.Now.Year && site.Yard.YardID == yardId && site.SiteTypeID == siteTypeId
                                 orderby site.Community.Name ascending
                                 select new Status
                                 {
@@ -85,12 +85,12 @@ namespace COESystem.BLL
             }
         }
 
-        public List<GrassStatus> GrassList()
+        public List<GrassStatus> GrassList(int yardId)
         {
             using(var context = new COESystemContext())
             {
                 var GrassList = from site in context.Sites
-                             where site.Season.SeasonYear == 2019 && site.YardID == 1 && site.Grass > 0
+                             where site.Season.SeasonYear == DateTime.Now.Year && site.YardID == yardId && site.Grass > 0
                              orderby site.Community.Name ascending
                              select new GrassStatus
                              {
