@@ -118,8 +118,8 @@ create table Employee
 	Area int not null, 
 	Notes varchar(1000) null,
 	Grass int constraint df_GrassOnSite default 0,
-	Watering bit constraint df_WateringSite default null,
-	Planting bit constraint df_PlantingSite default null,
+	Watering bit constraint df_WateringSite default 0,
+	Planting bit constraint df_PlantingSite default 0,
 	SiteTypeID int not null constraint fk_Site_To_SiteType references SiteType(SiteTypeID),
 	YardID int not null constraint fk_Site_To_yard references Yard(YardID),
 	CommunityID int not null constraint fk_Site_To_Community references Community(CommunityID),
@@ -215,6 +215,18 @@ create table Grass
 (
 	GrassStatusID integer identity(1,1) not null constraint pk_Grass primary key clustered,
 	CrewSiteID int not null constraint fk_Grass_To_CrewSite references CrewSite(CrewSiteID)
+)
+
+create table Planting
+(
+	PlantingStatusID integer identity(1,1) not null constraint pk_Planting primary key clustered,
+	CrewSiteID int not null constraint fk_Planting_To_CrewSite references CrewSite(CrewSiteID)
+)
+
+create table Watering
+(
+	WateringStatusID integer identity(1,1) not null constraint pk_Watering primary key clustered,
+	CrewSiteID int not null constraint fk_Watering_To_CrewSite references CrewSite(CrewSiteID)
 )
 
 /*DISTRICT*/

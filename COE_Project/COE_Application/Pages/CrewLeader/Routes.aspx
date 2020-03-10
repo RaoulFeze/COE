@@ -91,11 +91,11 @@
                                             <asp:Label Text='<%# Eval("Cycle1", "{0:MMM-dd}") %>' runat="server" ID="Cycle1Label"/></td>
                                         <td>
                                             <asp:Label Text='<%# Eval("Cycle2", "{0:MMM-dd}") %>' runat="server" ID="Cycle2Label"/></td>
-                                        <td>
+                                        <td id="HideMe" runat="server" >
                                             <asp:Label Text='<%# Eval("Cycle3", "{0:MMM-dd}") %>' runat="server" ID="Cycle3Label"/></td>
-                                        <td>
+                                        <td id="HideMe4" runat="server" >
                                             <asp:Label Text='<%# Eval("Cycle4", "{0:MMM-dd}") %>' runat="server" ID="Cycle4Label"/></td>
-                                        <td>
+                                        <td id="HideMe5" runat="server" >
                                             <asp:Label Text='<%# Eval("Cycle5", "{0:MMM-dd}") %>' runat="server" ID="Cycle5Label"/></td>
                                         <td>
                                             <asp:Label Text='<%# Eval("Pruning", "{0:MMM-dd}") %>' runat="server" ID="PruningLabel"/></td>
@@ -123,11 +123,11 @@
                                             <asp:Label Text='<%# Eval("Cycle1", "{0:MMM-dd}") %>' runat="server" ID="Cycle1Label"/></td>
                                         <td>
                                             <asp:Label Text='<%# Eval("Cycle2", "{0:MMM-dd}") %>' runat="server" ID="Cycle2Label"/></td>
-                                        <td>
+                                        <td id="HideMe" runat="server" >
                                             <asp:Label Text='<%# Eval("Cycle3", "{0:MMM-dd}") %>' runat="server" ID="Cycle3Label"/></td>
-                                        <td>
+                                        <td id="HideMe4" runat="server" >
                                             <asp:Label Text='<%# Eval("Cycle4", "{0:MMM-dd}") %>' runat="server" ID="Cycle4Label"/></td>
-                                        <td>
+                                        <td id="HideMe5" runat="server" >
                                             <asp:Label Text='<%# Eval("Cycle5", "{0:MMM-dd}") %>' runat="server" ID="Cycle5Label"/></td>
                                         <td>
                                             <asp:Label Text='<%# Eval("Pruning", "{0:MMM-dd}") %>' runat="server" ID="PruningLabel"/></td>
@@ -148,13 +148,13 @@
                                                         <th runat="server" style="text-align: center; width: 200px;">Address</th>
                                                         <th runat="server" style="text-align: center; width: 50px;">Area</th>
                                                         <th runat="server" style="text-align: center; width: 300px;">Notes</th>
-                                                        <th runat="server" class="cycleHeader">Cycle 1</th>
-                                                        <th runat="server" class="cycleHeader">Cycle 2</th>
-                                                        <th runat="server" class="cycleHeader">Cycle 3</th>
-                                                        <th runat="server" class="cycleHeader">Cycle 4</th>
-                                                        <th runat="server" class="cycleHeader">Cycle 5</th>
-                                                        <th runat="server" style="text-align: center; width: 75px;">Pruning</th>
-                                                        <th runat="server" style="text-align: center; width: 80px;">Mulching</th>
+                                                        <th runat="server" class="cycleHeader" id="Cycle1">Cycle 1</th>
+                                                        <th runat="server" class="cycleHeader" id="Cycle2">Cycle 2</th>
+                                                        <th runat="server" class="cycleHeader" id="Cycle3">Cycle 3</th>
+                                                        <th runat="server" class="cycleHeader" id="Cycle4">Cycle 4</th>
+                                                        <th runat="server" class="cycleHeader" id="Cycle5">Cycle 5</th>
+                                                        <th runat="server" style="text-align: center; width: 75px;" id="Pruining">Pruning</th>
+                                                        <th runat="server" style="text-align: center; width: 80px;" id="Mulching">Mulching</th>
                                                     </tr>
                                                     <tr runat="server" id="itemPlaceholder"></tr>
                                                 </table>
