@@ -15,8 +15,7 @@ namespace COESystem.BLL
     [DataObject]
     public class RouteController
     {
-        [DataObjectMethod(DataObjectMethodType.Select,false)]
-        public List<Status> RouteList(int yardId, int siteTypeId)
+        public List<RouteStatus> RouteList(int yardId, int siteTypeId)
         {
             using (var context = new COESystemContext())
             {
@@ -24,7 +23,7 @@ namespace COESystem.BLL
                                 orderby site.Community.Name ascending
                                 where site.Season.SeasonYear == DateTime.Now.Year && site.Yard.YardID == yardId && site.SiteTypeID == siteTypeId
                                 orderby site.Community.Name ascending
-                                select new Status
+                                select new RouteStatus
                                 {
                                     SiteID = site.SiteID,
                                     Pin = site.Pin,
@@ -85,14 +84,15 @@ namespace COESystem.BLL
             }
         }
 
-        public List<GrassStatus> GrassList(int yardId)
+
+        public List<RouteStatus> RouteList(int yardId)
         {
             using(var context = new COESystemContext())
             {
-                var GrassList = from site in context.Sites
+                var RouteList = from site in context.Sites
                              where site.Season.SeasonYear == DateTime.Now.Year && site.YardID == yardId && site.Grass > 0
                              orderby site.Community.Name ascending
-                             select new GrassStatus
+                             select new RouteStatus
                              {
                                  Pin = site.Pin,
                                  Community = site.Community.Name,
@@ -101,15 +101,38 @@ namespace COESystem.BLL
                                  Area = site.Area,
                                  Notes = site.Notes,
                                  Count = site.Grass,
-                                 Date = ((from grass in context.Grasses where grass.CrewSite.SiteID == site.SiteID select new Cycle { Date = grass.CrewSite.Crew.CrewDate }).FirstOrDefault()).Equals(null) ? (DateTime?)null :
+                                 Trimming = ((from grass in context.Grasses where grass.CrewSite.SiteID == site.SiteID select new Cycle { Date = grass.CrewSite.Crew.CrewDate }).FirstOrDefault()).Equals(null) ? (DateTime?)null :
                                          ((from grass in context.Grasses where grass.CrewSite.SiteID == site.SiteID select new Cycle { Date = grass.CrewSite.Crew.CrewDate }).FirstOrDefault()).Date
                              };
-                return GrassList.ToList();
+                return RouteList.ToList();
+            }
+        }
+
+        public List<RouteStatus> PlantingList(int yardId, bool planting)
+        {
+            using(var context = new COESystemContext())
+            {
+                var PlantingList = from site in context.Sites
+                                   where site.YardID == yardId && site.Planting == planting && site.Season.SeasonYear == DateTime.Now.Year
+                                   orderby site.Pin
+                                   select new RouteStatus
+                                   {
+                                       Pin = site.Pin,
+                                       Community = site.Community.Name,
+                                       Neighbourhood = site.Neighbourhood,
+                                       Address = site.StreetAddress,
+                                       Area = site.Area,
+                                       Notes = site.Notes,
+                                       Planting = ((from plant in context.Plantings where plant.CrewSite.SiteID == site.SiteID select new { Date = plant.CrewSite.Crew.CrewDate }).OrderBy(x => x.Date).FirstOrDefault()).Equals(null)
+                                               ? (DateTime?)null : ((from plant in context.Plantings where plant.CrewSite.SiteID == site.SiteID select new { Date = plant.CrewSite.Crew.CrewDate }).OrderBy(x => x.Date).FirstOrDefault()).Date,
+                                       Uprooting = ((from uproot in context.Uprootings where uproot.CrewSite.SiteID == site.SiteID select new { Date = uproot.CrewSite.Crew.CrewDate }).OrderBy(x => x.Date).FirstOrDefault()).Equals(null)
+                                               ? (DateTime?)null : ((from uproot in context.Uprootings where uproot.CrewSite.SiteID == site.SiteID select new { Date = uproot.CrewSite.Crew.CrewDate }).OrderBy(x => x.Date).FirstOrDefault()).Date
+                                   };
+                return PlantingList.ToList();
             }
         }
 
         //Returns the Yard Name based on the EmployeeID
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public string GetYardName(int? userId)
         {
 

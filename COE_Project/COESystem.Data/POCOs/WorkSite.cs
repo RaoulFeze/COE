@@ -8,7 +8,7 @@ namespace COESystem.Data.POCOs
 {
     public class WorkSite
     {
-        public int SiteID { get; set; }
+        public int? SiteID { get; set; }
         public int Pin { get; set; }
     }
 }

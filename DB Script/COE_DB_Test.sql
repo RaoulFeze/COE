@@ -1,45 +1,52 @@
---Create DATABASE COE_DB
-Drop Table SBM
+--CREATE DATABASE COE_DB
 
-Drop Table Pruning
+--Drop Table SBM
 
-Drop Table Mulching
+--Drop Table Planting
 
-Drop Table Grass
+--Drop Table Uprooting
 
-Drop Table SiteHazard
+--Drop Table Watering
 
-Drop Table ToolsCheckList
+--Drop Table Pruning
 
-Drop Table CrewSite
+--Drop Table Mulching
 
-Drop Table CrewMember
+--Drop Table Grass
 
-Drop Table Crew
+--Drop Table SiteHazard
 
-Drop Table Tool
+--Drop Table ToolsCheckList
 
-Drop Table Unit
+--Drop Table CrewSite
 
-Drop Table Site 
+--Drop Table CrewMember
 
-Drop Table Employee
+--Drop Table Crew
 
-Drop Table CorrectiveAction
+--Drop Table Tool
 
-Drop Table Hazard
+--Drop Table Unit
 
-Drop Table Yard
+--Drop Table Site 
 
-Drop Table Community
+--Drop Table Employee
 
-Drop Table HazardCategory
+--Drop Table CorrectiveAction
 
-Drop Table SiteType
+--Drop Table Hazard
 
-Drop Table District
+--Drop Table Yard
 
-Drop Table Season
+--Drop Table Community
+
+--Drop Table HazardCategory
+
+--Drop Table SiteType
+
+--Drop Table District
+
+--Drop Table Season
 
 
 create table District
@@ -221,6 +228,12 @@ create table Planting
 (
 	PlantingStatusID integer identity(1,1) not null constraint pk_Planting primary key clustered,
 	CrewSiteID int not null constraint fk_Planting_To_CrewSite references CrewSite(CrewSiteID)
+)
+
+create table Uprooting
+(
+	UprootingStatusID integer identity(1,1) not null constraint pk_Uprooting primary key clustered,
+	CrewSiteID int not null constraint fk_Uprooting_to_CrewSite references CrewSite(CrewSiteID)
 )
 
 create table Watering

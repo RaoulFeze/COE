@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace COESystem.Data.POCOs
 {
-    public class Status
+    public class RouteStatus
     {
 		public int SiteID { get; set; }
 		public int Pin { get; set; }
@@ -18,6 +18,8 @@ namespace COESystem.Data.POCOs
 		public string Address { get; set; }
 
 		public int Area { get; set; }
+
+		public int? Count { get; set; }
 
 		public string Notes { get; set; }
 
@@ -34,5 +36,11 @@ namespace COESystem.Data.POCOs
 		public DateTime? Pruning { get; set; }
 
 		public DateTime? Mulching { get; set; }
+
+		public DateTime? Planting { get; set; }
+
+		public DateTime? Uprooting { get; set; }
+
+		public DateTime? Trimming { get; set; }
 	}
 }

@@ -46,7 +46,6 @@ namespace COESystem.Data.Entities
                 return FirstName + " " + LastName;
             }
         }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CrewMember> CrewMembers { get; set; }
 

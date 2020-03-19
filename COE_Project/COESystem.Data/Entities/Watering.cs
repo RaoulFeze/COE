@@ -6,11 +6,11 @@ namespace COESystem.Data.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Grass")]
-    public partial class Grass
+    [Table("Watering")]
+    public partial class Watering
     {
         [Key]
-        public int GrassStatusID { get; set; }
+        public int WateringStatusID { get; set; }
 
         public int CrewSiteID { get; set; }
 

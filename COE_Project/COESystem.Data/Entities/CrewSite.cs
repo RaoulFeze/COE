@@ -14,14 +14,17 @@ namespace COESystem.Data.Entities
         {
             Grasses = new HashSet<Grass>();
             Mulchings = new HashSet<Mulching>();
+            Plantings = new HashSet<Planting>();
             Prunings = new HashSet<Pruning>();
             SBMs = new HashSet<SBM>();
             SiteHazards = new HashSet<SiteHazard>();
+            Uprootings = new HashSet<Uprooting>();
+            Waterings = new HashSet<Watering>();
         }
 
         public int CrewSiteID { get; set; }
 
-        public int SiteID { get; set; }
+        public int? SiteID { get; set; }
 
         [StringLength(100)]
         public string TaskDescription { get; set; }
@@ -46,6 +49,9 @@ namespace COESystem.Data.Entities
         public virtual ICollection<Mulching> Mulchings { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Planting> Plantings { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pruning> Prunings { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -53,5 +59,11 @@ namespace COESystem.Data.Entities
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SiteHazard> SiteHazards { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Uprooting> Uprootings { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Watering> Waterings { get; set; }
     }
 }

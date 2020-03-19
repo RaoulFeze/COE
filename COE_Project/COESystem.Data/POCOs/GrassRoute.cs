@@ -22,6 +22,6 @@ namespace COESystem.Data.POCOs
 
 		public int? Count { get; set; }
 
-		public DateTime? Date { get; set; }
+		public DateTime? Trimming { get; set; }
 	}
 }

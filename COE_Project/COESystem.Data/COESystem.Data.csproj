@@ -65,6 +65,7 @@
     <Compile Include="Entities\Hazard.cs" />
     <Compile Include="Entities\HazardCategory.cs" />
     <Compile Include="Entities\Mulching.cs" />
+    <Compile Include="Entities\Planting.cs" />
     <Compile Include="Entities\Pruning.cs" />
     <Compile Include="Entities\SBM.cs" />
     <Compile Include="Entities\Season.cs" />
@@ -74,11 +75,13 @@
     <Compile Include="Entities\Tool.cs" />
     <Compile Include="Entities\ToolsChecklist.cs" />
     <Compile Include="Entities\Unit.cs" />
+    <Compile Include="Entities\Uprooting.cs" />
+    <Compile Include="Entities\Watering.cs" />
     <Compile Include="Entities\Yard.cs" />
     <Compile Include="POCOs\Cycle.cs" />
     <Compile Include="POCOs\GrassRoute.cs" />
     <Compile Include="POCOs\Member.cs" />
-    <Compile Include="POCOs\Status.cs" />
+    <Compile Include="POCOs\RouteStatus.cs" />
     <Compile Include="POCOs\WorkSite.cs" />
     <Compile Include="POCOs\YardUnits.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

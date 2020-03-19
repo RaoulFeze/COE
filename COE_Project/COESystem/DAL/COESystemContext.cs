@@ -24,6 +24,7 @@ namespace COESystem.DAL
         public virtual DbSet<Hazard> Hazards { get; set; }
         public virtual DbSet<HazardCategory> HazardCategories { get; set; }
         public virtual DbSet<Mulching> Mulchings { get; set; }
+        public virtual DbSet<Planting> Plantings { get; set; }
         public virtual DbSet<Pruning> Prunings { get; set; }
         public virtual DbSet<SBM> SBMs { get; set; }
         public virtual DbSet<Season> Seasons { get; set; }
@@ -33,6 +34,8 @@ namespace COESystem.DAL
         public virtual DbSet<Tool> Tools { get; set; }
         public virtual DbSet<ToolsChecklist> ToolsChecklists { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
+        public virtual DbSet<Uprooting> Uprootings { get; set; }
+        public virtual DbSet<Watering> Waterings { get; set; }
         public virtual DbSet<Yard> Yards { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -88,6 +91,11 @@ namespace COESystem.DAL
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CrewSite>()
+                .HasMany(e => e.Plantings)
+                .WithRequired(e => e.CrewSite)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CrewSite>()
                 .HasMany(e => e.Prunings)
                 .WithRequired(e => e.CrewSite)
                 .WillCascadeOnDelete(false);
@@ -99,6 +107,16 @@ namespace COESystem.DAL
 
             modelBuilder.Entity<CrewSite>()
                 .HasMany(e => e.SiteHazards)
+                .WithRequired(e => e.CrewSite)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CrewSite>()
+                .HasMany(e => e.Uprootings)
+                .WithRequired(e => e.CrewSite)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CrewSite>()
+                .HasMany(e => e.Waterings)
                 .WithRequired(e => e.CrewSite)
                 .WillCascadeOnDelete(false);
 
@@ -166,11 +184,6 @@ namespace COESystem.DAL
             modelBuilder.Entity<Site>()
                 .Property(e => e.Notes)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<Site>()
-                .HasMany(e => e.CrewSites)
-                .WithRequired(e => e.Site)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SiteType>()
                 .Property(e => e.SiteTypeDescription)

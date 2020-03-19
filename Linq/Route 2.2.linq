@@ -1,6 +1,6 @@
 <Query Kind="Program">
   <Connection>
-    <ID>0b3dd9bd-9c7e-4914-83ae-fa229ddd2231</ID>
+    <ID>31702c39-067f-4f10-adee-28efe15fdcab</ID>
     <Persist>true</Persist>
     <Server>.</Server>
     <Database>COE_DB</Database>
@@ -35,7 +35,9 @@ void Main()
 						Pruning = ((from prune in Prunings where prune.CrewSite.SiteID == site.SiteID select new Cycle { Date = prune.CrewSite.Crew.CrewDate }).FirstOrDefault()).Equals(null)
 								  ? (DateTime?) null : ((from prune in Prunings where prune.CrewSite.SiteID == site.SiteID select new Cycle { Date = prune.CrewSite.Crew.CrewDate }).FirstOrDefault()).Date,
 						Mulching = ((from mulch in Mulchings where mulch.CrewSite.SiteID == site.SiteID select new Cycle { Date = mulch.CrewSite.Crew.CrewDate }).FirstOrDefault()).Equals(null)
-								  ? (DateTime?) null : ((from mulch in Mulchings where mulch.CrewSite.SiteID == site.SiteID select new Cycle { Date = mulch.CrewSite.Crew.CrewDate }).FirstOrDefault()).Date
+								  ? (DateTime?)null : ((from mulch in Mulchings where mulch.CrewSite.SiteID == site.SiteID select new Cycle { Date = mulch.CrewSite.Crew.CrewDate }).FirstOrDefault()).Date,
+						Planting = ((from plant in Plantings where plant.CrewSite.SiteID == site.SiteID select new { Date = plant.CrewSite.Crew.CrewDate }).OrderBy(x => x.Date).FirstOrDefault()).Equals(null)
+								  ? (DateTime?)null : ((from plant in Plantings where plant.CrewSite.SiteID == site.SiteID select new { Date = plant.CrewSite.Crew.CrewDate }).OrderBy(x => x.Date).FirstOrDefault()).Date
 					};
 
 	var GrassRoute = from site in Sites
@@ -83,9 +85,11 @@ public class Status
 
 	public DateTime? Cycle5 { get; set; }
 
-	public DateTime? Pruning { get; set; } 
+	public DateTime? Pruning { get; set; }
 
 	public DateTime? Mulching { get; set; }
+
+	public DateTime? Planting { get; set; }
 }
 
 public class GrassStatus

@@ -31,7 +31,11 @@ namespace COESystem.Data.Entities
         [StringLength(1000)]
         public string Notes { get; set; }
 
-        public int Grass { get; set; }
+        public int? Grass { get; set; }
+
+        public bool? Watering { get; set; }
+
+        public bool? Planting { get; set; }
 
         public int SiteTypeID { get; set; }
 
