@@ -8,6 +8,8 @@ namespace COESystem.Data.POCOs
 {
     public class GrassStatus
     {
+		public int SiteID { get; set; }
+
 		public int Pin { get; set; }
 
 		public string Community { get; set; }

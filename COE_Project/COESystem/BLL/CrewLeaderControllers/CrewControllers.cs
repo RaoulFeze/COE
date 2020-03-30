@@ -33,8 +33,9 @@ namespace COESystem.BLL.CrewLeaderControllers
         } 
 
         //This method create a new Crew and update current Crews
-        public void Add_To_A_Crew(int unitId, int employeeId)
+        public int Add_To_A_Crew(int unitId, int employeeId)
         {
+            int crewId = 0;
             using(var context = new COESystemContext())
             {
                 Crew crew = (from x in context.Crews
@@ -64,11 +65,6 @@ namespace COESystem.BLL.CrewLeaderControllers
                     crew.UnitID = unitId;
                     crew.CrewDate = DateTime.Now;
                     context.Crews.Add(crew);
-
-                    //Create the First CrewSite
-
-                    //CrewSite crewSite = new CrewSite();
-                    //crew.CrewSites.Add(crewSite);
                 }
                 else
                 {
@@ -105,9 +101,12 @@ namespace COESystem.BLL.CrewLeaderControllers
                     //is not know when the we create a brand new crew.
                     crew.CrewMembers.Add(member);
 
-
                     context.SaveChanges();
+                    crewId = (from x in context.Crews
+                             where x.UnitID == crew.UnitID && DbFunctions.TruncateTime(DateTime.Now) == DbFunctions.TruncateTime(x.CrewDate)
+                             select x.CrewID).First();
                 }
+                return crewId;
             }
         }
 
@@ -117,9 +116,15 @@ namespace COESystem.BLL.CrewLeaderControllers
             using(var context = new COESystemContext())
             {
                 CrewMember member = context.CrewMembers.Find(crewMemberID);
+                List<string> message = new List<string>();
                 if(member == null)
                 {
-                    throw new Exception("This employee is already removed from the crew");
+                    message.Add("This employee you tried to remove did not belong to the current crew");
+                }
+
+                if(message.Count() > 0)
+                {
+                    throw new BusinessRuleException("Removing a crew Memeber Failed", message);
                 }
                 else
                 {
@@ -136,6 +141,7 @@ namespace COESystem.BLL.CrewLeaderControllers
             {
                 string units = "";
 
+                
                 CrewSite crewSite = (from x in context.CrewSites
                                      where x.CrewID == crewId && x.SiteID == siteId
                                      select x).FirstOrDefault();
@@ -162,28 +168,25 @@ namespace COESystem.BLL.CrewLeaderControllers
                     }
 
 
-                    if(reasons.Count() > 0)
-                    {
-                        throw new BusinessRuleException("Adding Site", reasons);
-                    }
-                    else
-                    {
-                        //Create a new CrewSite
-                        crewSite = new CrewSite();
-                        crewSite.SiteID = siteId;
-                        crewSite.CrewID = crewId;
+                    //Create a new CrewSite for the current Crew
+                    crewSite = new CrewSite();
+                    crewSite.SiteID = siteId;
+                    crewSite.CrewID = crewId;
 
-                        context.SaveChanges();
-                    }
+                    context.CrewSites.Add(crewSite);
                 }
 
+                if (reasons.Count() > 0)
+                {
+                    throw new BusinessRuleException("Adding Site", reasons);
+                }
+                context.SaveChanges();
                 return units;
 
             }
         }
 
         //This Method returns the List of the current crews
-        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<CurrentCrew> GetCurrentCrew(int yardId)
         {
             using(var context = new COESystemContext())
@@ -225,18 +228,100 @@ namespace COESystem.BLL.CrewLeaderControllers
             using(var context = new COESystemContext())
             {
                 Crew crew = context.Crews.Find(crewId);
-                List<CrewMember> crewMembers = crew.CrewMembers.Select(x => x).ToList();
-                
-                if(crewMembers != null)
+                List<string> message =new List<string>();
+                if(crew == null)
                 {
-                    foreach(CrewMember cm in crewMembers)
+                    message.Add( "This Crew is no longer in the database");
+                }
+                else
+                {
+                    List<CrewMember> crewMembers = crew.CrewMembers.Select(x => x).ToList();
+                    List<CrewSite> crewSites = crew.CrewSites.Select(x => x).ToList();
+                    if (crewMembers != null)
                     {
-                        context.CrewMembers.Remove(cm);
+                        foreach (CrewMember cm in crewMembers)
+                        {
+                            context.CrewMembers.Remove(cm);
+                        }
+                    }
+
+                    if (crewSites != null)
+                    {
+                        foreach (CrewSite cs in crewSites)
+                        {
+                            context.CrewSites.Remove(cs);
+                        }
                     }
                 }
 
+                if (message.Count > 0)
+                {
+                    throw new BusinessRuleException("Removing crew Failed!", message);
+                }
                 context.Crews.Remove(crew);
                 context.SaveChanges();
+            }
+        }
+
+        public void RemoveCrewSite(int crewSiteId)
+        {
+            using(var context = new COESystemContext())
+            {
+                List<string> message = new List<string>();
+
+                CrewSite cs =  context.CrewSites.Find(crewSiteId);
+
+                List<Grass> grassList = cs.Grasses.Select(x => x).ToList();
+                List<Watering> wateringList = cs.Waterings.Select(x => x).ToList();
+                List<Planting> plantinList = cs.Plantings.Select(x => x).ToList();
+                List<SBM> sBMList = cs.SBMs.Select(x => x).ToList();
+                List<Mulching> mulchingList = cs.Mulchings.Select(x => x).ToList();
+                List<Pruning> pruningList = cs.Prunings.Select(x => x).ToList();
+                List<Uprooting> uprootingList = cs.Uprootings.Select(x => x).ToList();
+
+                if (cs == null)
+                {
+                    message.Add("This Site was not assigned to the current Crew");
+                }
+
+                if(message.Count() > 0)
+                {
+                    throw new BusinessRuleException("Removing Site from current Crew Failed", message);
+                }
+                else
+                {
+                    foreach (Grass item in grassList)
+                    {
+                        context.Grasses.Remove(item);
+                    }
+                    foreach (Watering item in wateringList)
+                    {
+                        context.Waterings.Remove(item);
+                    }
+                    foreach (Planting item in plantinList)
+                    {
+                        context.Plantings.Remove(item);
+                    }
+                    foreach (SBM item in sBMList)
+                    {
+                        context.SBMs.Remove(item);
+                    }
+                    foreach (Mulching item in mulchingList)
+                    {
+                        context.Mulchings.Remove(item);
+                    }
+                    foreach (Pruning item in pruningList)
+                    {
+                        context.Prunings.Remove(item);
+                    }
+                    foreach (Uprooting item in uprootingList)
+                    {
+                        context.Uprootings.Remove(item);
+                    }
+
+                    context.CrewSites.Remove(cs);
+                    context.SaveChanges();
+                }
             }
         }
 
@@ -245,6 +330,16 @@ namespace COESystem.BLL.CrewLeaderControllers
             using(var context = new COESystemContext())
             {
                 return context.Crews.Find(crewId).Unit.UnitID;
+            }
+        }
+
+        public int GetCrewID(int unitId)
+        {
+            using(var context = new COESystemContext())
+            {
+                return (from x in context.Crews
+                        where x.UnitID == unitId && DbFunctions.TruncateTime(x.CrewDate) == DbFunctions.TruncateTime(DateTime.Now)
+                        select x.CrewID).FirstOrDefault();
             }
         }
     }

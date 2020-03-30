@@ -5,7 +5,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="row">
+    <div class="row, MUC">
         <uc1:MessageUserControl runat="server" id="MessageUserControl" />
     </div>
     <div class="row">
@@ -88,25 +88,25 @@
                                         <td id="notes">
                                             <asp:Label Text='<%# Eval("Notes") %>' runat="server" ID="NotesLabel"/></td>
                                         <td id="HideC1" runat="server">
-                                            <asp:Label Text='<%# Eval("Cycle1", "{0:MMM-dd}") %>' runat="server" ID="Cycle1Label"/></td>
+                                            <asp:Label Text='<%# Eval("Cycle1", "{0:MMM-dd-yyyy}") %>' runat="server" ID="Cycle1Label"/></td>
                                         <td id="HideC2" runat="server">
-                                            <asp:Label Text='<%# Eval("Cycle2", "{0:MMM-dd}") %>' runat="server" ID="Cycle2Label"/></td>
+                                            <asp:Label Text='<%# Eval("Cycle2", "{0:MMM-dd-yyyy}") %>' runat="server" ID="Cycle2Label"/></td>
                                         <td id="HideC3" runat="server" >
-                                            <asp:Label Text='<%# Eval("Cycle3", "{0:MMM-dd}") %>' runat="server" ID="Cycle3Label"/></td>
+                                            <asp:Label Text='<%# Eval("Cycle3", "{0:MMM-dd-yyyy}") %>' runat="server" ID="Cycle3Label"/></td>
                                         <td id="HideC4" runat="server" >
-                                            <asp:Label Text='<%# Eval("Cycle4", "{0:MMM-dd}") %>' runat="server" ID="Cycle4Label"/></td>
+                                            <asp:Label Text='<%# Eval("Cycle4", "{0:MMM-dd-yyyy}") %>' runat="server" ID="Cycle4Label"/></td>
                                         <td id="HideC5" runat="server" >
-                                            <asp:Label Text='<%# Eval("Cycle5", "{0:MMM-dd}") %>' runat="server" ID="Cycle5Label"/></td>
+                                            <asp:Label Text='<%# Eval("Cycle5", "{0:MMM-dd-yyyy}") %>' runat="server" ID="Cycle5Label"/></td>
                                         <td id="HidePruning" runat="server">
-                                            <asp:Label Text='<%# Eval("Pruning", "{0:MMM-dd}") %>' runat="server" ID="PruningLabel"/></td>
+                                            <asp:Label Text='<%# Eval("Pruning", "{0:MMM-dd-yyyy}") %>' runat="server" ID="PruningLabel"/></td>
                                         <td id="HideMulching" runat="server">
-                                            <asp:Label Text='<%# Eval("Mulching", "{0:MMM-dd}") %>' runat="server" ID="MulchingLabel"/></td>
+                                            <asp:Label Text='<%# Eval("Mulching", "{0:MMM-dd-yyyy}") %>' runat="server" ID="MulchingLabel"/></td>
                                         <td id="HidePlanting" runat="server">
-                                            <asp:Label Text='<%# Eval("Planting", "{0:MMM-dd}") %>' runat="server" ID="PlantingLabel"/></td>
+                                            <asp:Label Text='<%# Eval("Planting", "{0:MMM-dd-yyyy}") %>' runat="server" ID="PlantingLabel"/></td>
                                         <td id="HideUprooting" runat="server">
-                                            <asp:Label Text='<%# Eval("Uprooting", "{0:MMM-dd}") %>' runat="server" ID="UprootingLabel"/></td>
+                                            <asp:Label Text='<%# Eval("Uprooting", "{0:MMM-dd-yyyy}") %>' runat="server" ID="UprootingLabel"/></td>
                                         <td id="HideTrimming" runat="server">
-                                            <asp:Label Text='<%# Eval("Trimming", "{0:MMM-dd}") %>' runat="server" ID="TrimmingLabel"/></td>
+                                            <asp:Label Text='<%# Eval("Trimming", "{0:MMM-dd-yyyy}") %>' runat="server" ID="TrimmingLabel"/></td>
                                     </tr>
                                 </AlternatingItemTemplate>
 
@@ -126,25 +126,25 @@
                                         <td id="notes">
                                             <asp:Label Text='<%# Eval("Notes") %>' runat="server" ID="NotesLabel"/></td>
                                         <td id="HideC1" runat="server">
-                                            <asp:Label Text='<%# Eval("Cycle1", "{0:MMM-dd}") %>' runat="server" ID="Cycle1Label"/></td>
+                                            <asp:Label Text='<%# Eval("Cycle1", "{0:MMM-dd-yyyy}") %>' runat="server" ID="Cycle1Label"/></td>
                                         <td id="HideC2" runat="server">
-                                            <asp:Label Text='<%# Eval("Cycle2", "{0:MMM-dd}") %>' runat="server" ID="Cycle2Label"/></td>
+                                            <asp:Label Text='<%# Eval("Cycle2", "{0:MMM-dd-yyyy}") %>' runat="server" ID="Cycle2Label"/></td>
                                         <td id="HideC3" runat="server" >
-                                            <asp:Label Text='<%# Eval("Cycle3", "{0:MMM-dd}") %>' runat="server" ID="Cycle3Label"/></td>
+                                            <asp:Label Text='<%# Eval("Cycle3", "{0:MMM-dd-yyyy}") %>' runat="server" ID="Cycle3Label"/></td>
                                         <td id="HideC4" runat="server" >
-                                            <asp:Label Text='<%# Eval("Cycle4", "{0:MMM-dd}") %>' runat="server" ID="Cycle4Label"/></td>
+                                            <asp:Label Text='<%# Eval("Cycle4", "{0:MMM-dd-yyyy}") %>' runat="server" ID="Cycle4Label"/></td>
                                         <td id="HideC5" runat="server" >
-                                            <asp:Label Text='<%# Eval("Cycle5", "{0:MMM-dd}") %>' runat="server" ID="Cycle5Label"/></td>
+                                            <asp:Label Text='<%# Eval("Cycle5", "{0:MMM-dd-yyyy}") %>' runat="server" ID="Cycle5Label"/></td>
                                         <td id="HidePruning" runat="server">
-                                            <asp:Label Text='<%# Eval("Pruning", "{0:MMM-dd}") %>' runat="server" ID="PruningLabel"/></td>
+                                            <asp:Label Text='<%# Eval("Pruning", "{0:MMM-dd-yyyy}") %>' runat="server" ID="PruningLabel"/></td>
                                         <td id="HideMulching" runat="server">
-                                            <asp:Label Text='<%# Eval("Mulching", "{0:MMM-dd}") %>' runat="server" ID="MulchingLabel"/></td>
+                                            <asp:Label Text='<%# Eval("Mulching", "{0:MMM-dd-yyyy}") %>' runat="server" ID="MulchingLabel"/></td>
                                         <td id="HidePlanting" runat="server">
-                                            <asp:Label Text='<%# Eval("Planting", "{0:MMM-dd}") %>' runat="server" ID="PlantingLabel"/></td>
+                                            <asp:Label Text='<%# Eval("Planting", "{0:MMM-dd-yyyy}") %>' runat="server" ID="PlantingLabel"/></td>
                                         <td id="HideUprooting" runat="server">
-                                            <asp:Label Text='<%# Eval("Uprooting", "{0:MMM-dd}") %>' runat="server" ID="UprootingLabel"/></td>
+                                            <asp:Label Text='<%# Eval("Uprooting", "{0:MMM-dd-yyyy}") %>' runat="server" ID="UprootingLabel"/></td>
                                         <td id="HideTrimming" runat="server">
-                                            <asp:Label Text='<%# Eval("Trimming", "{0:MMM-dd}") %>' runat="server" ID="TrimmingLabel"/></td>
+                                            <asp:Label Text='<%# Eval("Trimming", "{0:MMM-dd-yyyy}") %>' runat="server" ID="TrimmingLabel"/></td>
                                     </tr>
                                 </ItemTemplate>
                                 <LayoutTemplate>

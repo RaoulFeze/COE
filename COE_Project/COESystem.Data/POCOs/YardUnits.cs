@@ -8,7 +8,7 @@ namespace COESystem.Data.POCOs
 {
     public class YardUnits
     {
-        public int ID { get; set; }
+        public int UnitID { get; set; }
         public string Number { get; set; }
         public string Description { get; set; }
     }

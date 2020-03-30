@@ -42,13 +42,13 @@ namespace COE_Application.Pages.CrewLeader
         protected global::System.Web.UI.WebControls.Label SiteType;
 
         /// <summary>
-        /// SelectedCrew control.
+        /// CrewID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label SelectedCrew;
+        protected global::System.Web.UI.WebControls.Label CrewID;
 
         /// <summary>
         /// AddCrewLabel control.
@@ -105,13 +105,13 @@ namespace COE_Application.Pages.CrewLeader
         protected global::System.Web.UI.WebControls.Button SelectSiteButton;
 
         /// <summary>
-        /// Test control.
+        /// Route control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Test;
+        protected global::System.Web.UI.WebControls.Label Route;
 
         /// <summary>
         /// EmployeesListView control.
@@ -123,22 +123,13 @@ namespace COE_Application.Pages.CrewLeader
         protected global::System.Web.UI.WebControls.ListView EmployeesListView;
 
         /// <summary>
-        /// RouteAListView control.
+        /// RouteListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView RouteAListView;
-
-        /// <summary>
-        /// RouteBListView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView RouteBListView;
+        protected global::System.Web.UI.WebControls.ListView RouteListView;
 
         /// <summary>
         /// CrewRepeater control.
@@ -157,14 +148,5 @@ namespace COE_Application.Pages.CrewLeader
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource EmployeeListODS;
-
-        /// <summary>
-        /// RouteODS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource RouteODS;
     }
 }

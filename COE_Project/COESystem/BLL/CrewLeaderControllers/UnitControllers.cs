@@ -27,7 +27,7 @@ namespace COESystem.BLL.CrewLeaderControllers
                                   where x.YardID == yardId
                                   select new YardUnits
                                   {
-                                      ID = x.UnitID,
+                                      UnitID = x.UnitID,
                                       Number = x.UnitNumber,
                                       Description = x.UnitDescription,
                                   };

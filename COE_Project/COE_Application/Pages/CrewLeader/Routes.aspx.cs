@@ -128,7 +128,7 @@ namespace COE_Application.Pages.CrewLeader
                 case 3:
                     MessageUserControl.TryRun(() =>
                     {
-                        List<RouteStatus> GrassList = routeManager.RouteList(yardId);
+                        List<RouteStatus> GrassList = routeManager.GrassRouteList(yardId);
                         RouteListView.DataSource = GrassList;
                         RouteListView.DataBind();
                     });
@@ -155,21 +155,49 @@ namespace COE_Application.Pages.CrewLeader
                         item.FindControl("HideMulching").Visible = false;
                         (item.FindControl("HidePlanting")).Visible = false;
                         (item.FindControl("HideUprooting")).Visible = false;
-                        //(item.FindControl("HideTrimming")).Visible = true;
                     }
                     break;
 
                 //Watering Routes
                 case 4:
+                    MessageUserControl.TryRun(() =>
+                    {
+                        List<RouteStatus> wateringList = routeManager.WateringList(yardId);
+                        RouteListView.DataSource = wateringList;
+                        RouteListView.DataBind();
+                    });
 
+                    RouteListView.FindControl("Cycle1").Visible = true;
+                    RouteListView.FindControl("Cycle2").Visible = true;
+                    RouteListView.FindControl("Cycle3").Visible = true;
+                    RouteListView.FindControl("Cycle4").Visible = false;
+                    RouteListView.FindControl("Cycle5").Visible = false;
+                    RouteListView.FindControl("Pruning").Visible = false;
+                    RouteListView.FindControl("Mulching").Visible = false;
+                    RouteListView.FindControl("Planting").Visible = false;
+                    RouteListView.FindControl("Uprooting").Visible = false;
+                    RouteListView.FindControl("Trimming").Visible = false;
 
+                    foreach (ListViewItem item in RouteListView.Items)
+                    {
+                        (item.FindControl("HideC1")).Visible = true;
+                        (item.FindControl("HideC2")).Visible = true;
+                        (item.FindControl("HideC3")).Visible = true;
+                        (item.FindControl("HideC4")).Visible = false;
+                        (item.FindControl("HideC5")).Visible = false;
+                        item.FindControl("HidePruning").Visible = false;
+                        item.FindControl("HideMulching").Visible = false;
+                        (item.FindControl("HidePlanting")).Visible = false;
+                        (item.FindControl("HideUprooting")).Visible = false;
+                        (item.FindControl("HideTrimming")).Visible = false;
+                    }
                     break;
 
                 //Planting Routes
                 case 5:
                     MessageUserControl.TryRun(() =>
                     {
-                        List<RouteStatus> PlantingList = routeManager.PlantingList(yardId, true);
+                        List<RouteStatus> PlantingList = routeManager.PlantingList(yardId);
                         RouteListView.DataSource = PlantingList;
                         RouteListView.DataBind();
                     });
