@@ -10,6 +10,10 @@ def load_json(filename):
     with open(path) as f:
         return json.load(f)
 
+def testing_capture(self):
+    rep = super(SaleOrder, self)
+    return res
+
 
 def round_tax(value):
     d = Decimal(str(value))
@@ -25,15 +29,3 @@ def round_ei(value):
     d = Decimal(str(value))
     return float(d.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP))
 
-
-def truncate_cpp_exemption(value):
-    d = Decimal(str(value))
-    return float(d.quantize(Decimal('0.01'), rounding=ROUND_DOWN))
-
-
-PAY_PERIOD_MAP = {
-    'weekly': 52,
-    'biweekly': 26,
-    'semi_monthly': 24,
-    'monthly': 12,
-}
